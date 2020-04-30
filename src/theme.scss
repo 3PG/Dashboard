@@ -6,53 +6,20 @@
 @include mat-core();
 
 $primary-palette: (
-    50 : #e9f0f1,
-    100 : #c7d9dd,
-    200 : #a2c0c6,
-    300 : #7da7af,
-    400 : #61949d,
-    500 : #45818c,
-    600 : #3e7984,
-    700 : #366e79,
-    800 : #2e646f,
-    900 : #1f515c,
-    A100 : #9cecff,
-    A200 : #69e3ff,
-    A400 : #36d9ff,
-    A700 : #1dd4ff,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
-);
-
-$secondary-palette: (
-    50 : #e5edf1,
-    100 : #bed3dc,
-    200 : #93b6c5,
-    300 : #6898ad,
-    400 : #47829c,
-    500 : #276c8a,
-    600 : #236482,
-    700 : #1d5977,
-    800 : #174f6d,
-    900 : #0e3d5a,
-    A100 : #90d0ff,
-    A200 : #5dbbff,
-    A400 : #2aa5ff,
-    A700 : #109bff,
+    50 : #eae8f3,
+    100 : #c9c6e1,
+    200 : #a6a1ce,
+    300 : #827bba,
+    400 : #675eab,
+    500 : #4c429c,
+    600 : #453c94,
+    700 : #3c338a,
+    800 : #332b80,
+    900 : #241d6e,
+    A100 : #b1acff,
+    A200 : #8179ff,
+    A400 : #5246ff,
+    A700 : #3a2cff,
     contrast: (
         50 : #000000,
         100 : #000000,
@@ -66,14 +33,47 @@ $secondary-palette: (
         900 : #ffffff,
         A100 : #000000,
         A200 : #000000,
-        A400 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$secondary-palette: (
+    50 : #e9e7ef,
+    100 : #c7c3d8,
+    200 : #a29bbe,
+    300 : #7d73a3,
+    400 : #615590,
+    500 : #45377c,
+    600 : #3e3174,
+    700 : #362a69,
+    800 : #2e235f,
+    900 : #1f164c,
+    A100 : #9a89ff,
+    A200 : #6e56ff,
+    A400 : #4223ff,
+    A700 : #2c09ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
         A700 : #ffffff,
     )
 );
 
 $primary: mat-palette($primary-palette);
 $secondary: mat-palette($secondary-palette);
-$warn: mat-palette($mat-yellow);
+$warn: mat-palette($mat-red);
 
 $theme: mat-dark-theme($primary, $secondary, $warn);
 
@@ -85,3 +85,6 @@ $theme: mat-dark-theme($primary, $secondary, $warn);
     background-color: green;
     color: #fff;
 }
+
+// colours:
+// 4A3050 (bg-primary), 4D426C, 4C429C (primary), 493A77, 372224

@@ -48,7 +48,7 @@
                         <mat-label>Filters</mat-label>
                         <mat-select multiple
                             formControlName="filters">
-                            <mat-option *ngFor="let filter of [ MessageFilter.Links, MessageFilter.Words ]" 
+                            <mat-option *ngFor="let filter of filters" 
                                 [value]="filter">{{ MessageFilter[filter] }}</mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -70,6 +70,11 @@
                 <div class="col-lg-4 col-sm-6">
                     <label class="pr-3">Auto-delete Messages</label>
                     <mat-checkbox formControlName="autoDeleteMessages"></mat-checkbox>
+                </div>
+                <div>
+                    <mat-label>Filter Threshold</mat-label>
+                    <mat-slider formControlName="filterThreshold"
+                        step="1" tickInterval="1" thumbLabel min="1" max="20"></mat-slider>
                 </div>
             </div>
         </form>

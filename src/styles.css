@@ -6,19 +6,19 @@
 @import '~chart.js/dist/Chart.min.css';
 
 :root {
-    --font: #F4F2F3;
+    --font: #FFFFFF;
     --plus: green;
 
     --danger: darkred;
     --muted: grey;
 
-    --primary: #46828D;
-    --secondary: #276C8A;
-    --tertiary: #36E2CA;
+    --primary: #482F5D;
+    --secondary: #45377C;
+    --tertiary: #351F20;
 
-    --background-primary: #15244B;
-    --background-secondary: #0c1c42;
-    --background-tertiary: #081536;
+    --background-primary: #372224;
+    --background-secondary: #2c1518;
+    --background-tertiary: #251113;
 }
 
 body, mat-sidenav-content {

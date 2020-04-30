@@ -3,7 +3,9 @@
         <h5>Changes</h5>
     </div>
     <div class="col-md-9">
-        <table *ngIf="changes" class="table">
+        <p *ngIf="changes?.length <= 0"
+            class="text-muted">No changes yet...</p>
+        <table *ngIf="changes?.length > 0" class="table">
             <thead>
                 <tr>
                     <th>#</th>

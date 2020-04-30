@@ -49,7 +49,7 @@ button {
 }
 
 .options {
-    background-color: var(--background-primary) !important;
+    background-color: var(--background-secondary) !important;
 
     width: 300px;
     height: inherit;

@@ -1,4 +1,4 @@
-# 2PG Dashboard
+# 3PG Dashboard
 
 ## Discord Bot Setup
 Make sure you have redirects set to the /auth link you will be using.

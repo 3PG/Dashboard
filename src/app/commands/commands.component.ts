@@ -26,7 +26,7 @@ export class CommandsComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;    
 
-    document.title = '2PG - Commands';
+    document.title = '3PG - Commands';
   }
 
   applyFilter(event: Event) {

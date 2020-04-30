@@ -10,7 +10,7 @@
 }
 
 p:not(.lead) {
-    color: var(--secondary);
+    color: var(--muted);
     cursor: pointer;
 }
 

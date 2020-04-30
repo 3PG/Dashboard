@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModuleConfig } from '../../module-config';
-import { FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { GuildService } from '../../services/guild.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./auto-mod-module.component.css']
 })
 export class AutoModModuleComponent extends ModuleConfig implements OnInit {
+  filters = [ MessageFilter.Links, MessageFilter.Words, MessageFilter.Emoji, MessageFilter.MassMention, MessageFilter.MassCaps, MessageFilter.Zalgo ];
   MessageFilter = MessageFilter;
   moduleName = 'autoMod';
 
@@ -32,7 +33,8 @@ export class AutoModModuleComponent extends ModuleConfig implements OnInit {
       filters: new FormControl(),
       autoDeleteMessages: new FormControl(),
       autoWarnUsers: new FormControl(),
-      ignoredRoles: new FormControl()
+      ignoredRoles: new FormControl(),
+      filterThreshold: new FormControl([ Validators.min(1), Validators.max(20) ]),
     });
   }
   
@@ -42,10 +44,11 @@ export class AutoModModuleComponent extends ModuleConfig implements OnInit {
     this.form.controls.banWords.setValue(autoMod.banWords);
     this.form.controls.banLinks.setValue(autoMod.banLinks);
     this.form.controls.filters.setValue(autoMod.filters);
+    this.form.controls.filterThreshold.setValue(autoMod.filterThreshold);
     this.form.controls.ignoredRoles.setValue(autoMod.ignoredRoles);
     this.form.controls.autoWarnUsers.setValue(autoMod.autoWarnUsers);
     this.form.controls.autoDeleteMessages.setValue(autoMod.autoDeleteMessages);
   }
 }
 
-export enum MessageFilter { Words, Links }
+export enum MessageFilter { Words, Links, Emoji, MassMention, MassCaps, Zalgo }
