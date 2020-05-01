@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GuildService } from '../../services/guild.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-announce-module',
@@ -15,10 +16,17 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
 
   moduleName = 'announce';
 
-  events = [ EventType.MemberJoin, EventType.MemberLeave, EventType.MessageDeleted ];
+  events = [
+    EventType.MemberJoin,
+    EventType.MemberLeave,
+    EventType.MessageDeleted,
+    EventType.Ban,
+    EventType.Unban
+  ];
   eventConfigs: AnnounceEvent[] = [];
 
   constructor(
+    private sanitizer: DomSanitizer,
     guildService: GuildService,
     route: ActivatedRoute,
     saveChanges: MatSnackBar) {
@@ -26,6 +34,7 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async ngOnInit() {
+    window.addEventListener('popstate', () => console.log('wee woo'));
     await super.init();
 
     this.eventConfigs = this.savedGuild.announce.events;
@@ -38,27 +47,30 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     for (const event of this.events)
       (formGroup.get('events') as FormArray).push(new FormGroup({
         event: new FormControl(event),
-        enabled: new FormControl(true),
+        enabled: new FormControl(false),
         channel: new FormControl(),
-        message: new FormControl(`\`${event}\` was triggered!`)
+        message: new FormControl(`\`${this.EventType[event]}\` was triggered in **[GUILD]**!`)
       }));
+      formGroup.valueChanges.subscribe(() => {
+        document.querySelectorAll('embed')
+          .forEach(e => e.setAttribute('src', ''));
+      });
     return formGroup;
   }
   
   initFormValues(savedGuild: any) {    
     for (const event of this.events) {
       const config = savedGuild.announce.events.find(e => e.event === event);
-      if (!config) continue;      
-      
-      const eventControl = (this.form.get('events') as FormArray)
-        .get(config.event.toString());
-      
-      eventControl?.setValue({
-        event,
-        enabled: Boolean(config),
-        channel: config.channel,
-        message: `\`${event}\` was triggered!`
-      });
+      if (!config) continue;
+
+      (this.form.get('events') as FormArray)
+        .get(event.toString())
+        .setValue({
+          event,
+          enabled: true,
+          channel: config.channel,
+          message: config.message
+        });
     }    
   }
 
@@ -75,16 +87,24 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
 
   private filterFormEvents(value: any) {
     const filteredEvents = [];
-    for (const event of value.events.filter(e => e.enabled)) {
-      const filtered = {...event};
-      delete filtered.enabled;
-      filteredEvents.push(filtered);
+    for (const event of value.events) {
+      const filtered = { ...event };
+      if (filtered.enabled) {
+        console.log(filtered);
+        
+        delete filtered.enabled;
+        filteredEvents.push(filtered);
+      }
     }
     value.events = filteredEvents;
   }
+  
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
 }
 
-export enum EventType { MemberJoin, MemberLeave, MessageDeleted }
+export enum EventType { MemberJoin, MemberLeave, MessageDeleted, Ban, Unban }
 
 export interface AnnounceEvent {
   event: EventType;

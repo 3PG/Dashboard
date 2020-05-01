@@ -47,6 +47,7 @@ import { ZippyComponent } from './zippy/zippy.component';
 import { AuditLogWidgetComponent } from './dashboard/widgets/audit-log-widget/audit-log-widget.component';
 import { CommandsWidgetComponent } from './dashboard/widgets/commands-widget/commands-widget.component';
 import { MiniDatePipe } from './pipes/mini-date.pipe';
+import { MessagePreviewComponent } from './message-preview/message-preview.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { MiniDatePipe } from './pipes/mini-date.pipe';
     ZippyComponent,
     AuditLogWidgetComponent,
     CommandsWidgetComponent,
-    MiniDatePipe
+    MiniDatePipe,
+    MessagePreviewComponent
   ],
   imports: [
     AppRoutingModule,

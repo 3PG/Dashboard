@@ -23,7 +23,7 @@ import { LeaderboardModuleComponent } from './dashboard/leaderboard-module/leade
 import { LeaderboardAuthGuard } from './guards/leaderboard-auth.guard';
 import { XPCardComponent } from './xp-card/xp-card.component';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
-import { PlusComponent } from './plus/plus.component';
+import { PlusComponent as ProComponent } from './plus/plus.component';
 import { DocsComponent } from './docs/docs.component';
 import { CanDeactivateDashboard } from './guards/can-deactivate-dashboard.guard';
 
@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: 'servers/:id/log', component: LogModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/settings', component: SettingsModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
 
-  { path: 'plus', component: PlusComponent },
+  { path: 'pro', component: ProComponent },
   { path: 'payment-success', component: PaymentSuccessComponent },
   { path: '**', component: NotFoundComponent }
 ];

@@ -28,13 +28,13 @@ export class AutoModModuleComponent extends ModuleConfig implements OnInit {
   
   buildForm() {
     return new FormGroup({
-      banWords: new FormControl(),
-      banLinks: new FormControl(),
-      filters: new FormControl(),
-      autoDeleteMessages: new FormControl(),
-      autoWarnUsers: new FormControl(),
-      ignoredRoles: new FormControl(),
-      filterThreshold: new FormControl([ Validators.min(1), Validators.max(20) ]),
+      banWords: new FormControl([]),
+      banLinks: new FormControl([]),
+      filters: new FormControl([]),
+      autoDeleteMessages: new FormControl(true),
+      autoWarnUsers: new FormControl(true),
+      ignoredRoles: new FormControl([]),
+      filterThreshold: new FormControl(5, [ Validators.min(1), Validators.max(20) ]),
     });
   }
   

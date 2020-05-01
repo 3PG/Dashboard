@@ -40,13 +40,15 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
     for (const command of this.commands)
       (formGroup.get('configs') as FormArray).push(new FormGroup({
         name: new FormControl(command.name),
+        roles: new FormControl([]),
+        channels: new FormControl([]),
         enabled: new FormControl(true)
       }));
     return formGroup;
   }
   
-  initFormValues() {
-    this.commandConfigs = this.savedGuild.commands.configs || [];    
+  initFormValues(savedGuild: any) {
+    this.commandConfigs = savedGuild.commands.configs || [];    
 
     for (const config of this.commandConfigs) {
       const index = this.commandConfigs.indexOf(config);

@@ -18,4 +18,7 @@ Type commands with the set prefix (default: `.`).
 ---
 
 ## What is the 3PG Dashboard?
-The 3PG dashboard is used for customizing saved settings for your Discord server (with 3PG)
+The 3PG dashboard is used for customizing saved settings for your Discord server (with 3PG).
+
+## How was 3PG made?
+3PG is an extension of [2PG](https://2pg.xyz).

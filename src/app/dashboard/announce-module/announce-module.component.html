@@ -23,7 +23,7 @@
                         <hr>
                         <mat-form-field appearance="outline">                                
                             <mat-label>Message</mat-label>
-                            <textarea formControlName="message" matInput>{{ getEvent(event)?.message }}</textarea>
+                            <textarea formControlName="message" matInput #message>{{ getEvent(event)?.message }}</textarea>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Channel</mat-label>
@@ -32,6 +32,7 @@
                                     [value]="channel.id">#{{ channel.name }}</mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <message-preview [content]="message.value"></message-preview>
                     </div>
                 </div>
             </div>

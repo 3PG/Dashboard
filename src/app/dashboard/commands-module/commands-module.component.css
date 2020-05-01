@@ -2,3 +2,7 @@
     background-color: var(--background-tertiary);
     margin: 5px;
 }
+
+.card-body {
+    padding-bottom: 0;
+}

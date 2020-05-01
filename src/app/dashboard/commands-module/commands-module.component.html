@@ -8,8 +8,8 @@
             <div formArrayName="configs" class="row">
                 <div [formGroupName]="i" *ngFor="let command of commands; index as i"
                     class="col-lg-6 col-md-12">
-                    <div class="card d-flex justify-content-between">
-                        <div class="card-body">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between">
                             <span>
                                 <input type="hidden" formControlName="name">
                                 {{ command.name }}
@@ -18,7 +18,32 @@
                                 <mat-slide-toggle formControlName="enabled"></mat-slide-toggle>
                             </div>
                         </div>
-                    </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline"
+                                    class="px-3">
+                                    <mat-label>Whitelisted Roles</mat-label>
+                                    <mat-select multiple
+                                        formControlName="roles">
+                                        <mat-option *ngFor="let role of roles" 
+                                            [value]="role.id">@{{ role.name }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline"
+                                    class="px-3">
+                                    <mat-label>Whitelisted Channels</mat-label>
+                                    <mat-select multiple
+                                        formControlName="channels">
+                                        <mat-option *ngFor="let channel of textChannels" 
+                                            [value]="channel.id">#{{ channel.name }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>                  
                 </div>
             </div>
         </form>

@@ -1,16 +1,34 @@
 # Auto Mod
 Learn how to let 3PG filter explicit content, spam and more!
 
-## Filters
-Filters usernames content, and message content
+## Auto Delete Messages
+Whether to automatically delete messages that are filtered.
 
-`Threshold = guild.autoMod.filterThreshold` default (5)
+## Auto Warn Users
+Whether to automatically warn users, that type a filtered message.
+
+## Ban Links
+Single characters, or parts of a word, that trigger the `Links` filter.
+
+## Ban Words
+Single words that trigger the `Words` filter.
+
+## Filters
+Filter message content, based on specific conditions.
 
 | Filter             | Trigger Example                          | Condition
 |:-------------------|:-----------------------------------------|:-------------------------------------------|
-| All Caps           | TESTING123?!?!?!?                 | (`Threshold` * 10)% caps (<=50% caps by default)
+| All Caps           | TESTING123?!?!?!?                 | Message Length > `Threshold` and (`Threshold` * 10)% caps (<=50% caps by default)
 | Bad Links          | [saved bad link address]                         | Message contains custom bad link
 | Bad Words          | [listed bad word]                                      | Any words equal custom bad word
 | Emoji Spam         | 🤔🤔🤔🤔🤔🤔🤔🤔🤔                   | `Threshold` emojis
 | Mass Mention       | @User @User @User @User @User            | `Threshold` mentions
 | Zalgo              | Mͭͭͬu̔ͨ͊tͣ̃̚eͨͭ͐ ҉̴̴̢                                   | Any zalgo symbols
+
+
+## Filter Threshold
+The strictness of most of the variable filters.
+
+## Ignored Roles
+Roles that are not affected by auto-mod.
+A use case for this may be an Admin role, where Admins could `SPAM CAPS IN CHAT` and watch other members suffer trying to do the same thing.

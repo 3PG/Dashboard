@@ -9,6 +9,27 @@
                 </div>
                 <hr>
             </div>
+            <h3>Filters</h3>
+            <p class="desc">Filter message content, based on specific conditions</p>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enabled Filters</mat-label>
+                        <mat-select multiple
+                            formControlName="filters">
+                            <mat-option *ngFor="let filter of filters" 
+                                [value]="filter">{{ MessageFilter[filter] }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <label class="pr-1">Filter Threshold</label>
+                    <mat-slider formControlName="filterThreshold"
+                        step="1" tickInterval="1" thumbLabel min="1" max="20"></mat-slider>
+                </div>
+            </div>
+            <hr>
             <div class="row">
                 <div class="col-lg-4 col-sm-6">
                     <mat-form-field appearance="outline">
@@ -45,16 +66,6 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <mat-form-field appearance="outline">
-                        <mat-label>Filters</mat-label>
-                        <mat-select multiple
-                            formControlName="filters">
-                            <mat-option *ngFor="let filter of filters" 
-                                [value]="filter">{{ MessageFilter[filter] }}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <mat-form-field appearance="outline">
                         <mat-label>Ignored Roles</mat-label>
                         <mat-select multiple
                             formControlName="ignoredRoles">
@@ -64,17 +75,12 @@
                     </mat-form-field>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <label class="pr-3">Auto-warn Users</label>
+                    <label class="pr-1">Auto-warn Users</label>
                     <mat-checkbox formControlName="autoWarnUsers"></mat-checkbox>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <label class="pr-3">Auto-delete Messages</label>
+                    <label class="pr-1">Auto-delete Messages</label>
                     <mat-checkbox formControlName="autoDeleteMessages"></mat-checkbox>
-                </div>
-                <div>
-                    <mat-label>Filter Threshold</mat-label>
-                    <mat-slider formControlName="filterThreshold"
-                        step="1" tickInterval="1" thumbLabel min="1" max="20"></mat-slider>
                 </div>
             </div>
         </form>

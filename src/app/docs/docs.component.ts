@@ -30,16 +30,19 @@ export class DocsComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this.convertToMarkdown();  
+    this.convertToMarkdown();
   }
 
-  async convertToMarkdown() {
-    this.markdownPagePath$.subscribe(async(path) => {      
+  convertToMarkdown() {
+    this.markdownPagePath$.subscribe(async(path) => { 
       const file = await fetch(path);
       const md = await file.text();
       
       document.getElementById('doc').innerHTML = marked(md, { breaks: true });
       document.querySelector('h1').classList.add('display-3');
+
+      if (window.location.hash)
+        document.querySelector(window.location.hash)?.scrollIntoView();
     });
   }
 }
