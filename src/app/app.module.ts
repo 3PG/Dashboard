@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ShowOnDirtyErrorStateMatcher, ErrorStateMatcher } from '@angular/material/core';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
@@ -95,7 +94,6 @@ import { MessagePreviewComponent } from './message-preview/message-preview.compo
   imports: [
     AppRoutingModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -105,11 +103,11 @@ import { MessagePreviewComponent } from './message-preview/message-preview.compo
   ],
   exports: [PremiumDirective],
   providers: [
-    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: { languages: getHighlightLanguages() }
-    }],
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

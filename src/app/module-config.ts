@@ -6,6 +6,7 @@ import { GuildService } from './services/guild.service';
 import {  OnDestroy } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Subscription } from 'rxjs';
+import { isDeepStrictEqual } from 'util';
 
 
 export abstract class ModuleConfig implements OnDestroy {
@@ -14,6 +15,7 @@ export abstract class ModuleConfig implements OnDestroy {
     form: FormGroup;
 
     guildId: string;
+    guild: any;
     savedGuild: any;
     originalSavedGuild: any;
 
@@ -34,6 +36,8 @@ export abstract class ModuleConfig implements OnDestroy {
     async init() {
         this.guildId = this.route.snapshot.paramMap.get('id');
 
+        this.guild = await this.guildService.getPublicGuild(this.guildId);
+
         const channels = await this.guildService.getChannels(this.guildId);
         this.textChannels = channels.filter(c => c.type === 'text');
 
@@ -49,7 +53,7 @@ export abstract class ModuleConfig implements OnDestroy {
         this.initFormValues(this.savedGuild);        
 
         this.valueChanges$ = this.form.valueChanges
-            .subscribe(() => this.openSaveChanges());            
+            .subscribe(() => this.openSaveChanges());
     }
 
     private async resetForm() {        
@@ -73,12 +77,15 @@ export abstract class ModuleConfig implements OnDestroy {
         const snackBarRef = this.saveChanges._openedSnackBarRef;
         if (!this.form.valid || snackBarRef) return;
 
-        this.saveChanges$ = this.saveChanges.openFromComponent(SaveChangesComponent).afterOpened()
-        .subscribe(() => {
-            const component = this.saveChanges._openedSnackBarRef.instance as SaveChangesComponent;
-            component.onSave.subscribe(async() => await this.submit());
-            component.onReset.subscribe(async() => await this.reset());
-        });        
+        this.saveChanges$ = this.saveChanges.openFromComponent(SaveChangesComponent)
+            .afterOpened()
+            .subscribe(() => {
+                const component = this.saveChanges.
+                    _openedSnackBarRef.instance as SaveChangesComponent;
+
+                component.onSave.subscribe(async() => await this.submit());
+                component.onReset.subscribe(async() => await this.reset());
+            });
     }
 
     /**
@@ -93,11 +100,15 @@ export abstract class ModuleConfig implements OnDestroy {
      * Send the form data to the API.
      */
     async submit() {
-        console.log(this.form.value);
         try {
-            if (this.form.valid)
+            if (this.form.valid) {
                 await this.guildService.saveGuild(this.guildId, this.moduleName, this.form.value);
-        } catch { alert('An error occurred when submitting the form - check console'); }
+                await this.guildService.updateGuilds();
+            }
+        } catch {
+            alert('An error occurred when submitting the form - check console');
+            console.log(this.form.value);
+        }
     }
 
     /**

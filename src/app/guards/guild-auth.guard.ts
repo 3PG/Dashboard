@@ -13,8 +13,10 @@ export class GuildAuthGuard implements CanActivate {
   async canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
+      if (!this.guildService.guilds)
+        await this.guildService.updateGuilds();
+
       const guildId = next.paramMap.get('id');
-      await this.guildService.updateGuilds();
       return this.guildService.guilds?.some(g => g.id === guildId);
   }  
 }

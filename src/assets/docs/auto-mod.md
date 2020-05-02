@@ -1,10 +1,12 @@
 # Auto Mod
-Learn how to let 3PG filter explicit content, spam and more!
+Let 3PG filter explicit content, spam and more!
 
-## Auto Delete Messages
+---
+
+## Auto Delete Messages `true`
 Whether to automatically delete messages that are filtered.
 
-## Auto Warn Users
+## Auto Warn Users `false`
 Whether to automatically warn users, that type a filtered message.
 
 ## Ban Links
@@ -26,7 +28,7 @@ Filter message content, based on specific conditions.
 | Zalgo              | Mͭͭͬu̔ͨ͊tͣ̃̚eͨͭ͐ ҉̴̴̢                                   | Any zalgo symbols
 
 
-## Filter Threshold
+## Filter Threshold `5`
 The strictness of most of the variable filters.
 
 ## Ignored Roles

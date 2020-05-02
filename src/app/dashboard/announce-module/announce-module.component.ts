@@ -21,8 +21,11 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     EventType.MemberLeave,
     EventType.MessageDeleted,
     EventType.Ban,
-    EventType.Unban
+    EventType.Unban,
+    EventType.Mute,
+    EventType.LevelUp
   ];
+
   eventConfigs: AnnounceEvent[] = [];
 
   constructor(
@@ -34,7 +37,6 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async ngOnInit() {
-    window.addEventListener('popstate', () => console.log('wee woo'));
     await super.init();
 
     this.eventConfigs = this.savedGuild.announce.events;
@@ -43,18 +45,14 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
   buildForm() {
     const formGroup = new FormGroup({
       events: new FormArray([])
-    });    
+    });
     for (const event of this.events)
       (formGroup.get('events') as FormArray).push(new FormGroup({
         event: new FormControl(event),
         enabled: new FormControl(false),
         channel: new FormControl(),
-        message: new FormControl(`\`${this.EventType[event]}\` was triggered in **[GUILD]**!`)
+        message: new FormControl(`\`${EventType[event]}\` was triggered in **[GUILD]**!`)
       }));
-      formGroup.valueChanges.subscribe(() => {
-        document.querySelectorAll('embed')
-          .forEach(e => e.setAttribute('src', ''));
-      });
     return formGroup;
   }
   
@@ -89,9 +87,7 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     const filteredEvents = [];
     for (const event of value.events) {
       const filtered = { ...event };
-      if (filtered.enabled) {
-        console.log(filtered);
-        
+      if (filtered.enabled) {        
         delete filtered.enabled;
         filteredEvents.push(filtered);
       }
@@ -104,7 +100,7 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
   }
 }
 
-export enum EventType { MemberJoin, MemberLeave, MessageDeleted, Ban, Unban }
+export enum EventType { MemberJoin, MemberLeave, MessageDeleted, Ban, Unban, Mute, LevelUp }
 
 export interface AnnounceEvent {
   event: EventType;

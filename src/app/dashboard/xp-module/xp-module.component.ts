@@ -29,10 +29,10 @@ export class XPModuleComponent extends ModuleConfig implements OnInit {
   
   buildForm() {
     const formGroup = new FormGroup({
+      ignoredRoles: new FormControl([]),
       levelRoles: new FormArray([]),
-      ignoredRoles: new FormControl(),
-      xpPerMessage: new FormControl(),
-      xpCooldown: new FormControl('', [ Validators.min(0), Validators.max(60) ])
+      maxMessagesPerMinute: new FormControl(0, [ Validators.min(1), Validators.max(30) ]),
+      xpPerMessage: new FormControl(0)
     }); 
     this.buildLevelRolesFormArray(formGroup);
     return formGroup;
@@ -50,14 +50,15 @@ export class XPModuleComponent extends ModuleConfig implements OnInit {
   
   initFormValues(savedGuild: any) {
     const xp = savedGuild.xp;
+    
+    this.form.controls.ignoredRoles.setValue(xp.ignoredRoles);
 
     for (let i = 0; i < xp.levelRoles.length; i++)
       this.levelRolesFormArray.controls[i]
         .setValue(xp.levelRoles[i]);
     
-    this.form.controls.ignoredRoles.setValue(xp.ignoredRoles);
+    this.form.controls.maxMessagesPerMinute.setValue(xp.maxMessagesPerMinute);
     this.form.controls.xpPerMessage.setValue(xp.xpPerMessage);
-    this.form.controls.xpCooldown.setValue(xp.xpCooldown);    
   }
 }
 
