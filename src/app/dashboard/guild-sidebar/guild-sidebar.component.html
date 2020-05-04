@@ -35,6 +35,9 @@
                 <a [routerLink]="['/servers/' + guild.id + '/log']" routerLinkActive="active"
                     class="nav-item nav-link">
                     <i class="fa fa-file-text"></i> Log</a>
+                <a [routerLink]="['/servers/' + guild.id + '/warnings']" routerLinkActive="active"
+                    class="nav-item nav-link">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Warnings</a>
             </div>
             <hr>
             <div class="navbar-nav">

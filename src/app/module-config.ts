@@ -23,7 +23,7 @@ export abstract class ModuleConfig implements OnDestroy {
     roles: any = [];
 
     private saveChanges$: Subscription;  
-    private valueChanges$: Subscription;  
+    private valueChanges$: Subscription;
   
     constructor(
         protected guildService: GuildService,
@@ -102,11 +102,11 @@ export abstract class ModuleConfig implements OnDestroy {
     async submit() {
         try {
             if (this.form.valid) {
+                console.log(this.form.value);
                 await this.guildService.saveGuild(this.guildId, this.moduleName, this.form.value);
                 await this.guildService.updateGuilds();
             }
         } catch {
-            alert('An error occurred when submitting the form - check console');
             console.log(this.form.value);
         }
     }

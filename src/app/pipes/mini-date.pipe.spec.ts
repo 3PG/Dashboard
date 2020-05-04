@@ -12,7 +12,7 @@ describe('MiniDatePipe', () => {
     const result = pipe.transform(new Date().toString());
     const date = new Date();
 
-    const expected = `${date.getDate()}/${(date.getMonth() + 1)}`;
+    const expected = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}`;
     expect(result).toBe(expected);
   });
 });

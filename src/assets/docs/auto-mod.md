@@ -20,12 +20,12 @@ Filter message content, based on specific conditions.
 
 | Filter             | Trigger Example                          | Condition
 |:-------------------|:-----------------------------------------|:-------------------------------------------|
-| All Caps           | TESTING123?!?!?!?                 | Message Length > `Threshold` and (`Threshold` * 10)% caps (<=50% caps by default)
-| Bad Links          | [saved bad link address]                         | Message contains custom bad link
-| Bad Words          | [listed bad word]                                      | Any words equal custom bad word
-| Emoji Spam         | 🤔🤔🤔🤔🤔🤔🤔🤔🤔                   | `Threshold` emojis
-| Mass Mention       | @User @User @User @User @User            | `Threshold` mentions
-| Zalgo              | Mͭͭͬu̔ͨ͊tͣ̃̚eͨͭ͐ ҉̴̴̢                                   | Any zalgo symbols
+| MASS_CAPS          | TESTING123?!?!?!?                 | Message Length > `Threshold` and (`Threshold` * 10)% caps (<=50% caps by default)
+| LINKS              | [saved bad link address]                         | Message contains custom bad link
+| WORDS              | [listed bad word]                                      | Any words equal custom bad word
+| EMOJI              | 🤔🤔🤔🤔🤔🤔🤔🤔🤔                   | `Threshold` emojis
+| MASS_MENTION       | <User> <User> <User> <User> <User>            | `Threshold` mentions
+| ZALGO              | Mͭͭͬu̔ͨ͊tͣ̃̚eͨͭ͐ ҉̴̴̢                                   | Any zalgo symbols
 
 
 ## Filter Threshold `5`

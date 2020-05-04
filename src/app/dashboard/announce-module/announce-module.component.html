@@ -17,13 +17,13 @@
                     <div [formGroupName]="i" class="event">
                         <input type="hidden" formControlName="event">
                         <span class="d-flex justify-content-between">
-                            <strong>{{ EventType[i] }}</strong>
+                            <strong>{{ events[i] }}</strong>
                             <mat-slide-toggle formControlName="enabled"></mat-slide-toggle>
                         </span>
                         <hr>
                         <mat-form-field appearance="outline">                                
                             <mat-label>Message</mat-label>
-                            <textarea formControlName="message" matInput #message>{{ getEvent(event)?.message }}</textarea>
+                            <textarea formControlName="message" matInput #message>{{ getEvent(events[i])?.message }}</textarea>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Channel</mat-label>

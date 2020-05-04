@@ -1,0 +1,98 @@
+<navbar></navbar>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-3">3PG PRO</h1>
+        <p class="lead">Support 3PG, help cover costs, and improve 3PG's experience.</p>
+        <hr class="my-2">
+    </div>
+    <section id="benefits">
+        <h2 class="mt-5">Benefits</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card text-dark">
+                    <div class="card-body">
+                        <i class="fa fa-paint-brush" aria-hidden="true"></i> Customize XP Card Background
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-dark">
+                    <div class="card-body">
+                        <i class="fa fa-diamond" aria-hidden="true"></i> Improve 3PG
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-dark">
+                    <div class="card-body">
+                        <i class="fa fa-heart" aria-hidden="true"></i> Keep 3PG alive!
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-dark">
+                    <div class="card-body">
+                        <i class="fa fa-plus" aria-hidden="true"></i> More benefits in future updates
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-dark">
+                    <div class="card-body">
+                        <i class="fa fa-unlock" aria-hidden="true"></i> Unlock more customizability for all your servers
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-dark">
+                    <div class="card-body">
+                        <i class="fa fa-id-badge" aria-hidden="true"></i> Exclusive PRO badge
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-dark">
+                    <div class="card-body">
+                        <i class="fa fa-hashtag" aria-hidden="true"></i> Exclusive 3PG Discord Access
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-dark">
+                    <div class="card-body">
+                        <i class="fa fa-star" aria-hidden="true"></i> No Ads
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-dark">
+                    <div class="card-body">
+                        <i class="fa fa-certificate" aria-hidden="true"></i> 7 Day Money Back Guarantee
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <form class="d-flex justify-content-center" [action]="checkoutEndpoint" method="GET">
+        <button *ngIf="userService.user && userService.savedUser?.premium"
+            class="checkout my-3" color="success" mat-button disabled>You Already Have PRO</button>
+        <button *ngIf="userService.user && !userService.savedUser?.premium" (click)="checkout()"
+            class="checkout my-3" color="success" mat-button>Go PRO</button>
+        <button *ngIf="!userService.user" routerLink="/login"
+            class="checkout my-3" color="success" mat-button>Login to Go PRO</button>
+    </form>
+    <hr>
+    <section id="faq">
+        <h2 class="py-2">Infrequently Asked Questions</h2>
+        <zippy title="Will my credit card details be stored?">
+            No. We do not store anything to do with your money in our database.
+        </zippy>
+        <zippy title="Is 3PG PRO a subscription?">
+            Yes. 3PG PRO is a $4.99 per month subscription.
+        </zippy>
+        <zippy title="Are refunds possible?">
+            Yes. Contact `ADAMJR#0001` on Discord (for now), within 7 days of purchase, if you require a refund.
+        </zippy>
+    </section>
+</div>

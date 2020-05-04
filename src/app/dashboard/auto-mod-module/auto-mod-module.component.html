@@ -19,7 +19,7 @@
                         <mat-select multiple
                             formControlName="filters">
                             <mat-option *ngFor="let filter of filters" 
-                                [value]="filter">{{ MessageFilter[filter] }}</mat-option>
+                                [value]="filter">{{ filter }}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>

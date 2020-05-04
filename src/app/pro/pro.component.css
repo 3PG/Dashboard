@@ -5,6 +5,8 @@
 
 .row .card {
     margin: 15px;
+    color: var(--font) !important;
+    background-color: var(--background-secondary);
 }
 
 .disclaimer {

@@ -17,13 +17,14 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
   moduleName = 'announce';
 
   events = [
+    EventType.Ban,
+    EventType.ConfigUpdate,
+    EventType.LevelUp,
     EventType.MemberJoin,
     EventType.MemberLeave,
     EventType.MessageDeleted,
-    EventType.Ban,
     EventType.Unban,
-    EventType.Mute,
-    EventType.LevelUp
+    EventType.Warn
   ];
 
   eventConfigs: AnnounceEvent[] = [];
@@ -46,30 +47,33 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     const formGroup = new FormGroup({
       events: new FormArray([])
     });
-    for (const event of this.events)
-      (formGroup.get('events') as FormArray).push(new FormGroup({
-        event: new FormControl(event),
-        enabled: new FormControl(false),
-        channel: new FormControl(),
-        message: new FormControl(`\`${EventType[event]}\` was triggered in **[GUILD]**!`)
-      }));
+    for (const event of this.events) {      
+        (formGroup.get('events') as FormArray).push(new FormGroup({
+          event: new FormControl(event),
+          enabled: new FormControl(false),
+          channel: new FormControl(),
+          message: new FormControl(`\`${event}\` was triggered in **[GUILD]**!`)
+        }));
+    }
     return formGroup;
   }
   
-  initFormValues(savedGuild: any) {    
-    for (const event of this.events) {
+  initFormValues(savedGuild: any) {
+    for (let i = 0; i < this.events.length; i++) {
+      const event = this.events[i];
+      
       const config = savedGuild.announce.events.find(e => e.event === event);
-      if (!config) continue;
+      if (!config) continue;      
 
       (this.form.get('events') as FormArray)
-        .get(event.toString())
+        .get(i.toString())
         .setValue({
           event,
           enabled: true,
           channel: config.channel,
           message: config.message
         });
-    }    
+    }
   }
 
   getEvent(eventType: EventType) {
@@ -80,7 +84,7 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     const value = this.form.value;
     this.filterFormEvents(value);
     
-    await this.guildService.saveGuild(this.guildId, this.moduleName, value);
+    await super.submit();
   }
 
   private filterFormEvents(value: any) {
@@ -95,12 +99,21 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     value.events = filteredEvents;
   }
   
-  transform(url) {
+  transform(url: string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }
 
-export enum EventType { MemberJoin, MemberLeave, MessageDeleted, Ban, Unban, Mute, LevelUp }
+export enum EventType {
+  Ban = "BAN", 
+  ConfigUpdate = "CONFIG_UPDATE",
+  LevelUp = "LEVEL_UP",
+  MessageDeleted = "MESSAGE_DELETED",
+  MemberJoin = "MEMBER_JOIN",
+  MemberLeave = "MEMBER_LEAVE",
+  Unban = "UNBAN", 
+  Warn ="WARN"
+}
 
 export interface AnnounceEvent {
   event: EventType;

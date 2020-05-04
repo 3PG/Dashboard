@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  get discordURL() { return environment.discordURL; }
   get githubURL() { return environment.githubURL; }
 
   get user() { return this.userService.user; }

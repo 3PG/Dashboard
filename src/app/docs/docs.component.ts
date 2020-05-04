@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import marked from 'marked';
 import { map } from 'rxjs/operators';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-docs',
@@ -21,6 +22,7 @@ export class DocsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private userService: UserService,
     router: Router) {
     route.paramMap.subscribe(paramMap => {      
       const page = paramMap.get('page')?.toLowerCase();
@@ -38,11 +40,17 @@ export class DocsComponent implements OnInit {
       const file = await fetch(path);
       const md = await file.text();
       
-      document.getElementById('doc').innerHTML = marked(md, { breaks: true });
+      document.getElementById('doc').innerHTML = 
+        this.replaceDocVariables(marked(md, { breaks: true }));
       document.querySelector('h1').classList.add('display-3');
 
       if (window.location.hash)
         document.querySelector(window.location.hash)?.scrollIntoView();
     });
+  }
+
+  replaceDocVariables(content: string) {
+    return content
+      .replace(/<User>/g, `@${this.userService.user?.tag ?? 'User#1234'}`);
   }
 }

@@ -23,10 +23,8 @@ import {PickerModule} from '@ctrl/ngx-emoji-mart';
 
 @NgModule({
   exports: [
-    A11yModule,
     ColorPickerModule,
     CdkTableModule,
-    DragDropModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatChipsModule,

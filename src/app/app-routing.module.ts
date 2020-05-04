@@ -23,9 +23,10 @@ import { LeaderboardModuleComponent } from './dashboard/leaderboard-module/leade
 import { LeaderboardAuthGuard } from './guards/leaderboard-auth.guard';
 import { XPCardComponent } from './xp-card/xp-card.component';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
-import { PlusComponent as ProComponent } from './plus/plus.component';
+import { ProComponent as ProComponent } from './pro/pro.component';
 import { DocsComponent } from './docs/docs.component';
 import { CanDeactivateDashboard } from './guards/can-deactivate-dashboard.guard';
+import { WarningsModuleComponent } from './dashboard/warnings-module/warnings-module.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,15 +41,17 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [DashboardAuthGuard] },
   { path: 'dashboard/xp-card', component: XPCardComponent, canActivate: [DashboardAuthGuard] },
 
-  { path: 'servers/:id', component: GuildComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
+  { path: 'servers/:id', component: GuildComponent, canActivate: [GuildAuthGuard] },
   { path: 'servers/:id/announce', component: AnnounceModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/auto-mod', component: AutoModModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/commands', component: CommandsModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/general', component: GeneralModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/music', component: MusicModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/xp', component: XPModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
+
   { path: 'servers/:id/log', component: LogModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/settings', component: SettingsModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
+  { path: 'servers/:id/warnings', component: WarningsModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
 
   { path: 'pro', component: ProComponent },
   { path: 'payment-success', component: PaymentSuccessComponent },

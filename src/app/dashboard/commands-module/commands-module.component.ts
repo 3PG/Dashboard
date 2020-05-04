@@ -51,9 +51,26 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
     this.commandConfigs = savedGuild.commands.configs || [];    
 
     for (const config of this.commandConfigs) {
-      const index = this.commandConfigs.indexOf(config);
+      const index = this.commandConfigs.indexOf(config);      
       this.commandsFormArray.get(index.toString())?.setValue(config);
     }
+  }
+
+  async submit() {
+    const value = this.form.value;
+    this.filterFormEvents(value);
+        
+    await super.submit();
+  }
+
+  private filterFormEvents(value: any) {
+    value.configs = [];
+    for (let i = 0; i < this.commandsFormArray.length; i++) {
+      const control = this.commandsFormArray.get(i.toString());
+      if (!control.pristine)
+        value.configs.push(control.value);
+    }
+    console.log(value.configs);
   }
 }
 

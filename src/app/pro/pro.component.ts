@@ -5,11 +5,11 @@ import { PayService } from '../pay.service';
 import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-plus',
-  templateUrl: './plus.component.html',
-  styleUrls: ['./plus.component.css']
+  selector: 'app-pro',
+  templateUrl: './pro.component.html',
+  styleUrls: ['./pro.component.css']
 })
-export class PlusComponent implements OnInit {
+export class ProComponent implements OnInit {
   checkoutEndpoint = `${environment.endpoint}/pay`;
   stripe: Stripe;
 

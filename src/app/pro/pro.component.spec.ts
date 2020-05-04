@@ -1,16 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlusComponent } from './plus.component';
+import { ProComponent } from './pro.component';
 import { By } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('PlusComponent', () => {
-  let component: PlusComponent;
-  let fixture: ComponentFixture<PlusComponent>;
+describe('ProComponent', () => {
+  let component: ProComponent;
+  let fixture: ComponentFixture<ProComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlusComponent ],
+      declarations: [ ProComponent ],
       imports: [
         HttpClientModule
       ]
@@ -19,7 +19,7 @@ describe('PlusComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlusComponent);
+    fixture = TestBed.createComponent(ProComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

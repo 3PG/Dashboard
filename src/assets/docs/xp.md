@@ -14,6 +14,9 @@ Each time they send a message, `xpPerMessage` is added to their current XP.
 
 `XP For Next Level = (75(level + 1)^2 + 75(level + 1) - 150) - xp`
 
+**Earning XP**:
+- Auto mod filtered messages do not earn EXP
+
 ## Ranking
 Members rank's are based on their total XP. 
 There's no secondary ranking system (tiebreakers) - when two users have the same XP.

@@ -58,7 +58,15 @@ export class GeneralModuleComponent extends ModuleConfig implements OnInit {
     this.form.controls.prefix.setValue(general.prefix);
     this.form.controls.ignoredChannels.setValue(general.ignoredChannels);
     this.form.controls.autoRoles.setValue(general.autoRoles);
-    (this.form.controls.reactionRoles as FormArray).setValue(general.reactionRoles);
+    
+    for (const i of this.reactionRolesIndices) {
+      const config = general.reactionRoles[i];
+      if (!config) return;
+
+      (this.form.controls.reactionRoles as FormArray)
+        .get(i.toString())
+        .setValue(config);      
+    }
   }
 
   addEmoji($event) {

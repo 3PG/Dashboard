@@ -33,10 +33,14 @@ export class MessagePreviewComponent {
 
     return toHTML(textEmoji(this.content
       .replace(/\[GUILD\]/, this.guild?.name)
+      .replace(/\[INSTIGATOR\]/, '@3PG#8166')
       .replace(/\[MEMBER_COUNT\]/g, this.guild?.memberCount.toString())
       .replace(/\[MESSAGE\]/g, 'Testing123')
+      .replace(/\[MODULE\]/g, 'General')
       .replace(/\[NEW_LEVEL\]/g, '2')
+      .replace(/\[NEW_VALUE\]/g, JSON.stringify({ prefix: '.' }, null, 2))
       .replace(/\[OLD_LEVEL\]/g, '1')
+      .replace(/\[OLD_VALUE\]/g, JSON.stringify({ prefix: '/' }, null, 2))
       .replace(/\[REASON\]/g, 'not having 3PG PRO')
       .replace(/\[USER\]/g, `@${user.tag}`)))
       .replace(/\[XP\]/g, '300');

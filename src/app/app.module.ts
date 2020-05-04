@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
@@ -37,7 +37,7 @@ import { PremiumDirective } from './dashboard/directives/premium.directive';
 import { SaveChangesComponent } from './dashboard/save-changes/save-changes.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
-import { PlusComponent } from './plus/plus.component';
+import { ProComponent } from './pro/pro.component';
 import { DocsComponent } from './docs/docs.component';
 import { CleanDateTimePipe } from './pipes/clean-date-time.pipe';
 import { MemberUsernameComponent } from './member-username/member-username.component';
@@ -47,6 +47,14 @@ import { AuditLogWidgetComponent } from './dashboard/widgets/audit-log-widget/au
 import { CommandsWidgetComponent } from './dashboard/widgets/commands-widget/commands-widget.component';
 import { MiniDatePipe } from './pipes/mini-date.pipe';
 import { MessagePreviewComponent } from './message-preview/message-preview.component';
+import { MessagesWidgetComponent } from './messages-widget/messages-widget.component';
+import { WarningsModuleComponent } from './dashboard/warnings-module/warnings-module.component';
+
+export class AlertErrorHandler implements ErrorHandler {
+  handleError(error: any) {
+    alert(error);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -80,7 +88,7 @@ import { MessagePreviewComponent } from './message-preview/message-preview.compo
     SaveChangesComponent,
     NotFoundComponent,
     PaymentSuccessComponent,
-    PlusComponent,
+    ProComponent,
     DocsComponent,
     CleanDateTimePipe,
     MemberUsernameComponent,
@@ -89,11 +97,14 @@ import { MessagePreviewComponent } from './message-preview/message-preview.compo
     AuditLogWidgetComponent,
     CommandsWidgetComponent,
     MiniDatePipe,
-    MessagePreviewComponent
+    MessagePreviewComponent,
+    MessagesWidgetComponent,
+    WarningsModuleComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -106,7 +117,8 @@ import { MessagePreviewComponent } from './message-preview/message-preview.compo
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: { languages: getHighlightLanguages() }
-    }
+    },
+    { provide: ErrorHandler, useClass: AlertErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
