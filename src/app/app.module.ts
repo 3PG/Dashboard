@@ -49,6 +49,8 @@ import { MiniDatePipe } from './pipes/mini-date.pipe';
 import { MessagePreviewComponent } from './message-preview/message-preview.component';
 import { MessagesWidgetComponent } from './messages-widget/messages-widget.component';
 import { WarningsModuleComponent } from './dashboard/warnings-module/warnings-module.component';
+import { WarningsWidgetComponent } from './dashboard/warnings-widget/warnings-widget.component';
+import { TimersModuleComponent } from './dashboard/timers-module/timers-module.component';
 
 export class AlertErrorHandler implements ErrorHandler {
   handleError(error: any) {
@@ -99,7 +101,9 @@ export class AlertErrorHandler implements ErrorHandler {
     MiniDatePipe,
     MessagePreviewComponent,
     MessagesWidgetComponent,
-    WarningsModuleComponent
+    WarningsModuleComponent,
+    WarningsWidgetComponent,
+    TimersModuleComponent
   ],
   imports: [
     AppRoutingModule,

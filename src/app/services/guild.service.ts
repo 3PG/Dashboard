@@ -54,4 +54,16 @@ export class GuildService {
   getRoles(id: string): Promise<any> {
     return this.http.get(`${this.endpoint}/${id}/roles`).toPromise();
   }
+
+  getWarnings(id: string): Promise<any> {
+    return this.http.get(`${this.endpoint}/${id}/warnings`).toPromise();
+  }
+
+  getTimerSchedule(id: string): Promise<any> {
+    return this.http.get(`${this.endpoint}/${id}/timers`).toPromise();
+  }
+
+  cancelTimer(id: string, timerIndex: number): Promise<any> {
+    return this.http.get(`${this.endpoint}/${id}/timers/${timerIndex}/cancel`).toPromise();
+  }
 }

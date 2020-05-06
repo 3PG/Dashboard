@@ -13,9 +13,9 @@ import { GuildService } from 'src/app/services/guild.service';
 export class WarningsModuleComponent implements OnInit {
   members: any[];
 
-  displayedColumns: string[] = ['number', 'by', 'old', 'new', 'at'];
+  displayedColumns: string[] = ['number', 'to', 'by', 'reason', 'at'];
   dataSource = new MatTableDataSource();
-  changes: any[] = [];
+  warnings: any[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -28,12 +28,13 @@ export class WarningsModuleComponent implements OnInit {
   async ngOnInit() { 
     const id = this.route.snapshot.paramMap.get('id');
 
-    const log = await this.service.getSavedLog(id);
-    this.changes = log.changes.reverse();
-
     this.members = await this.guildService.getMembers(id);
     
-    this.dataSource = new MatTableDataSource(this.changes);
+    const warnings = await this.service.getWarnings(id);
+    warnings.reverse();
+
+    this.dataSource = new MatTableDataSource(warnings);
+
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

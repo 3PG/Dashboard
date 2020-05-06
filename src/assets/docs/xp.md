@@ -23,17 +23,20 @@ There's no secondary ranking system (tiebreakers) - when two users have the same
 
 ---
 
-## Ignored Roles
+### Ignored Roles
 Roles that are exempt from earning XP.
 For example, if you had the `@NoXP` role and the role was an ignored role, you would not be able to earn XP. 
 
-## Level Roles
+### Level Roles
 Earn a specific role when reaching a level. 
 For example, if `Level 5` had a level role `@Bronze`, and you just reached level 5, you would receive that role.
 
-## Max Messages Per Minute `3`
+### Max Messages Per Minute `3`
 How many messages, during the same minute, will earn XP.
 This helps prevent spam, by limiting the amount of messages that can earn XP within a minute.
 
-## XP Per Message `50`
+If a user sends more message than this value, they will simply not earn EXP with that message, for that minute.
+If it is 16:41 and <User> sends 4 messages, they will only earn EXP for 3 messages and can start earning again when the time is 16:42.
+
+### XP Per Message `50`
 How much XP is added, each time a user earns XP.

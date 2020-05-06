@@ -1,0 +1,20 @@
+.list-group-item {
+    background-color: var(--background-secondary);
+    display: flex;
+    justify-content: space-between;
+}
+
+.cancel-timer {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.timer {
+    background-color: var(--background-secondary);
+    padding: 15px;
+    margin: 10px;
+}
+
+.timer .header {
+    padding: 0 10px;
+}

@@ -30,7 +30,6 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
   eventConfigs: AnnounceEvent[] = [];
 
   constructor(
-    private sanitizer: DomSanitizer,
     guildService: GuildService,
     route: ActivatedRoute,
     saveChanges: MatSnackBar) {
@@ -80,14 +79,11 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     return this.eventConfigs.find(e => e.event === eventType);
   }
 
-  async submit() {
-    const value = this.form.value;
-    this.filterFormEvents(value);
-    
+  async submit() {    
     await super.submit();
   }
 
-  private filterFormEvents(value: any) {
+  filterFormEvents(value: any) {
     const filteredEvents = [];
     for (const event of value.events) {
       const filtered = { ...event };
@@ -97,10 +93,6 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
       }
     }
     value.events = filteredEvents;
-  }
-  
-  transform(url: string) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }
 

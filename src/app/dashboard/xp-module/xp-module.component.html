@@ -9,9 +9,36 @@
                 </div>
                 <hr>
             </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ignored Roles</mat-label>
+                        <mat-select multiple
+                            formControlName="ignoredRoles">
+                            <mat-option *ngFor="let role of roles" 
+                                [value]="role.id"
+                                [style.color]="role.hexColor || 'grey'">@{{ role.name }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>XP Per Message</mat-label>
+                        <input formControlName="xpPerMessage"
+                            type="number" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div>
+                        <label class="d-block">Max Messages Per Minute</label>
+                        <mat-slider formControlName="maxMessagesPerMinute"
+                            step="1" tickInterval="1" thumbLabel max="30"></mat-slider>
+                    </div>
+                </div>
+            </div>
+            <hr>
             <h3>Level Roles</h3>
             <p class="desc">Reward users with roles when leveling up</p>
-            <hr>
             <div formArrayName="levelRoles" class="row">
                 <div *ngFor="let i of levelRoleIndices" class="col-lg-6 col-sm-12">
                     <div [formGroupName]="i" class="role">
@@ -30,26 +57,6 @@
                         </mat-form-field>
                     </div>
                 </div>
-            </div>
-            <hr>
-            <mat-form-field appearance="outline">
-                <mat-label>Ignored Roles</mat-label>
-                <mat-select multiple
-                    formControlName="ignoredRoles">
-                    <mat-option *ngFor="let role of roles" 
-                        [value]="role.id"
-                        [style.color]="role.hexColor || 'grey'">@{{ role.name }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>XP Per Message</mat-label>
-                <input formControlName="xpPerMessage"
-                    type="number" matInput>
-            </mat-form-field>
-            <div>
-                <mat-label>Max Messages Per Minute</mat-label>
-                <mat-slider formControlName="xpCooldown"
-                    step="1" tickInterval="1" thumbLabel max="30"></mat-slider>
             </div>
         </form>
     </div>

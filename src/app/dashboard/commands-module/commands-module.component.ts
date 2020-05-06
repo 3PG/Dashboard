@@ -57,13 +57,11 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async submit() {
-    const value = this.form.value;
-    this.filterFormEvents(value);
-        
     await super.submit();
   }
 
-  private filterFormEvents(value: any) {
+  filterFormValue() {
+    const value = this.form.value;
     value.configs = [];
     for (let i = 0; i < this.commandsFormArray.length; i++) {
       const control = this.commandsFormArray.get(i.toString());

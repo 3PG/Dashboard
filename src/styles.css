@@ -111,6 +111,10 @@ h3 {
     text-transform: uppercase;
 }
 
+h3 code {
+    text-transform: none !important;
+}
+
 .desc {
     color: var(--secondary); 
 }
@@ -157,6 +161,7 @@ mat-paginator {
 
 #doc img {
     max-width: 50vw;
+    max-height: 50vh;
 }
 
 #doc table th, #doc table td {
@@ -196,6 +201,10 @@ mat-icon {
     font-size: 15px !important;
 }
 
+label {
+    display: block;
+}
+
 /* message preview */
 
 code {
@@ -206,4 +215,15 @@ code {
 
 .d-mention {
     color: #00b0f4;
+}
+
+/* docs */
+
+a.mention {
+    color: #00b0f4 !important;
+    cursor: pointer;
+}
+
+.alert {
+    max-width: 50%;
 }

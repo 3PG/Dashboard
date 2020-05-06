@@ -41,7 +41,8 @@ export class DocsComponent implements OnInit {
       const md = await file.text();
       
       document.getElementById('doc').innerHTML = 
-        this.replaceDocVariables(marked(md, { breaks: true }));
+        this.replaceDocVariables(
+          marked(this.customMD(md), { breaks: true }));
       document.querySelector('h1').classList.add('display-3');
 
       if (window.location.hash)
@@ -51,6 +52,12 @@ export class DocsComponent implements OnInit {
 
   replaceDocVariables(content: string) {
     return content
-      .replace(/<User>/g, `@${this.userService.user?.tag ?? 'User#1234'}`);
+      .replace(/<User>/g, `<a class="mention">@${this.userService.user?.tag ?? 'User#1234'}</a>`)
+      .replace(/<BotUser>/g, `<a class="mention">@3PG#8166</a>`);
+  }
+
+  customMD(content: string) {
+    return content    
+      .replace(/\[!\] (.*)/gm, '<div class="alert alert-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> $1</div>')
   }
 }

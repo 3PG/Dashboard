@@ -20,6 +20,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSliderModule} from '@angular/material/slider';
 import {PickerModule} from '@ctrl/ngx-emoji-mart';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @NgModule({
   exports: [
@@ -40,6 +41,7 @@ import {PickerModule} from '@ctrl/ngx-emoji-mart';
     MatSlideToggleModule,
     MatSelectModule,
     MatSnackBarModule,
+    NgxMaterialTimepickerModule,
     PickerModule,
     ScrollingModule
   ],

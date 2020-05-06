@@ -14,7 +14,6 @@ export abstract class ModuleConfig implements OnDestroy {
 
     form: FormGroup;
 
-    guildId: string;
     guild: any;
     savedGuild: any;
     originalSavedGuild: any;
@@ -24,6 +23,8 @@ export abstract class ModuleConfig implements OnDestroy {
 
     private saveChanges$: Subscription;  
     private valueChanges$: Subscription;
+
+    get guildId() { return this.route.snapshot.paramMap.get('id'); }
   
     constructor(
         protected guildService: GuildService,
@@ -34,8 +35,6 @@ export abstract class ModuleConfig implements OnDestroy {
      * Load all required data for the form, and hook events.
      */
     async init() {
-        this.guildId = this.route.snapshot.paramMap.get('id');
-
         this.guild = await this.guildService.getPublicGuild(this.guildId);
 
         const channels = await this.guildService.getChannels(this.guildId);
@@ -102,7 +101,8 @@ export abstract class ModuleConfig implements OnDestroy {
     async submit() {
         try {
             if (this.form.valid) {
-                console.log(this.form.value);
+                this.filterFormValue();
+                
                 await this.guildService.saveGuild(this.guildId, this.moduleName, this.form.value);
                 await this.guildService.updateGuilds();
             }
@@ -110,6 +110,12 @@ export abstract class ModuleConfig implements OnDestroy {
             console.log(this.form.value);
         }
     }
+
+    
+    /**
+     * Filter unnecessary form data, called before submit.
+     */
+    filterFormValue() {}
 
     /**
      * Reset form values, and rebuild form.

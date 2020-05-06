@@ -18,6 +18,7 @@
 
 **Add**
 - lots of more documentation
+- command timers -> automatically run commands in intervals
 
 **Change/Fix**
 - every line of code (apart from XP cards)
