@@ -11,10 +11,13 @@ import { UserService } from '../services/user.service';
 })
 export class MessagePreviewComponent {
   @Input() guild = { name: 'Testing123', memberCount: 420 };
+  @Input() eventVariables = true;
 
   @Input() content = 'Hello World';
-  @Input() username = '3PG';
-  @Input() avatarURL = 'https://cdn.discordapp.com/avatars/525935335918665760/6e0b19ae2cc25ef5da3d52b787525ed3.png?size=128';
+  @Input() author = {
+    username: '3PG',
+    avatarURL: 'https://cdn.discordapp.com/avatars/525935335918665760/6e0b19ae2cc25ef5da3d52b787525ed3.png?size=128'
+  }
 
   constructor(private userService: UserService) {}
 
@@ -31,7 +34,7 @@ export class MessagePreviewComponent {
   get processed() {
     const user = this.userService.user;
 
-    return toHTML(textEmoji(this.content
+    return (this.eventVariables) ? toHTML(textEmoji(this.content
       .replace(/\[GUILD\]/, this.guild?.name)
       .replace(/\[INSTIGATOR\]/, '@3PG#8166')
       .replace(/\[MEMBER_COUNT\]/g, this.guild?.memberCount.toString())
@@ -43,6 +46,6 @@ export class MessagePreviewComponent {
       .replace(/\[OLD_VALUE\]/g, JSON.stringify({ prefix: '/' }, null, 2))
       .replace(/\[REASON\]/g, 'not having 3PG PRO')
       .replace(/\[USER\]/g, `@${user.tag}`)))
-      .replace(/\[XP\]/g, '300');
+      .replace(/\[XP\]/g, '300') : toHTML(textEmoji(this.content));
   }
 }

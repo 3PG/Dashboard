@@ -35,18 +35,6 @@ export class GuildService {
     return this.http.get(`${this.endpoint}/${id}/members`).toPromise();
   }
 
-  getSavedGuild(id: string): Promise<any> {
-    return this.http.get(`${this.endpoint}/${id}/config?key=${this.key}`).toPromise();
-  }
-
-  getSavedLog(id: string): Promise<any> {
-    return this.http.get(`${this.endpoint}/${id}/log?key=${this.key}`).toPromise();
-  }
-
-  saveGuild(id: string, module: string, value: any): Promise<any> {
-    return this.http.put(`${this.endpoint}/${id}/${module}?key=${this.key}`, value).toPromise();
-  }
-
   getChannels(id: string): Promise<any> {
     return this.http.get(`${this.endpoint}/${id}/channels`).toPromise();
   }
@@ -59,11 +47,27 @@ export class GuildService {
     return this.http.get(`${this.endpoint}/${id}/warnings`).toPromise();
   }
 
+  getMessage(id: string, channelId: string, messageId: string): Promise<any> {
+    return this.http.get(`${this.endpoint}/${id}/channels/${channelId}/messages/${messageId}`).toPromise();
+  }
+
   getTimerSchedule(id: string): Promise<any> {
     return this.http.get(`${this.endpoint}/${id}/timers`).toPromise();
   }
 
   cancelTimer(id: string, timerIndex: number): Promise<any> {
-    return this.http.get(`${this.endpoint}/${id}/timers/${timerIndex}/cancel`).toPromise();
+    return this.http.get(`${this.endpoint}/${id}/timers/${timerIndex}/cancel?key=${this.key}`).toPromise();
+  }
+
+  getSavedGuild(id: string): Promise<any> {
+    return this.http.get(`${this.endpoint}/${id}/config?key=${this.key}`).toPromise();
+  }
+
+  getSavedLog(id: string): Promise<any> {
+    return this.http.get(`${this.endpoint}/${id}/log?key=${this.key}`).toPromise();
+  }
+
+  saveGuild(id: string, module: string, value: any): Promise<any> {
+    return this.http.put(`${this.endpoint}/${id}/${module}?key=${this.key}`, value).toPromise();
   }
 }

@@ -28,66 +28,45 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
     await super.init();
   }
 
-  // TODO: combine buildForm and initFormValues
-  buildForm() {
+  buildForm({ timers }: any) {
     const formGroup = new FormGroup({
       commandTimers: new FormArray([]),
       messageTimers: new FormArray([])
     });
+
     for (const i of this.timerIndices) {
+      const commandTimer = timers.commandTimers[i];
+      const messageTimer = timers.messageTimers[i];
+
       (formGroup.controls.commandTimers as FormArray).setControl(i,
         new FormGroup({
-          enabled: new FormControl(false),
-          interval: new FormControl(0, [ Validators.min(60 * 1000), Validators.max(24 * 60 * 60 * 1000) ]),
-          from: new FormControl(0, [ Validators.min(60 * 1000), Validators.max(24 * 60 * 60 * 1000) ]),
-          command: new FormControl('', Validators.pattern(/[A-Za-z0-9]+/)),
-          channel: new FormControl('')
+          enabled: new FormControl(commandTimer?.enabled ?? false),
+          interval: new FormControl(commandTimer?.interval ?? '01:00'),
+          from: new FormControl(commandTimer?.from ?? new Date()),
+          command: new FormControl(commandTimer?.command ?? '', Validators.pattern(/[A-Za-z0-9]+/)),
+          channel: new FormControl(commandTimer?.channel ?? '')
         }));
       (formGroup.controls.messageTimers as FormArray).setControl(i,
         new FormGroup({
-          enabled: new FormControl(false),
-          interval: new FormControl(0, [ Validators.min(60 * 1000), Validators.max(24 * 60 * 60 * 1000) ]),
-          from: new FormControl(0, [ Validators.min(60 * 1000), Validators.max(24 * 60 * 60 * 1000) ]),
-          message: new FormControl('', Validators.pattern(/^.{2,}$/)),
-          channel: new FormControl('')
+          enabled: new FormControl(messageTimer?.enabled ?? false),
+          interval: new FormControl(messageTimer?.interval ?? '01:00'),
+          from: new FormControl(messageTimer?.from ?? new Date()),
+          message: new FormControl(messageTimer?.message ?? '', Validators.pattern(/^.{1,}$/)),
+          channel: new FormControl(messageTimer?.channel ?? '')
         }));
     }
     return formGroup;
   }
-  
-  initFormValues(savedGuild: any) {
-    const timers = savedGuild.timers;
-    for (const i of this.timerIndices) {
-      (this.form.controls.commandTimers as FormArray).setControl(i,
-        new FormGroup({
-          enabled: new FormControl(timers.commandTimers[i]?.enabled),
-          interval: new FormControl(60000, [ Validators.min(60 * 1000), Validators.max(24 * 60 * 60 * 1000) ]),
-          from: new FormControl(60000, [ Validators.min(60 * 1000), Validators.max(24 * 60 * 60 * 1000) ]),
-          command: new FormControl(timers.commandTimers[i]?.command, Validators.pattern(/[A-Za-z0-9]+/)),
-          channel: new FormControl(timers.commandTimers[i]?.channel)
-        }));
-      (this.form.controls.messageTimers as FormArray).setControl(i,
-        new FormGroup({
-          enabled: new FormControl(timers.messageTimers[i]?.enabled),
-          interval: new FormControl(60000, [ Validators.min(60 * 1000), Validators.max(24 * 60 * 60 * 1000) ]),
-          from: new FormControl(60000, [ Validators.min(60 * 1000), Validators.max(24 * 60 * 60 * 1000) ]),
-          message: new FormControl(timers.messageTimers[i]?.message, Validators.pattern(/^.{2,}$/)),
-          channel: new FormControl(timers.messageTimers[i]?.channel)
-        }));
-    }}
 
-  async submit() {
-    // timers.startTimers(guildId)
+  async submit() {    
     await super.submit();
   }
 
   filterFormValue() {}
 
   async cancelTimer(index: number) {
-    console.log('cancel: ' + index);
     await this.guildService.cancelTimer(this.guildId, index);
     await this.updateSchedule();
-    console.log(this.schedule.length);
   }
 
   async updateSchedule() {

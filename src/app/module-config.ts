@@ -6,7 +6,6 @@ import { GuildService } from './services/guild.service';
 import {  OnDestroy } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Subscription } from 'rxjs';
-import { isDeepStrictEqual } from 'util';
 
 
 export abstract class ModuleConfig implements OnDestroy {
@@ -48,29 +47,23 @@ export abstract class ModuleConfig implements OnDestroy {
         } catch { alert('An error occurred loading the saved guild'); }
         
         await this.resetForm();
-
-        this.initFormValues(this.savedGuild);        
-
+        
         this.valueChanges$ = this.form.valueChanges
             .subscribe(() => this.openSaveChanges());
     }
 
-    private async resetForm() {        
-        this.form = await this.buildForm();
+    private async resetForm() {     
+        this.savedGuild = JSON.parse(JSON.stringify(this.originalSavedGuild));   
+        this.form = await this.buildForm(this.savedGuild);
         this.form.addControl('enabled',
-                new FormControl(this.savedGuild[this.moduleName].enabled));
+            new FormControl(this.savedGuild[this.moduleName].enabled));
     }
 
     /**
      * Build the form to be used.
      * Called when on form init.
      */
-    abstract buildForm(): FormGroup | Promise<FormGroup>;
-    /**
-     * Initialize all form values.
-     * Called on reset, and on init.
-     */
-    abstract initFormValues(savedGuild: any): void;
+    abstract buildForm(savedGuild: any): FormGroup | Promise<FormGroup>;
     
     private openSaveChanges() {
         const snackBarRef = this.saveChanges._openedSnackBarRef;
@@ -100,12 +93,12 @@ export abstract class ModuleConfig implements OnDestroy {
      */
     async submit() {
         try {
-            if (this.form.valid) {
-                this.filterFormValue();
-                
-                await this.guildService.saveGuild(this.guildId, this.moduleName, this.form.value);
-                await this.guildService.updateGuilds();
-            }
+            if (!this.form.valid) return;
+
+            this.filterFormValue();
+            
+            await this.guildService.saveGuild(this.guildId, this.moduleName, this.form.value);
+            await this.guildService.updateGuilds();
         } catch {
             console.log(this.form.value);
         }
@@ -113,7 +106,7 @@ export abstract class ModuleConfig implements OnDestroy {
 
     
     /**
-     * Filter unnecessary form data, called before submit.
+     * Filter unnecessary form data; called before submit.
      */
     filterFormValue() {}
 
@@ -122,9 +115,7 @@ export abstract class ModuleConfig implements OnDestroy {
      */
     async reset() {
         await this.resetForm();
-        this.savedGuild = JSON.parse(JSON.stringify(this.originalSavedGuild));
         
-        this.initFormValues(this.savedGuild);
         this.form.valueChanges
             .subscribe(() => this.openSaveChanges()); 
     }

@@ -26,28 +26,17 @@ export class AutoModModuleComponent extends ModuleConfig implements OnInit {
     await super.init();
   }
   
-  buildForm() {
+  buildForm({ autoMod }: any) {
     return new FormGroup({
-      banWords: new FormControl([]),
-      banLinks: new FormControl([]),
-      filters: new FormControl([]),
-      autoDeleteMessages: new FormControl(true),
-      autoWarnUsers: new FormControl(true),
-      ignoredRoles: new FormControl([]),
-      filterThreshold: new FormControl(5, [ Validators.min(1), Validators.max(20) ]),
+      banWords: new FormControl(autoMod.banWords ?? []),
+      banLinks: new FormControl(autoMod.banLinks ?? []),
+      filters: new FormControl(autoMod.filters ?? []),
+      autoDeleteMessages: new FormControl(autoMod.autoDeleteMessages ?? true),
+      autoWarnUsers: new FormControl(autoMod.autoWarnUsers ?? false),
+      ignoredRoles: new FormControl(autoMod.ignoredRoles ?? []),
+      filterThreshold: new FormControl(autoMod.filterThreshold ?? 5,
+        [ Validators.min(1), Validators.max(20) ]),
     });
-  }
-  
-  initFormValues(savedGuild: any) {
-    const autoMod = savedGuild.autoMod;
-    this.form.controls.enabled.setValue(autoMod.enabled);
-    this.form.controls.banWords.setValue(autoMod.banWords);
-    this.form.controls.banLinks.setValue(autoMod.banLinks);
-    this.form.controls.filters.setValue(autoMod.filters);
-    this.form.controls.filterThreshold.setValue(autoMod.filterThreshold);
-    this.form.controls.ignoredRoles.setValue(autoMod.ignoredRoles);
-    this.form.controls.autoWarnUsers.setValue(autoMod.autoWarnUsers);
-    this.form.controls.autoDeleteMessages.setValue(autoMod.autoDeleteMessages);
   }
 }
 

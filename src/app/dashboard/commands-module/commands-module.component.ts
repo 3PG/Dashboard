@@ -28,32 +28,27 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async ngOnInit() {
+    this.commands = await this.service.get();
+
     await super.init();
   }
 
-  async buildForm() { 
+  async buildForm({ commands }: any) { 
     const formGroup = new FormGroup({
       configs: new FormArray([])
     });
 
-    this.commands = await this.service.get();
-    for (const command of this.commands)
-      (formGroup.get('configs') as FormArray).push(new FormGroup({
-        name: new FormControl(command.name),
-        roles: new FormControl([]),
-        channels: new FormControl([]),
-        enabled: new FormControl(true)
-      }));
-    return formGroup;
-  }
-  
-  initFormValues(savedGuild: any) {
-    this.commandConfigs = savedGuild.commands.configs || [];    
-
-    for (const config of this.commandConfigs) {
-      const index = this.commandConfigs.indexOf(config);      
-      this.commandsFormArray.get(index.toString())?.setValue(config);
+    for (let i = 0; i < this.commands.length; i++) {
+      const command = commands[i];
+      (formGroup.get('configs') as FormArray)
+        .setControl(i, new FormGroup({
+          name: new FormControl(this.commands[i].name ?? ''),
+          roles: new FormControl(command?.roles ?? []),
+          channels: new FormControl(command?.channels ?? []),
+          enabled: new FormControl(command?.enabled ?? true)
+        }));
     }
+    return formGroup;
   }
 
   async submit() {
@@ -68,7 +63,6 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
       if (!control.pristine)
         value.configs.push(control.value);
     }
-    console.log(value.configs);
   }
 }
 

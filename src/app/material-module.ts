@@ -1,6 +1,4 @@
 import {NgModule} from '@angular/core';
-import {A11yModule} from '@angular/cdk/a11y';
-import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
@@ -8,7 +6,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {MatRippleModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material/core';
+import {MatRippleModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatNativeDateModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -20,7 +18,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSliderModule} from '@angular/material/slider';
 import {PickerModule} from '@ctrl/ngx-emoji-mart';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   exports: [
@@ -30,9 +28,11 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatButtonToggleModule,
     MatChipsModule,
     MatCheckboxModule,
+    MatDatepickerModule,
     MatInputModule,
     MatIconModule,
     MatTableModule,
+    MatNativeDateModule,
     MatPaginatorModule,
     MatRippleModule,
     MatSortModule,
@@ -41,7 +41,6 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatSlideToggleModule,
     MatSelectModule,
     MatSnackBarModule,
-    NgxMaterialTimepickerModule,
     PickerModule,
     ScrollingModule
   ],

@@ -227,3 +227,30 @@ a.mention {
 .alert {
     max-width: 50%;
 }
+
+#doc h1,
+#doc h2,
+#doc h3,
+#doc h4,
+#doc h5 {
+    cursor: pointer;
+}
+
+#doc h1::before,
+#doc h2::before,
+#doc h3::before,
+#doc h4::before,
+#doc h5::before {
+    content: '# ';
+    font-weight: 100;
+    color: var(--muted);
+    transition: all 0.2s ease-in-out;
+}
+
+#doc h1:hover::before,
+#doc h2:hover::before,
+#doc h3:hover::before,
+#doc h4:hover::before,
+#doc h5:hover::before {
+    color: var(--primary);
+}

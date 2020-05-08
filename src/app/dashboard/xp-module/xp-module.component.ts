@@ -27,38 +27,27 @@ export class XPModuleComponent extends ModuleConfig implements OnInit {
     await super.init();
   }
   
-  buildForm() {
+  buildForm({ xp }: any) {
     const formGroup = new FormGroup({
-      ignoredRoles: new FormControl([]),
+      ignoredRoles: new FormControl(xp.ignoredRoles ?? []),
       levelRoles: new FormArray([]),
-      maxMessagesPerMinute: new FormControl(0, [ Validators.min(1), Validators.max(30) ]),
-      xpPerMessage: new FormControl(0)
+      maxMessagesPerMinute: new FormControl(xp.maxMessagesPerMinute ?? 50,
+        [ Validators.min(1), Validators.max(30) ]),
+      xpPerMessage: new FormControl(xp.xpPerMessage ?? 50)
     }); 
-    this.buildLevelRolesFormArray(formGroup);
+    this.buildLevelRolesFormArray(formGroup, xp);
     return formGroup;
   }
 
-  private buildLevelRolesFormArray(formGroup: FormGroup) {
+  private buildLevelRolesFormArray(formGroup: FormGroup, xp: any) {
     for (const i of this.levelRoleIndices) {
       (formGroup.get('levelRoles') as FormArray)
-        .push(new FormGroup({
-          level: new FormControl(null, Validators.min(1)),
-          role: new FormControl('')
-        }));
+        .setControl(i,
+          (new FormGroup({
+          level: new FormControl(xp.levelRoles[i].level ?? 0, Validators.min(1)),
+          role: new FormControl(xp.levelRoles[i].role ?? '')
+        })));
     }
-  }
-  
-  initFormValues(savedGuild: any) {
-    const xp = savedGuild.xp;
-    
-    this.form.controls.ignoredRoles.setValue(xp.ignoredRoles);
-
-    for (let i = 0; i < xp.levelRoles.length; i++)
-      this.levelRolesFormArray.controls[i]
-        .setValue(xp.levelRoles[i]);
-    
-    this.form.controls.maxMessagesPerMinute.setValue(xp.maxMessagesPerMinute);
-    this.form.controls.xpPerMessage.setValue(xp.xpPerMessage);
   }
 }
 

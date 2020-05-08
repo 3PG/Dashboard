@@ -36,15 +36,13 @@
                         <mat-form-field appearance="outline" class="p-2">
                             <mat-label>Interval</mat-label>
                             <input matInput
-                                formControlName="interval" type="number" step="5000">
+                                formControlName="interval" type="time" step="300">
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="p-2">
                             <mat-label>From</mat-label>
-                            <input matInput
-                                formControlName="from" type="number" step="5000">
+                            <input matInput formControlName="from" type="datetime-local">
+                            <mat-datepicker #from></mat-datepicker>
                         </mat-form-field>
-                        <input  [ngxTimepicker]="picker">
-                        <ngx-material-timepicker #picker></ngx-material-timepicker>
                     </div>
                 </div>
             </div>
@@ -65,7 +63,7 @@
                         <hr>
                         <mat-form-field appearance="outline" class="p-2">
                             <mat-label>Message</mat-label>
-                            <textarea matInput
+                            <textarea matInput #message
                                 formControlName="message" type="text"></textarea>
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="p-2">
@@ -78,13 +76,13 @@
                         <mat-form-field appearance="outline" class="p-2">
                             <mat-label>Interval</mat-label>
                             <input matInput
-                                formControlName="interval" type="number" step="5000">
+                                formControlName="interval" type="time" step="300">
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="p-2">
                             <mat-label>From</mat-label>
-                            <input matInput
-                                formControlName="from" type="number" step="5000">
+                            <input matInput formControlName="from" type="datetime-local">
                         </mat-form-field>
+                        <message-preview [content]="message.value" [eventVariables]="false"></message-preview>
                     </div>
                 </div>
             </div>
@@ -96,11 +94,12 @@
                 <p *ngIf="schedule.length <= 0"
                     class="text-muted">No timers scheduled.</p>
                 <li class="list-group-item" *ngFor="let task of schedule; index as i">
-                    <span *ngIf="isCommandTimer(task.timer)">
+                    <span *ngIf="isCommandTimer(task.timer)"
+                        [ngClass]="{pending: 'new Date() < task.timer.from'}">
                         <i class="fa fa-code" aria-hidden="true"></i> Execute <code>{{ task.timer.command }}</code> at {{ task.timer.interval }}, every {{ task.timer.interval }} mins from {{ task.timer.from }} 
                     </span>
                     <span *ngIf="!isCommandTimer(task.timer)">
-                        <i class="fa fa-comment" aria-hidden="true"></i> Send <code>{{ task.timer.message }}</code> to <strong>#{{ getChannel(task.timer.channel)?.name }}</strong>, every {{ task.timer.interval / 1000 / 60 }} mins from {{ task.timer.from }}
+                        <i class="fa fa-comment" aria-hidden="true"></i> Send <code>{{ task.timer.message }}</code> to <strong>#{{ getChannel(task.timer.channel)?.name }}</strong>, every {{ task.timer.interval / 1000 / 60 }} mins from {{ task.timer.from | cleanDateTime }}
                     </span>
                     <i class="cancel-timer fa fa-times" aria-hidden="true"
                         (click)="cancelTimer(i)"></i>

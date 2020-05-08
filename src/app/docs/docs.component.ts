@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import marked from 'marked';
 import { map } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-docs',
@@ -10,13 +11,13 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./docs.component.css']
 })
 export class DocsComponent implements OnInit {
+  page: string;
   defaultPage = 'getting-started';
 
   get markdownPagePath$() {
     return this.route.paramMap.pipe(
-      map(paramMap => {
-        const page = paramMap.get('page')?.toLowerCase() || this.defaultPage;      
-        return `assets/docs/${page}.md`;
+      map(paramMap => {   
+        return `assets/docs/${this.page}.md`;
     }));
   }
 
@@ -24,9 +25,9 @@ export class DocsComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     router: Router) {
-    route.paramMap.subscribe(paramMap => {      
-      const page = paramMap.get('page')?.toLowerCase();
-      if (!page)
+    route.paramMap.subscribe(paramMap => {
+      this.page = paramMap.get('page')?.toLowerCase();
+      if (!this.page)
         router.navigate([`/docs/${this.defaultPage}`]);
     });
   }
@@ -47,17 +48,33 @@ export class DocsComponent implements OnInit {
 
       if (window.location.hash)
         document.querySelector(window.location.hash)?.scrollIntoView();
+
+      this.setAnchorReferences();
     });
   }
 
   replaceDocVariables(content: string) {
     return content
-      .replace(/<User>/g, `<a class="mention">@${this.userService.user?.tag ?? 'User#1234'}</a>`)
-      .replace(/<BotUser>/g, `<a class="mention">@3PG#8166</a>`);
+    .replace(/<BotUser>/g, `<a class="mention">@3PG#8166</a>`)
+    .replace(/<User>/g, `<a class="mention">@${this.userService.user?.tag ?? 'User#1234'}</a>`)
+    .replace(/<PRO>/g, `<strong>PRO</strong>`);
   }
 
   customMD(content: string) {
     return content    
       .replace(/\[!\] (.*)/gm, '<div class="alert alert-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> $1</div>')
+  }
+
+  setAnchorReferences() {
+    document.querySelectorAll('h1,h2,h3,h4,h5')
+      .forEach((el: HTMLHeadingElement) => {
+        el.setAttribute('title', 'Copy URL to clipboard.');
+        el.onmousedown = () => this.copyToClipboard(el)
+      });
+  }
+
+  private async copyToClipboard(el: HTMLHeadingElement) {
+    const url = `${environment.url}/docs/${this.page}#${el.id}`;
+    await navigator.clipboard.writeText(url);
   }
 }

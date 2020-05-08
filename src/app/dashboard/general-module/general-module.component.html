@@ -48,7 +48,8 @@
                             class="reactionRole">
                             <mat-form-field appearance="outline" class="p-2">
                                 <mat-label>Channel</mat-label>
-                                <mat-select formControlName="channel">
+                                <mat-select formControlName="channel"
+                                    #channelId>
                                     <mat-option *ngFor="let channel of textChannels" 
                                         [value]="channel.id">#{{ channel.name }}</mat-option>
                                 </mat-select>
@@ -56,7 +57,7 @@
                             <!-- message -->
                             <mat-form-field appearance="outline" class="p-2">                                
                                 <mat-label>Message ID</mat-label>
-                                <input matInput
+                                <input matInput #messageId
                                     formControlName="messageId" type="text">
                             </mat-form-field>
                             <!-- emote -->
