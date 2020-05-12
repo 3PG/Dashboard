@@ -28,6 +28,7 @@ import { DocsComponent } from './docs/docs.component';
 import { CanDeactivateDashboard } from './guards/can-deactivate-dashboard.guard';
 import { WarningsModuleComponent } from './dashboard/warnings-module/warnings-module.component';
 import { TimersModuleComponent } from './dashboard/timers-module/timers-module.component';
+import { BadgesComponent } from './dashboard/badges/badges.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,7 +40,9 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'invite', component: InviteComponent },
   { path: 'leaderboard/:id', component: LeaderboardModuleComponent, canActivate: [LeaderboardAuthGuard] },
+
   { path: 'dashboard', component: DashboardComponent, canActivate: [DashboardAuthGuard] },
+  { path: 'dashboard/badges', component: BadgesComponent, canActivate: [DashboardAuthGuard] },
   { path: 'dashboard/xp-card', component: XPCardComponent, canActivate: [DashboardAuthGuard] },
 
   { path: 'servers/:id', component: GuildComponent, canActivate: [GuildAuthGuard] },

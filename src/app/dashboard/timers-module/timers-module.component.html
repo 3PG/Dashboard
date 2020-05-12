@@ -9,11 +9,11 @@
                 </div>
                 <hr>
             </div>
-            <h3>Command Timers</h3>
+            <h3>Command Timers <pro-reminder></pro-reminder></h3>
             <p class="desc">Automatically execute commands at specific intervals.</p>
             <div formArrayName="commandTimers" class="row">
                 <div class="col-lg-6 col-sm-12" *ngFor="let i of timerIndices">
-                    <div class="timer" [formGroupName]="i">
+                    <div class="rounded timer" [formGroupName]="i">
                         <div class="header">
                             <strong>Command Timer #{{ i + 1 }}</strong>
                             <div class="float-right">
@@ -49,11 +49,11 @@
 
             <hr>
 
-            <h3>Message Timers</h3>
+            <h3>Message Timers <pro-reminder></pro-reminder></h3>
             <p class="desc">Automatically send messages at specific intervals.</p>
             <div formArrayName="messageTimers" class="row">
                 <div class="col-lg-6 col-sm-12" *ngFor="let i of timerIndices">
-                    <div class="timer" [formGroupName]="i">
+                    <div class="rounded timer" [formGroupName]="i">
                         <div class="header">
                             <strong>Message Timer #{{ i + 1 }}</strong>
                             <div class="float-right">
@@ -93,16 +93,16 @@
             <ul class="list-group">
                 <p *ngIf="schedule.length <= 0"
                     class="text-muted">No timers scheduled.</p>
-                <li class="list-group-item" *ngFor="let task of schedule; index as i">
-                    <span *ngIf="isCommandTimer(task.timer)"
-                        [ngClass]="{pending: 'new Date() < task.timer.from'}">
-                        <i class="fa fa-code" aria-hidden="true"></i> Execute <code>{{ task.timer.command }}</code> at {{ task.timer.interval }}, every {{ task.timer.interval }} mins from {{ task.timer.from }} 
+                    <!-- TODO: add message timer number -->
+                <li class="list-group-item" *ngFor="let task of schedule; index as i"
+                    [class]="task.status.toLowerCase()">
+                    <span *ngIf="isCommandTimer(task.timer)">
+                        <i class="fa fa-code" aria-hidden="true"></i> Execute <code>Command Timer</code> in <strong>#{{ getChannel(task.timer.channel)?.name }}</strong>, every <u>{{ task.timer.interval }}</u> from {{ task.timer.from | cleanDateTime }} 
                     </span>
                     <span *ngIf="!isCommandTimer(task.timer)">
-                        <i class="fa fa-comment" aria-hidden="true"></i> Send <code>{{ task.timer.message }}</code> to <strong>#{{ getChannel(task.timer.channel)?.name }}</strong>, every {{ task.timer.interval / 1000 / 60 }} mins from {{ task.timer.from | cleanDateTime }}
+                        <i class="fa fa-comment" aria-hidden="true"></i> Send <code>Message Timer</code> to <strong>#{{ getChannel(task.timer.channel)?.name }}</strong>, every <u>{{ task.timer.interval }}</u> from {{ task.timer.from | cleanDateTime }}
                     </span>
-                    <i class="cancel-timer fa fa-times" aria-hidden="true"
-                        (click)="cancelTimer(i)"></i>
+                    <p class="float-right m-0">{{ task.status }}</p>
                 </li>
               </ul>
         </form>

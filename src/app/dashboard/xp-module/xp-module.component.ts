@@ -40,14 +40,13 @@ export class XPModuleComponent extends ModuleConfig implements OnInit {
   }
 
   private buildLevelRolesFormArray(formGroup: FormGroup, xp: any) {
-    for (const i of this.levelRoleIndices) {
+    for (const i of this.levelRoleIndices)
       (formGroup.get('levelRoles') as FormArray)
         .setControl(i,
           (new FormGroup({
-          level: new FormControl(xp.levelRoles[i].level ?? 0, Validators.min(1)),
-          role: new FormControl(xp.levelRoles[i].role ?? '')
+          level: new FormControl(xp.levelRoles[i]?.level ?? 0, Validators.min(1)),
+          role: new FormControl(xp.levelRoles[i]?.role ?? '')
         })));
-    }
   }
 }
 

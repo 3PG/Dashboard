@@ -14,7 +14,7 @@
             <hr>
             <div formArrayName="events" class="row">
                 <div *ngFor="let event of events; index as i" class="col-lg-6 col-sm-12">
-                    <div [formGroupName]="i" class="event">
+                    <div [formGroupName]="i" class="rounded event">
                         <input type="hidden" formControlName="event">
                         <span class="d-flex justify-content-between">
                             <strong>{{ events[i] }}</strong>

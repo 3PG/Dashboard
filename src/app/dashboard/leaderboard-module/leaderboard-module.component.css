@@ -11,13 +11,13 @@
     margin-right: 10px;
 }
 .rank-1 {
-    background-color: #D4AF37;
+    background-color: var(--gold);
 }
 .rank-2 {
-    background-color: silver;
+    background-color: var(--silver);
 }
 .rank-3 {
-    background-color: #CD7F32;
+    background-color: var(--bronze);
 }
 
 .divider {

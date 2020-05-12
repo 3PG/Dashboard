@@ -4,7 +4,6 @@
 
 .event {
     padding: 25px;
-    border-radius: 3px;
 
     background-color: var(--background-tertiary);
 }

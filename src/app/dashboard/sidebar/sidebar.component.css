@@ -1,7 +1,3 @@
-mat-sidenav {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-}
-
 .guild-icon {
     border-radius: 50%;
 
@@ -47,14 +43,13 @@ button {
 }
 
 .guilds {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     background-color: var(--background-tertiary);
     float: left;
     height: inherit;
 }
 
 .options {
-    background-color: var(--background-secondary) !important;
-
     width: 300px;
     height: inherit;
 }

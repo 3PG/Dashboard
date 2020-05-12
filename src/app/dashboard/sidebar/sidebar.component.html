@@ -7,16 +7,18 @@
                 </div>
                 <hr>
             </div>
-            <div *ngFor="let guild of guilds" [routerLink]="['/servers/' + guild.id]"
-                class="guild-icon">
-                <img *ngIf="guild.iconURL"
-                    [src]="guild.iconURL" [alt]="guild.name">
-                <span *ngIf="!guild.iconURL"
-                    class="d-flex justify-content-center">{{ guild.nameAcronym }}</span>
-            </div>
-            <div routerLink="/invite" 
-                class="guild-icon invite">
-                <span class="add-guild">+</span>
+            <div  *ngIf="guilds" class="guild-list" [@.disabled]="true">
+                <div *ngFor="let guild of guilds" [routerLink]="['/servers/' + guild.id]"
+                    class="guild-icon ng-animate-disabled">
+                    <img *ngIf="guild.iconURL"
+                        [src]="guild.iconURL" [alt]="guild.name">
+                    <span *ngIf="!guild.iconURL"
+                        class="d-flex justify-content-center">{{ guild.nameAcronym }}</span>
+                </div>
+                <div routerLink="/invite" 
+                    class="guild-icon invite">
+                    <span class="add-guild">+</span>
+                </div>
             </div>
         </div>
         <div class="options">

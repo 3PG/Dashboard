@@ -51,6 +51,9 @@ import { MessagesWidgetComponent } from './messages-widget/messages-widget.compo
 import { WarningsModuleComponent } from './dashboard/warnings-module/warnings-module.component';
 import { WarningsWidgetComponent } from './dashboard/warnings-widget/warnings-widget.component';
 import { TimersModuleComponent } from './dashboard/timers-module/timers-module.component';
+import { ProReminderComponent } from './dashboard/pro-reminder/pro-reminder.component';
+import { BadgesComponent } from './dashboard/badges/badges.component';
+import { SnakeToSentenceCasePipe } from './pipes/snake-to-sentence-case.pipe';
 
 export class AlertErrorHandler implements ErrorHandler {
   handleError(error: any) {
@@ -103,7 +106,10 @@ export class AlertErrorHandler implements ErrorHandler {
     MessagesWidgetComponent,
     WarningsModuleComponent,
     WarningsWidgetComponent,
-    TimersModuleComponent
+    TimersModuleComponent,
+    ProReminderComponent,
+    BadgesComponent,
+    SnakeToSentenceCasePipe
   ],
   imports: [
     AppRoutingModule,

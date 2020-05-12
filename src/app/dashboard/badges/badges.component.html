@@ -1,0 +1,14 @@
+<dashboard-sidebar>
+    <section class="container">
+        <customize-xp-card #customize
+            hidden></customize-xp-card>
+        <h2 class="display-3">My Badges</h2>
+        <hr>
+        <div id="badges" class="mt-3 row">
+            <div *ngFor="let badge of badges"
+                class="col-lg-3 col-sm-4 col-xs-6">
+                <div class="displayed badge" [matTooltip]="badge | snakeToSentenceCase">a</div>
+            </div>
+        </div>
+    </section>
+</dashboard-sidebar>

@@ -45,19 +45,18 @@
                 <div formArrayName="reactionRoles" class="row">
                     <div class="col-lg-6 col-md-12" *ngFor="let i of reactionRolesIndices">
                         <div [formGroupName]="i"
-                            class="reactionRole">
+                            class="rounded reaction-role">
                             <mat-form-field appearance="outline" class="p-2">
                                 <mat-label>Channel</mat-label>
-                                <mat-select formControlName="channel"
-                                    #channelId>
-                                    <mat-option *ngFor="let channel of textChannels" 
+                                <mat-select formControlName="channel">
+                                    <mat-option *ngFor="let channel of textChannels"
                                         [value]="channel.id">#{{ channel.name }}</mat-option>
                                 </mat-select>
                             </mat-form-field>
                             <!-- message -->
                             <mat-form-field appearance="outline" class="p-2">                                
                                 <mat-label>Message ID</mat-label>
-                                <input matInput #messageId
+                                <input matInput
                                     formControlName="messageId" type="text">
                             </mat-form-field>
                             <!-- emote -->

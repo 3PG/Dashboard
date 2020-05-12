@@ -19,6 +19,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatSliderModule} from '@angular/material/slider';
 import {PickerModule} from '@ctrl/ngx-emoji-mart';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   exports: [
@@ -41,6 +42,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatSlideToggleModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatTooltipModule,
     PickerModule,
     ScrollingModule
   ],

@@ -5,6 +5,26 @@
 
 @include mat-core();
 
+:root {
+    --font: #FFFFFF;
+    --plus: green;
+
+    --danger: darkred;
+    --muted: grey;
+
+    --primary: #482F5D;
+    --secondary: #45377C;
+    --tertiary: #351F20;
+
+    --background-primary: #372224;
+    --background-secondary: #2c1518;
+    --background-tertiary: #251113;
+
+    --gold: #D4AF37;
+    --silver: silver;
+    --bronze: #CD7F32;
+}
+
 $primary-palette: (
     50 : #eae8f3,
     100 : #c9c6e1,

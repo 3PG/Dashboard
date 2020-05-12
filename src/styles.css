@@ -6,22 +6,6 @@
 @import '~chart.js/dist/Chart.min.css';
 @import '~@ctrl/ngx-emoji-mart/picker.css';
 
-:root {
-    --font: #FFFFFF;
-    --plus: green;
-
-    --danger: darkred;
-    --muted: grey;
-
-    --primary: #482F5D;
-    --secondary: #45377C;
-    --tertiary: #351F20;
-
-    --background-primary: #372224;
-    --background-secondary: #2c1518;
-    --background-tertiary: #251113;
-}
-
 body, mat-sidenav-content {
     color: var(--font);
     background: black;
@@ -179,8 +163,12 @@ mat-paginator {
 /* sidebar */
 
 .mat-drawer-side, .mat-drawer-container {
-    background-color: var(--background-primary) !important;
+    background-color: var(--background-secondary) !important;
     border: none !important;
+}
+
+.mat-drawer-container {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 /* dashboard */
@@ -253,4 +241,9 @@ a.mention {
 #doc h4:hover::before,
 #doc h5:hover::before {
     color: var(--primary);
+}
+
+.robot {
+    max-width: 196px;
+    margin-bottom: 5px;
 }

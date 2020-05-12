@@ -1,6 +1,5 @@
-.stripe-button {
-    width: 25px;
-    height: 25px;
+button {
+    padding: 5px 25px;
 }
 
 .row .card {
@@ -9,11 +8,23 @@
     background-color: var(--background-secondary);
 }
 
-.disclaimer {
-    color: var(--muted);
-    font-size: 8px;
-}
-
 zippy {
     margin: 15px 0;
+}
+
+.pro.large {
+    width: 30%;
+    padding-bottom: 15px;
+}
+
+.pro.medium {
+    height: 42px;
+    padding-bottom: 10px;
+}
+
+.robot {
+    position: absolute;
+    z-index: 1;
+    min-width: 512px !important;
+    right: 10vw;
 }

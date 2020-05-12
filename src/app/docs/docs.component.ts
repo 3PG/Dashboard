@@ -56,12 +56,13 @@ export class DocsComponent implements OnInit {
   replaceDocVariables(content: string) {
     return content
     .replace(/<BotUser>/g, `<a class="mention">@3PG#8166</a>`)
+    .replace(/<Discord>/g, `<a href="${environment.discordURL}">3PG Discord</a>`)
     .replace(/<User>/g, `<a class="mention">@${this.userService.user?.tag ?? 'User#1234'}</a>`)
     .replace(/<PRO>/g, `<strong>PRO</strong>`);
   }
 
   customMD(content: string) {
-    return content    
+    return content
       .replace(/\[!\] (.*)/gm, '<div class="alert alert-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> $1</div>')
   }
 

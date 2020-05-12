@@ -24,8 +24,9 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async ngOnInit() {
-    await this.updateSchedule();
     await super.init();
+
+    await this.updateSchedule();
   }
 
   buildForm({ timers }: any) {
@@ -43,7 +44,7 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
           enabled: new FormControl(commandTimer?.enabled ?? false),
           interval: new FormControl(commandTimer?.interval ?? '01:00'),
           from: new FormControl(commandTimer?.from ?? new Date()),
-          command: new FormControl(commandTimer?.command ?? '', Validators.pattern(/[A-Za-z0-9]+/)),
+          command: new FormControl(commandTimer?.command ?? '', Validators.pattern(/^[A-Za-z0-9]+$/)),
           channel: new FormControl(commandTimer?.channel ?? '')
         }));
       (formGroup.controls.messageTimers as FormArray).setControl(i,
@@ -58,14 +59,9 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
     return formGroup;
   }
 
-  async submit() {    
+  async submit() {  
     await super.submit();
-  }
 
-  filterFormValue() {}
-
-  async cancelTimer(index: number) {
-    await this.guildService.cancelTimer(this.guildId, index);
     await this.updateSchedule();
   }
 
@@ -79,5 +75,8 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
 
   getChannel(id: string) {
     return this.textChannels.find(c => c.id === id) || { name: '[UNKNOWN_CHANNEL]' };
+  }
+
+  getTimerNumber(task: any) {
   }
 }

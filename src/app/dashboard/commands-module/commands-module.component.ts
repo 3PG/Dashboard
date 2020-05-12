@@ -28,8 +28,8 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async ngOnInit() {
-    this.commands = await this.service.get();
-
+    this.commands = this.service.commands;
+    
     await super.init();
   }
 

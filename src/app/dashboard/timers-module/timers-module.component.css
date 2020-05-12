@@ -1,14 +1,3 @@
-.list-group-item {
-    background-color: var(--background-secondary);
-    display: flex;
-    justify-content: space-between;
-}
-
-.cancel-timer {
-    padding: 5px;
-    cursor: pointer;
-}
-
 .timer {
     background-color: var(--background-secondary);
     padding: 15px;
@@ -17,4 +6,20 @@
 
 .timer .header {
     padding: 0 10px;
+}
+
+li {
+    border-color: transparent !important;
+}
+
+.pending {
+    background-color: var(--warning);
+}
+
+.active {
+    background-color: var(--success);
+}
+
+.failed {
+    background-color: var(--danger);
 }
