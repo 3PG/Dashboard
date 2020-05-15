@@ -3,7 +3,8 @@
         <form #f="ngForm" [formGroup]="form">
             <div class="jumbotron">
                 <div class="d-flex justify-content-between">
-                    <h1 class="display-3">Timers</h1>
+                    <h1 routerLink="/docs/timers"
+                        class="display-3">Timers</h1>
                     <mat-slide-toggle formControlName="enabled"
                         class="float-right mt-5"></mat-slide-toggle>
                 </div>
@@ -89,7 +90,7 @@
 
             <hr>
 
-            <h3>Schedule</h3>
+            <h3 routerLink="/docs/timers" fragment="schedule">Schedule</h3>
             <ul class="list-group">
                 <p *ngIf="schedule.length <= 0"
                     class="text-muted">No timers scheduled.</p>

@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CommandsService {
   private _commands = [];
-  get commands() { return this._commands; }
+  get commands() { return this._commands ?? []; }
 
   private endpoint = environment.endpoint + '/commands';
 

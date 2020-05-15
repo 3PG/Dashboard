@@ -6,12 +6,14 @@ import { GuildService } from './services/guild.service';
 import {  OnDestroy } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Subscription } from 'rxjs';
+import { UserService } from './services/user.service';
 
 
 export abstract class ModuleConfig implements OnDestroy {
     abstract moduleName: string;
 
     form: FormGroup;
+    hasPremium = false;
 
     guild: any;
     savedGuild: any;
@@ -28,6 +30,7 @@ export abstract class ModuleConfig implements OnDestroy {
     constructor(
         protected guildService: GuildService,
         protected route: ActivatedRoute,
+        protected userService: UserService,
         public saveChanges: MatSnackBar) {}
 
     /**
@@ -35,6 +38,8 @@ export abstract class ModuleConfig implements OnDestroy {
      */
     async init() {
         const data = this.route.snapshot.data;
+
+        this.hasPremium = this.userService.savedUser.premium;
 
         this.roles = data.roles;
         this.textChannels = data.channels.filter(c => c.type === 'text');

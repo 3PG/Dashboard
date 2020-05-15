@@ -29,7 +29,6 @@ describe('AnnounceModuleComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AnnounceModuleComponent);
     component = fixture.componentInstance;
-    component.guildId = environment.test.guildId;
     fixture.detectChanges();
 
     component.init = async() => {};
@@ -48,7 +47,6 @@ describe('AnnounceModuleComponent', () => {
       message: 'a'
     } as AnnounceEvent ];
     component.savedGuild = { announce: { events }};
-    component.guildId = '123';
 
     const result = (component.form.get('events') as FormArray).get('0').value;
 
@@ -56,7 +54,7 @@ describe('AnnounceModuleComponent', () => {
   });
 
   it('submitting removes enabled property', () => {
-    component = new AnnounceModuleComponent({} as any, {} as any, {} as any);
+    component = new AnnounceModuleComponent({} as any, {} as any, {} as any, {} as any);
     const events = [
     {
       event: EventType.MemberJoin,

@@ -1,13 +1,17 @@
 .badge {
     width: 75px;
     height: 75px;
-    padding: 25px;
+
+    margin: 15px;
 
     border-radius: 50%;
+    border: 1px solid darkslategray;
     cursor: pointer;
 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: rgb(24, 31, 31);
-    border: 1px solid darkslategray;
 }
 
 .tier-1 {
@@ -26,4 +30,9 @@
     -webkit-box-shadow: 0px 0px 5px 5px rgba(72,47,93,1);
     -moz-box-shadow: 0px 0px 5px 5px rgba(72,47,93,1);
     box-shadow: 0px 0px 5px 5px rgba(72,47,93,1);
+}
+
+.locked {
+    -webkit-filter: grayscale(50%);
+    filter: grayscale(50%);
 }

@@ -58,6 +58,11 @@ table.dataTable tbody tr {
     background-color: transparent;
 }
 
+/* util */
+.text-center {
+    text-align: center;
+}
+
 /* scrollbar */
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -83,11 +88,11 @@ a {
 }
 
 [premium] ~ span > label {
-    color: var(--plus) !important;
+    color: var(--pro) !important;
 }
 
 [premium] ~ span > label::before {
-    content: "+ ";
+    content: "PRO ";
 }
 
 h3 {
@@ -184,6 +189,15 @@ emoji-mart {
     transition: all ease-in-out .5s;
 }
 
+#content h1 {
+    cursor: pointer;
+    transition: all ease-in-out .3s;
+}
+
+#content h1:hover {
+    color: var(--primary);
+}
+
 /* inputs */
 mat-icon {
     font-size: 15px !important;
@@ -243,6 +257,7 @@ a.mention {
     color: var(--primary);
 }
 
+/* pro */
 .robot {
     max-width: 196px;
     margin-bottom: 5px;

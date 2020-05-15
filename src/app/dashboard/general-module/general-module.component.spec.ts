@@ -25,7 +25,6 @@ describe('GeneralModuleComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GeneralModuleComponent);
     component = fixture.componentInstance;
-    component.guildId = environment.test.guildId;
     fixture.detectChanges();
   });
 

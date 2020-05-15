@@ -49,7 +49,7 @@ export class GuildService {
     return this.http.get(`${this.endpoint}/${id}/warnings`).toPromise();
   }
 
-  getMessage(id: string, channelId: string, messageId: string): Promise<any> {
+  getMessage(id: string, channelId: string, messageId: string): Promise<any> {    
     return this.http.get(`${this.endpoint}/${id}/channels/${channelId}/messages/${messageId}`).toPromise();
   }
 
@@ -71,5 +71,9 @@ export class GuildService {
 
   saveGuild(id: string, module: string, value: any): Promise<any> {
     return this.http.put(`${this.endpoint}/${id}/${module}?key=${this.key}`, value).toPromise();
+  }
+  
+  restoreDefaults(id: string) {
+    return this.http.delete(`${this.endpoint}/${id}/config?key=${this.key}`).toPromise();
   }
 }

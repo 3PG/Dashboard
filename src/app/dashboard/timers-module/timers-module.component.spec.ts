@@ -24,8 +24,8 @@ describe('TimersModuleComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('clicking timer cancel calls ', () => {
-    const spy = spyOn(component, 'cancelTimer');
+  it('clicking timer cancel calls reset', () => {
+    const spy = spyOn(component, 'reset');
     
     component.schedule.push({});
     const de = fixture.debugElement.query(By.css('cancel-timer'));

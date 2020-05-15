@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModuleConfig } from 'src/app/module-config';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-timers-module',
@@ -19,8 +20,9 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
   constructor(
     guildService: GuildService,
     route: ActivatedRoute,
+    userService: UserService,
     saveChanges: MatSnackBar) {
-    super(guildService, route, saveChanges);
+    super(guildService, route, userService, saveChanges);
   }
 
   async ngOnInit() {

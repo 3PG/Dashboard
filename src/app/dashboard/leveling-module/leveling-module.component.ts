@@ -4,48 +4,50 @@ import { ActivatedRoute } from '@angular/router';
 import { GuildService } from '../../services/guild.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModuleConfig } from '../../module-config';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-xp-module',
-  templateUrl: './xp-module.component.html',
-  styleUrls: ['./xp-module.component.css']
+  selector: 'app-leveling-module',
+  templateUrl: './leveling-module.component.html',
+  styleUrls: ['./leveling-module.component.css']
 })
-export class XPModuleComponent extends ModuleConfig implements OnInit {
+export class LevelingModuleComponent extends ModuleConfig implements OnInit {
   levelRoleIndices = [0,1,2,3,4,5,6,7];
-  moduleName = 'xp';
+  moduleName = 'leveling';
 
   get levelRolesFormArray() { return this.form.get('levelRoles') as FormArray; }
 
   constructor(
     guildService: GuildService,
     route: ActivatedRoute,
+    userService: UserService,
     saveChanges: MatSnackBar) {
-    super(guildService, route, saveChanges);
+    super(guildService, route, userService, saveChanges);
   }
 
   async ngOnInit() {
     await super.init();
   }
   
-  buildForm({ xp }: any) {
+  buildForm({ leveling }: any) {
     const formGroup = new FormGroup({
-      ignoredRoles: new FormControl(xp.ignoredRoles ?? []),
+      ignoredRoles: new FormControl(leveling.ignoredRoles ?? []),
       levelRoles: new FormArray([]),
-      maxMessagesPerMinute: new FormControl(xp.maxMessagesPerMinute ?? 50,
+      maxMessagesPerMinute: new FormControl(leveling.maxMessagesPerMinute ?? 50,
         [ Validators.min(1), Validators.max(30) ]),
-      xpPerMessage: new FormControl(xp.xpPerMessage ?? 50)
+      xpPerMessage: new FormControl(leveling.xpPerMessage ?? 50)
     }); 
-    this.buildLevelRolesFormArray(formGroup, xp);
+    this.buildLevelRolesFormArray(formGroup, leveling);
     return formGroup;
   }
 
-  private buildLevelRolesFormArray(formGroup: FormGroup, xp: any) {
+  private buildLevelRolesFormArray(formGroup: FormGroup, leveling: any) {
     for (const i of this.levelRoleIndices)
       (formGroup.get('levelRoles') as FormArray)
         .setControl(i,
           (new FormGroup({
-          level: new FormControl(xp.levelRoles[i]?.level ?? 0, Validators.min(1)),
-          role: new FormControl(xp.levelRoles[i]?.role ?? '')
+          level: new FormControl(leveling.levelRoles[i]?.level ?? 0, Validators.min(1)),
+          role: new FormControl(leveling.levelRoles[i]?.role ?? '')
         })));
   }
 }

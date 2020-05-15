@@ -26,7 +26,7 @@ import { GeneralModuleComponent } from './dashboard/general-module/general-modul
 import { MusicModuleComponent } from './dashboard/music-module/music-module.component';
 import { LogModuleComponent } from './dashboard/log-module/log-module.component';
 import { SettingsModuleComponent } from './dashboard/settings-module/settings-module.component';
-import { XPModuleComponent } from './dashboard/xp-module/xp-module.component';
+import { LevelingModuleComponent } from './dashboard/leveling-module/leveling-module.component';
 import { GuildSidebarComponent } from './dashboard/guild-sidebar/guild-sidebar.component';
 import { LeaderboardModuleComponent } from './dashboard/leaderboard-module/leaderboard-module.component';
 import { XPCardComponent } from './xp-card/xp-card.component';
@@ -54,6 +54,9 @@ import { TimersModuleComponent } from './dashboard/timers-module/timers-module.c
 import { ProReminderComponent } from './dashboard/pro-reminder/pro-reminder.component';
 import { BadgesComponent } from './dashboard/badges/badges.component';
 import { SnakeToSentenceCasePipe } from './pipes/snake-to-sentence-case.pipe';
+import { EmojiDirective } from './emoji.directive';
+import { TruncatedPipe } from './truncated.pipe';
+import { DurationStringPipe } from './duration-string.pipe';
 
 export class AlertErrorHandler implements ErrorHandler {
   handleError(error: any) {
@@ -80,10 +83,10 @@ export class AlertErrorHandler implements ErrorHandler {
     AutoModModuleComponent,
     GeneralModuleComponent,
     MusicModuleComponent,
-    XPModuleComponent,
+    LevelingModuleComponent,
     LogModuleComponent,
     SettingsModuleComponent,
-    XPModuleComponent,
+    LevelingModuleComponent,
     GuildSidebarComponent,
     LeaderboardModuleComponent,
     XPCardComponent,
@@ -109,7 +112,10 @@ export class AlertErrorHandler implements ErrorHandler {
     TimersModuleComponent,
     ProReminderComponent,
     BadgesComponent,
-    SnakeToSentenceCasePipe
+    SnakeToSentenceCasePipe,
+    EmojiDirective,
+    TruncatedPipe,
+    DurationStringPipe
   ],
   imports: [
     AppRoutingModule,

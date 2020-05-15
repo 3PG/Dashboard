@@ -1,5 +1,104 @@
 <guild-sidebar>
-    <div class="container">
-        <p>🤔</p>
+    <div *ngIf="form" class="container">
+        <form #f="ngForm" [formGroup]="form">
+            <div class="jumbotron">
+                <div class="d-flex justify-content-between">
+                    <h1 routerLink="/docs/music"
+                        class="display-3">Music</h1>
+                    <mat-slide-toggle formControlName="enabled"
+                        class="float-right mt-5"></mat-slide-toggle>
+                </div>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    <div>
+                        <label class="d-block">Max Track Hours</label>
+                        <mat-slider formControlName="maxTrackHours"
+                            step="1" tickInterval="1" thumbLabel min="1" max="24"></mat-slider>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <h3>Music Manager</h3>
+        <span>
+            <span class="badge badge-warning float-right"
+                matTooltip="This feature was added very recently. Please report all bugs you may find.">ALPHA</span>
+        </span>
+        <p class="desc">Manage music without commands. You must be in a voice channel first.</p>        
+        <div class="rounded manager row p-3">
+            <div class="player col-lg-6 border-right border-dark">
+                <h5 class="float-none">Player</h5>
+                <div class="controls"
+                    (keyup.j)="!focused && service.seek(guildId, max(slider.value - 10, 0))"
+                    (keyup.l)="!focused && service.seek(guildId, min(slider.value + 10, service.list[0]?.duration))"
+                    (keyup.k)="!focused && service.toggle(guildId)"
+                    (keyup.enter)="search.value.length >= minSearchLength && service.play(guildId, search.value)">
+                    <div class="play">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Search</mat-label>
+                            <input id="search" type="search"
+                                matInput #search required
+                                [disabled]="hasPremium ? service.list.length >= 10 : service.list.length >= 5">
+                        </mat-form-field>
+                        <button mat-button color="success"
+                            class="ml-2"
+                            [disabled]="hasPremium ? service.list.length >= 10 : service.list.length >= 5"
+                            (click)="search.value.length >= minSearchLength && service.play(guildId, search.value)">+</button>
+                    </div>
+                    <div class="player-bar">                 
+                        <!-- seek -->
+                        <mat-slider type="range"
+                            [disabled]="service.list.length <= 0" #slider
+                            min="0" [max]="service.list[0]?.duration / 1000" [value]="service.current" step="1"
+                            tickInterval="1" thumbLabel
+                            (change)="service.seek(guildId, slider.value)"></mat-slider>
+                            <p class="pl-5">{{ service.current | durationString }} <span class="text-muted">/ {{ service.list[0]?.duration / 1000 | durationString }}</span></p>
+                    </div>
+                    <div class="player-controls">
+                        <!-- pause/resume -->
+                        <button id="toggle" mat-button color="primary"
+                            [disabled]="service.list.length <= 0"
+                            (click)="service.toggle(guildId)">
+                            <i [class]="service.paused ? 'fa-play' : 'fa-pause'" class="fa" aria-hidden="true"></i>
+                        </button>
+                        <!-- skip -->
+                        <button id="skip" mat-button color="yellow"
+                            [disabled]="service.list.length <= 1"
+                            (click)="service.skip(guildId)">
+                            <i class="fa fa-forward" aria-hidden="true"></i>
+                        </button>
+                        <!-- stop -->
+                        <button id="stop" mat-button color="warn"
+                            [disabled]="service.list.length <= 0"
+                            (click)="service.stop(guildId)">
+                            <i class="fa fa-stop" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <hr class="d-block d-md-none">        
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="d-flex justify-content-between">
+                    <h5>Queue <pro-reminder class="pl-1"></pro-reminder></h5>
+                    <!-- refresh -->
+                    <button mat-button
+                        (click)="service.updateList(guildId)">
+                        <i class="fa fa-refresh float-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <ul class="list-group border-bottom pb-2 border-muted">
+                    <div *ngFor="let track of service.list; index as i"
+                        class="track list-group-item">
+                        <span class="mt-2"><code>[{{ track.durationString }}]</code> {{ track.title | truncated : 36 }}</span>
+                        <button class="float-right" color="warn" mat-button
+                            (click)="service.removeTrack(guildId, i)">x</button>
+                    </div>
+                </ul>
+                <strong *ngIf="!hasPremium">{{ service.list?.length }}<span class="text-muted">/5</span></strong>
+                <strong *ngIf="hasPremium">{{ service.list?.length }}<span class="text-muted">/10</span></strong>
+            </div>
+        </div>
     </div>
 </guild-sidebar>

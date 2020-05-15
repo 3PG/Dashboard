@@ -8,10 +8,14 @@ export const environment = {
   url: 'http://localhost:4200',
   discordURL: 'https://discordapp.com/invite/xRT6Fz5',
   githubURL: 'https://github.com/theADAMJR/2PG',
-  stripePublicKey: 'pk_test_rjQKo5c9pcHvDFjFe1mfdKib00Es3eJ831',
+  stripePublicKey: 'pk_test_5D57doatt7FpFolXlTHy8DvZ00TgL3h1WJ',
   test: {
     guildId: '598565371162656788'
-  }
+  },
+  voteURLs: [
+    '//top.gg/bot/525935335918665760/vote',
+    '//discordbotlist.com/bots/525935335918665760/upvote'
+  ]
 };
 
 /*

@@ -1,5 +1,6 @@
 table {
     color: white;
+    max-width: 95vw !important;
 }
 
 .jumbotron {

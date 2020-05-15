@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ModuleConfig } from '../../module-config';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GuildService } from '../../services/guild.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-commands-module',
@@ -22,9 +23,10 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
   constructor(
     guildService: GuildService,
     route: ActivatedRoute,
+    userService: UserService,
     saveChanges: MatSnackBar,
     private service: CommandsService) {
-    super(guildService, route, saveChanges);
+    super(guildService, route, userService, saveChanges);
   }
 
   async ngOnInit() {

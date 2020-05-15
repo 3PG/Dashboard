@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModuleConfig } from '../../module-config';
 import { GuildService } from '../../services/guild.service';
 import { UserService } from 'src/app/services/user.service';
+import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 
 @Component({
   selector: 'app-general-module',
@@ -23,13 +24,30 @@ export class GeneralModuleComponent extends ModuleConfig implements OnInit {
   constructor(
     public guildService: GuildService,
     route: ActivatedRoute,
-    saveChanges: MatSnackBar,
-    public userService: UserService) {
-    super(guildService, route, saveChanges);
+    public userService: UserService,
+    saveChanges: MatSnackBar) {
+    super(guildService, route, userService, saveChanges);
   }
 
   async ngOnInit() {
-    await super.init();    
+    await super.init();
+
+    await this.updateReactionRolePreviews();
+  }
+
+  async updateReactionRolePreviews() {
+    this.reactionRoleMessages = [];
+    for (const i of this.reactionRolesIndices) {
+      const config = (this.form.controls.reactionRoles as FormArray)
+        .get(i.toString())?.value;
+      if (!(config.channel && config.messageId))
+        return this.reactionRoleMessages.push(null);      
+
+      try {
+        const msg = await this.getMessage(config.channel, config.messageId);
+        this.reactionRoleMessages.push(msg);        
+      } catch { this.reactionRoleMessages.push(null); }
+    }
   }
 
   buildForm({ general }: any) {
@@ -58,12 +76,15 @@ export class GeneralModuleComponent extends ModuleConfig implements OnInit {
     return formGroup;
   }
 
-  getMessage(channelId: any, messageId: string) {    
-    return (channelId && messageId) ?
-      this.guildService.getMessage(this.guildId, channelId, messageId) : null;
+  getMessage(channelId: string, messageId: string) {
+    return this.guildService.getMessage(this.guildId, channelId, messageId);
   }
 
-  addEmoji($event) {
-    console.log($event);
+  async submit() {
+    await super.submit();
+
+    await this.updateReactionRolePreviews();
   }
+
+  toDate(dateString: string) { return new Date(dateString); }
 }

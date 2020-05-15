@@ -1,5 +1,6 @@
 import { Directive, Component, ElementRef } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Directive({
   selector: '[premium]'
@@ -11,6 +12,6 @@ export class PremiumDirective {
     if (!elementRef) return;
 
     this.el = elementRef.nativeElement as HTMLInputElement;
-    this.el.onclick = () => alert('plz pay for plus\n\n\n\nokthanksbye');
+    this.el.onclick = () => alert('Unlock more with 3PG PRO!');
   }
 }

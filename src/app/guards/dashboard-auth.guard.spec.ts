@@ -17,7 +17,7 @@ describe('DashboardAuthGuard', () => {
       updateUser: () => {},
       user: null
     } as any;
-    guard = new DashboardAuthGuard(fakeAuth);
+    guard = new DashboardAuthGuard(fakeAuth, {} as any);
 
     expect(guard).toBeTruthy();
   });
@@ -27,7 +27,7 @@ describe('DashboardAuthGuard', () => {
       updateUser: () => {},
       user: null
     } as any;
-    guard = new DashboardAuthGuard(fakeAuth);
+    guard = new DashboardAuthGuard(fakeAuth, {} as any);
 
     const result = await guard.canActivate();
 
@@ -39,7 +39,7 @@ describe('DashboardAuthGuard', () => {
       updateUser: () => {},
       user: {}
     } as any;
-    guard = new DashboardAuthGuard(fakeAuth);
+    guard = new DashboardAuthGuard(fakeAuth, {} as any);
 
     const result = await guard.canActivate();
 

@@ -6,6 +6,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
 
 describe('SettingsModuleComponent', () => {
   let component: SettingsModuleComponent;
@@ -34,5 +35,14 @@ describe('SettingsModuleComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('click restore defaults button, calls restore defaults', () => {
+    const spy = spyOn(component, 'restoreDefaults');
+    const el = fixture.debugElement.query(By.css('#restoreDefaults'))?.nativeElement;
+
+    el.click();
+
+    expect(spy).toHaveBeenCalled();
   });
 });

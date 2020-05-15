@@ -12,14 +12,16 @@ import { MatPaginator } from '@angular/material/paginator';
 export class CommandsComponent implements OnInit {
   displayedColumns: string[] = ['usage', 'module', 'summary', 'permission'];
   dataSource = new MatTableDataSource();
-  commands: any[] = [];
+  commands = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private service: CommandsService) {}
 
-  async ngOnInit() { 
+  async ngOnInit() {
+    if (this.service.commands.length <= 0)
+      await this.service.updateCommands();
     this.commands = this.service.commands;
     
     this.dataSource = new MatTableDataSource(this.commands);

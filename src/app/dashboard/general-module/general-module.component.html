@@ -1,9 +1,10 @@
-<guild-sidebar [waitFor]="savedGuild && general">
+<guild-sidebar [waitFor]="savedGuild && general && reactionRoleMessages">
     <div *ngIf="form" class="container">
         <form #f="ngForm" [formGroup]="form">
             <div class="jumbotron">
                 <div class="d-flex justify-content-between">
-                    <h1 class="display-3">General</h1>
+                    <h1 routerLink="/docs/general"
+                        class="display-3">General</h1>
                     <mat-slide-toggle formControlName="enabled"
                         class="float-right mt-5"></mat-slide-toggle>
                 </div>
@@ -56,13 +57,12 @@
                             <!-- message -->
                             <mat-form-field appearance="outline" class="p-2">                                
                                 <mat-label>Message ID</mat-label>
-                                <input matInput
-                                    formControlName="messageId" type="text">
+                                <input matInput formControlName="messageId" type="text">
                             </mat-form-field>
                             <!-- emote -->
                             <mat-form-field appearance="outline" class="p-2">
                                 <mat-label>Emote</mat-label>
-                                <input matInput
+                                <input matInput #emote
                                     formControlName="emote" type="text">
                             </mat-form-field>
                             <!-- role -->
@@ -74,11 +74,20 @@
                                         [value]="role.id">@{{ role.name }}</mat-option>
                                 </mat-select>
                             </mat-form-field>
+                            <div *ngIf="reactionRoleMessages[i]">
+                                <message-preview
+                                    [author]="reactionRoleMessages[i].author"
+                                    [createdAt]="toDate(reactionRoleMessages[i].createdTimestamp)"
+                                    [content]="reactionRoleMessages[i].reactions.message.cleanContent"
+                                    [member]="reactionRoleMessages[i].member"></message-preview>
+                            </div>
+                            <div *ngIf="!reactionRoleMessages[i]">
+                                <message-preview content="Message not found."></message-preview>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- add form-control-name -->
-                <!-- <emoji-mart (emojiClick)="addEmoji($event)"></emoji-mart> -->
             </div>
         </form>
     </div>

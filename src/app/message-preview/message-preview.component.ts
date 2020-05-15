@@ -18,17 +18,26 @@ export class MessagePreviewComponent {
     username: '3PG',
     avatarURL: 'https://cdn.discordapp.com/avatars/525935335918665760/6e0b19ae2cc25ef5da3d52b787525ed3.png?size=128'
   }
+  @Input() member = {
+    displayName: 'a good bot i guess'
+  }
+  @Input() createdAt = new Date();
 
   constructor(private userService: UserService) {}
 
   get timestamp() {
-    const timestamp = new Date().toLocaleTimeString('en-US',
-      {
-        hour: 'numeric',
-        hour12: true,
-        minute: 'numeric'
-      });
-    return `Today at ${timestamp}`;
+    const timestamp = this.createdAt.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      hour12: true,
+      minute: 'numeric'
+    });
+
+    const wasToday = new Date().getDay() / this.createdAt.getDay() === 1;
+    const wasYesterday = new Date().getDay() % this.createdAt.getDay() === 1;
+    if (wasToday || wasYesterday)
+      return (wasToday ? 'Today' : 'Yesterday') + ` at ${timestamp}`;
+
+    return this.createdAt.toJSON().slice(0,10);
   }
 
   get processed() {

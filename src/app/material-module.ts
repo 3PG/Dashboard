@@ -17,7 +17,6 @@ import {ColorPickerModule} from 'ngx-color-picker';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSliderModule} from '@angular/material/slider';
-import {PickerModule} from '@ctrl/ngx-emoji-mart';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -43,7 +42,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSelectModule,
     MatSnackBarModule,
     MatTooltipModule,
-    PickerModule,
     ScrollingModule
   ],
   providers: [

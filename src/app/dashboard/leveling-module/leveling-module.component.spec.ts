@@ -1,26 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { XPModuleComponent } from './xp-module.component';
-import { environment } from 'src/environments/environment';
+import { LevelingModuleComponent } from './leveling-module.component';
 import { AppModule } from 'src/app/app.module';
 import { FormGroup } from '@angular/forms';
 
 describe('XPModuleComponent', () => {
-  let component: XPModuleComponent;
-  let fixture: ComponentFixture<XPModuleComponent>;
+  let component: LevelingModuleComponent;
+  let fixture: ComponentFixture<LevelingModuleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ XPModuleComponent ],
+      declarations: [ LevelingModuleComponent ],
       imports: [ AppModule ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(XPModuleComponent);
+    fixture = TestBed.createComponent(LevelingModuleComponent);
     component = fixture.componentInstance;
-    component.guildId = environment.test.guildId;
     fixture.detectChanges();
   });
 
@@ -29,11 +27,11 @@ describe('XPModuleComponent', () => {
   });
 
   it('buildForm returns valid form group', () => {
-    expect(component.buildForm()).toBeInstanceOf(FormGroup);
+    expect(component.buildForm({})).toBeInstanceOf(FormGroup);
   });
 
   it('initFormValues sets saved guild values', () => {
-    component.initFormValues({ xp: { ignoredRoles: ['1'] }});
+    component.buildForm({ xp: { ignoredRoles: ['1'] }});
 
     const result = component.form.get('ignoredRoles').value;
 

@@ -3,7 +3,8 @@
         <form #f="ngForm" [formGroup]="form">
             <div class="jumbotron">
                 <div class="d-flex justify-content-between">
-                    <h1 class="display-3">Auto-mod</h1>
+                    <h1 routerLink="/docs/auto-mod"
+                        class="display-3">Auto-mod</h1>
                     <mat-slide-toggle formControlName="enabled"
                         class="float-right mt-5"></mat-slide-toggle>
                 </div>
@@ -23,7 +24,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div>
+                <div class="ml-4">
                     <label class="pr-1">Filter Threshold</label>
                     <mat-slider formControlName="filterThreshold"
                         step="1" tickInterval="1" thumbLabel min="1" max="20"></mat-slider>

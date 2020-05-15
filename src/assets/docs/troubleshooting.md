@@ -18,4 +18,4 @@ This could be due to an expired login token, or other possible issues.
 
 ## 3PG is not responding to messages
 This could be the result of your guild config being corrupt. 
-To fix this, go to `Dashboard -> Settings` and click `Reset`.
+To fix this, go to `Dashboard -> Settings` and click `Restore Defaults`.

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GuildService } from '../../services/guild.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-announce-module',
@@ -32,8 +33,9 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
   constructor(
     guildService: GuildService,
     route: ActivatedRoute,
+    userService: UserService,
     saveChanges: MatSnackBar) {
-    super(guildService, route, saveChanges);
+    super(guildService, route, userService, saveChanges);
   }
 
   async ngOnInit() {

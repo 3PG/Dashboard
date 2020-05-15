@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GuildService } from '../../services/guild.service';
 import { SaveChangesComponent } from '../save-changes/save-changes.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-settings-module',
@@ -18,8 +19,9 @@ export class SettingsModuleComponent extends ModuleConfig implements OnInit {
   constructor(
     guildService: GuildService,
     route: ActivatedRoute,
+    userService: UserService,
     saveChanges: MatSnackBar) {
-    super(guildService, route, saveChanges);
+    super(guildService, route, userService, saveChanges);
   }
 
   async ngOnInit() {
@@ -30,5 +32,9 @@ export class SettingsModuleComponent extends ModuleConfig implements OnInit {
     return new FormGroup({
       privateLeaderboard: new FormControl(settings.privateLeaderboard ?? false)
     });
+  }
+
+  async restoreDefaults() {
+    await this.guildService.restoreDefaults(this.guildId);
   }
 }
