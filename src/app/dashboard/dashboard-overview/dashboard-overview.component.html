@@ -3,12 +3,12 @@
         <h1 class="display-3 p-3">Hey, {{ user.username }}</h1>
         <hr>
         <h1>Welcome to the Alpha Dashboard!</h1>
-        <p>
+        <p class="text-muted">
             This is a pre-release of an upcoming 3PG update (<a href="/docs/alpha">More info</a>).<br>
             <a href="/docs/badges">Special rewards</a> will be given to those who help report bugs.
         </p>
         
-        <p>
+        <p class="text-muted">
             There are some bugs as this is an early release, and not all features have been fully manually tested.<br>
             Hopefully this dashboard gives you a much better experience than the last version.
         </p>
@@ -26,7 +26,9 @@
         <hr>
         
         <h4>Please report any bugs you find</h4>
-        <p class="text-muted">It takes less than 30 seconds, and allows a better experience for everyone.</p>
-        <button mat-button class="btn btn-success" color="success">Report Bug</button>
+        <p class="text-muted">It can take less than 30 seconds, and allows a better experience for everyone.</p>
+        <button mat-button class="btn btn-success" color="success">
+            <a [href]="discordURL" target="_blank" style="color: white;">Report Bug</a>
+        </button>
     </div>
 </dashboard-sidebar>

@@ -37,7 +37,9 @@ footer {
 }
 
 img, #musicPlayer, #leaderboard {
+    cursor: pointer;
     max-width: 85vw;
+    z-index: 1;
 }
 #musicPlayer, #leaderboard {
     border-radius: 5px;

@@ -8,8 +8,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./dashboard-overview.component.css']
 })
 export class DashboardComponent {
+  readonly discordURL = environment.discordURL;
+  readonly voteURLs = environment.voteURLs;
+  
   get user() { return this.userService.user; }
-  get voteURLs() { return environment.voteURLs; }
 
   constructor(private userService: UserService) {
     document.title = '3PG - Dashboard';

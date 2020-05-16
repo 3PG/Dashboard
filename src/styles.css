@@ -3,7 +3,8 @@
 @import '~highlight.js/styles/vs2015.css';
 @import '~chart.js/dist/Chart.min.css';
 @import '~@ctrl/ngx-emoji-mart/picker.css';
-/* @import 'assets/lib/font-awesome/css/all.min.css'; */
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css';
+
 
 html {
   scroll-behavior: smooth;
@@ -272,4 +273,14 @@ a.mention {
 .robot {
     max-width: 196px;
     margin-bottom: 5px;
+}
+
+/* media */
+
+/* <Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+    /* sidebar */
+    mat-sidenav {
+        width: 100vw !important;
+    }
 }

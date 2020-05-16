@@ -20,8 +20,7 @@ export class CommandsComponent implements OnInit {
   constructor(private service: CommandsService) {}
 
   async ngOnInit() {
-    if (this.service.commands.length <= 0)
-      await this.service.updateCommands();
+    await this.service.updateCommands();      
     this.commands = this.service.commands;
     
     this.dataSource = new MatTableDataSource(this.commands);

@@ -14,7 +14,7 @@
 
 ## 2.0.1a `16/05/20`
 
-![v2.0.1a Dashboard](assets/docs/img/dashboard-v2.0.0a.png)
+![v2.0.1a Dashboard](assets/docs/img/dashboard-v2.0.1a.png)
 
 **Add**
 - music: manager, API routes, docs, 3 more properties
@@ -23,8 +23,6 @@
   
 **Change/Fix**
 - dashboard singleton loading (much faster on slower connections)
-  
-**Remove**
 
 ---
 

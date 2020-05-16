@@ -93,10 +93,9 @@ mat-sidenav {
     }
 }
 
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.cdk-drag {
-  border-radius: 50%;
+.close {
+    cursor: pointer;
+    font-size: 42px;
+    color: white;
+    margin-right: -35px;
 }

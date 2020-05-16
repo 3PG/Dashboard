@@ -26,6 +26,9 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async ngOnInit() {
+    if (this.userService.savedUser?.premium)
+      this.timerIndices.push(2,3);
+
     await super.init();
 
     await this.updateSchedule();

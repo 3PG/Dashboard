@@ -70,9 +70,9 @@
     </section>
     
     <form class="d-flex justify-content-center" [action]="checkoutEndpoint" method="GET">
-        <button *ngIf="userService.user && userService.savedUser?.premium"
-            class="checkout my-3" color="success" mat-button disabled>You Already Have <pro-reminder></pro-reminder></button>
-        <button *ngIf="userService.user && !userService.savedUser?.premium" (click)="checkout()"
+        <button *ngIf="userService.user && userService.savedUser.premium"
+            class="checkout my-3" color="info" mat-button disabled>You've Already Maxed Out!</button>
+        <button *ngIf="userService.user && !userService.savedUser.premium" (click)="checkout()"
             class="checkout my-3" color="success" mat-button>Go <pro-reminder></pro-reminder></button>
         <button *ngIf="!userService.user" routerLink="/login"
             class="checkout my-3" color="success" mat-button>Login to Go <pro-reminder></pro-reminder></button>
