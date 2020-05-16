@@ -1,4 +1,5 @@
 <navbar></navbar>
+
 <header class="container">
     <div class="jumbotron">
         <img src="assets/img/3PGAvatarTransparent.svg" alt="3PG Discord Bot" class="float robot">
@@ -7,9 +8,64 @@
         <p>Announce, Auto-mod, Music, XP, Social, and more!</p>
         <p class="lead">
             <a class="btn btn-primary" routerLink="/invite">Add</a>
+            <a class="btn btn-success ml-2" href="#features">Features</a>
         </p>
     </div>
 </header>
+
+<section id="features" class="my-5">
+    <div class="container">
+        <div class="row text-light">
+            <div class="col-lg-6 col-md-12 order-1">
+                <img id="musicPlayer" class="responsive py-5 my-5" src="assets/img/home/music-player.gif">
+            </div>
+            <div class="col-lg-6 col-md-12 order-2 feature">
+                <h1>Play Music via Dashboard <i class="fa fa-music" aria-hidden="true"></i> </h1>
+                <p class="lead">Listen to music on Discord and control playback directly from your Dashboard, or with commands.</p>
+            </div>
+            
+            <div class="col-lg-6 col-md-12 order-lg-3 order-4 feature">
+                <h1>Earn Levels and Compete with Others <i class="fa fa-trophy" aria-hidden="true"></i></h1>
+                <p class="lead">Level up your Discord server, with 3PG's XP system! Compete with others; 3PG can make your server the best it can be!</p>
+            </div>
+            <div class="col-lg-6 col-md-12 order-lg-4 order-3">
+                <img class="responsive" src="assets/img/home/announce.png">
+            </div>
+
+            <div class="col-lg-6 col-md-12 order-5">
+                <img id="leaderboard" class="responsive" src="assets/img/home/leaderboard.png">
+            </div>
+            <div class="col-lg-6 col-md-12 order-6 feature">
+                <h1>Stay Notified of Important Events <i class="fa fa-bell" aria-hidden="true"></i></h1>
+                <p class="lead">Never miss an important event! With 3PG's announcements, choose from a wide range of events to log.</p>
+            </div>
+
+            <div class="col-lg-6 col-md-12 order-lg-7 order-8 feature">
+                <h1>Automate Tasks, Messages, and More! <i class="fa fa-code" aria-hidden="true"></i></h1>
+                <p class="lead">Automate any command, in any channel, whenever. With timers, you can schedule commands and messages.</p>
+            </div>
+            <div class="col-lg-6 col-md-12 order-lg-8 order-7">
+                <img class="responsive" src="assets/img/home/timers.png">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="reminder" class="container text-center">
+    <h2>What are you waiting for? 🤔</h2>
+    <a class="btn btn-primary my-2" routerLink="/invite">Level Up Your Servers</a>
+    <hr>    
+</section>
+
+<section id="botCards" class="m-3 d-flex justify-content-center">
+    <a class="pr-1" href="//discordbotlist.com/bots/525935335918665760">
+        <img width="350px" height="140px" src="//discordbotlist.com/bots/525935335918665760/widget?bg=482F5D" alt="3PG stats on Discord Bot List">
+    </a>
+    <a class="pl-1" href="https://top.gg/bot/525935335918665760">
+        <img width="350px" height="140px" src="https://top.gg/api/widget/525935335918665760.svg" alt="3PG">
+    </a>
+</section>
+
 <footer>
     <p routerLink="/docs/changelog"
         class="float-right">{{ version }}</p>

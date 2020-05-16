@@ -78,6 +78,7 @@ export class MusicService {
     await this.http.get(`${this.endpoint}/${id}/music/stop?key=${this.key}`).toPromise() as Promise<any>;
     this._paused = true;
     this._list = [];
+    this._current = 0;
   }
 
   async removeTrack(id: string, position: number) {

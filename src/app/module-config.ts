@@ -40,6 +40,8 @@ export abstract class ModuleConfig implements OnDestroy {
         const data = this.route.snapshot.data;
 
         this.hasPremium = this.userService.savedUser.premium;
+        
+        this.guild = this.guildService.guilds.find(g => g.id === this.guildId);
 
         this.roles = data.roles;
         this.textChannels = data.channels.filter(c => c.type === 'text');
@@ -47,7 +49,7 @@ export abstract class ModuleConfig implements OnDestroy {
         this.savedGuild = data.savedGuild;
         this.originalSavedGuild = JSON.parse(JSON.stringify(this.savedGuild));
         
-        await this.resetForm();    
+        await this.resetForm();
 
         this.valueChanges$ = this.form.valueChanges
             .subscribe(() => this.openSaveChanges()); 

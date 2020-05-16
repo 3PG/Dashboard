@@ -7,7 +7,7 @@
                 </div>
                 <hr>
             </div>
-            <div  *ngIf="guilds" class="guild-list" [@.disabled]="true">
+            <div *ngIf="guilds" class="guild-list" [@.disabled]="true">
                 <div *ngFor="let guild of guilds" [routerLink]="['/servers/' + guild.id]"
                     class="guild-icon ng-animate-disabled">
                     <img *ngIf="guild.iconURL"

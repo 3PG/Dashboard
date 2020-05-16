@@ -12,7 +12,7 @@
 
 ---
 
-## 2.0.1a `15/05/20`
+## 2.0.1a `16/05/20`
 
 ![v2.0.1a Dashboard](assets/docs/img/dashboard-v2.0.0a.png)
 
@@ -38,9 +38,10 @@
 - 3PG PRO -> keep 3PG alive
 - say, lock, unlock commands
 - reset guild config from dashboard
+- features preview
 
 **Change/Fix**
-- every line of code (apart from XP cards)
+- nearly every line of code
 - migrate auto mod features
 - warn panel -> replaces ban panel, Discord audit log is better for searching bans
 - rename XP module: XP -> Leveling
@@ -49,6 +50,8 @@
 - lots of impractical commands that were mostly unused
 - ban, kick, mute, unmute commands -> can mostly be done with Discord
 - ~99% of previous webapp bugs
+- features preview
+- global leaderboard
 
 ---
 

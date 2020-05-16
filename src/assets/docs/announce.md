@@ -33,6 +33,7 @@ Variable        | Description                           | Example       | Events
 `[INSTIGATOR]`    | User mention of the punisher        | <BotUser>       | WARN        
 `[MEMBER_COUNT]`  | Number of members in guild          | 420       | All
 `[MESSAGE]`       | Content of a message                | Hello Earth         | MESSAGE_DELETED
+`[MODULE]`       | The name of the module that was updated                | General         | CONFIG_UPDATE
 `[NEW_LEVEL]`     | The new level of a member           | 2      | LEVEL_UP
 `[NEW_VALUE]`     | The new value of the config         | { "prefix": "." }       | CONFIG_UPDATE
 `[OLD_LEVEL]`     | The old level of a member           | 1       | LEVEL_UP

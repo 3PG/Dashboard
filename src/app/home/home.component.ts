@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  version = 'Bot + Dashboard v2.0.0a';
+  version = environment.version;
 
   ngOnInit(): void {
     document.title = '3PG - Discord Bot';

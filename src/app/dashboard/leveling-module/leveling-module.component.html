@@ -42,20 +42,24 @@
             <p class="desc">Reward users with roles when leveling up</p>
             <div formArrayName="levelRoles" class="row">
                 <div *ngFor="let i of levelRoleIndices" class="col-lg-6 col-sm-12">
-                    <div [formGroupName]="i" class="rounded role d-flex justify-content-around">
-                        <mat-form-field appearance="outline">                                
-                            <mat-label>Level</mat-label>                            
-                            <input type="number" formControlName="level" matInput>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">                                
-                            <mat-label>Role</mat-label>
-                            <mat-select
-                                formControlName="role">
-                                <mat-option *ngFor="let role of roles" 
-                                    [value]="role.id"
-                                    [style.color]="role.hexColor || 'grey'">@{{ role.name }}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
+                    <div [formGroupName]="i" class="rounded role d-flex justify-content-around row">
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">                                
+                                <mat-label>Level</mat-label>                            
+                                <input type="number" formControlName="level" matInput>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">                                
+                                <mat-label>Role</mat-label>
+                                <mat-select
+                                    formControlName="role">
+                                    <mat-option *ngFor="let role of roles" 
+                                        [value]="role.id"
+                                        [style.color]="role.hexColor || 'grey'">@{{ role.name }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
                     </div>
                 </div>
             </div>

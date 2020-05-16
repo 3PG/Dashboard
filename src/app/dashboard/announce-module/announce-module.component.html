@@ -15,10 +15,10 @@
             <hr>
             <div formArrayName="events" class="row">
                 <div *ngFor="let event of events; index as i" class="col-lg-6 col-sm-12">
-                    <div [formGroupName]="i" class="rounded event">
+                    <div [formGroupName]="i" class="rounded event large shadow">
                         <input type="hidden" formControlName="event">
                         <span class="d-flex justify-content-between">
-                            <strong>{{ events[i] }}</strong>
+                            <strong>{{ events[i] | snakeToSentenceCase }}</strong>
                             <mat-slide-toggle formControlName="enabled"></mat-slide-toggle>
                         </span>
                         <hr>

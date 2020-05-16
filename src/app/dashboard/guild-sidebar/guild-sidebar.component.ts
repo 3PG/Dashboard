@@ -19,7 +19,9 @@ export class GuildSidebarComponent implements OnInit {
     private guildService: GuildService,
     private route: ActivatedRoute,
     private router: Router) {
-      document.title = '3PG - Dashboard';
+      const id = route.snapshot.paramMap.get('id');
+      const guild = this.guildService.guilds?.find(g => g.id === id);
+      document.title = `3PG - ${guild?.name ?? 'Dashboard'}`;
     }
 
   async ngOnInit() {

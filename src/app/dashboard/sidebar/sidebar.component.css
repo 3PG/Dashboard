@@ -46,7 +46,8 @@ button {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     background-color: var(--background-tertiary);
     float: left;
-    height: inherit;
+    
+    min-height: 110vh;
 }
 
 .options {
@@ -75,10 +76,20 @@ mat-sidenav {
     background-color: var(--tertiary);    
 }
 
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .guilds {
+        min-height: 105vh;
+    }
+}
+
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     .toggle {
         visibility: hidden;
+    }
+    .guilds {
+        min-height: 100% !important;
     }
 }
 

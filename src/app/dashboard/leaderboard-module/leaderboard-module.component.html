@@ -6,7 +6,7 @@
         <h1 class="display-3">{{ guild.name }}</h1>
         <hr>
     </div>
-    <div id="leaderboard">
+    <div id="leaderboard" class="rounded">
         <div *ngFor="let member of members"
             class="member">
             <span [class]="'rank-' + (members.indexOf(member) + 1)" 

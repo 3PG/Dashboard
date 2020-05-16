@@ -30,6 +30,8 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async ngOnInit() {
+    if (this.service.commands.length <= 0)
+      await this.service.updateCommands();
     this.commands = this.service.commands;
     
     await super.init();
