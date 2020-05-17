@@ -16,5 +16,6 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     await this.commandService.updateCommands();
     await this.userService.updateUser();
+    await this.userService.updateSavedUser();
   } 
 }

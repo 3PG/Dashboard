@@ -30,7 +30,7 @@ export class MessagePreviewComponent {
       hour: 'numeric',
       hour12: true,
       minute: 'numeric'
-    });
+    }).replace(/-/g, '/');
 
     const wasToday = new Date().getDay() / this.createdAt.getDay() === 1;
     const wasYesterday = new Date().getDay() % this.createdAt.getDay() === 1;
