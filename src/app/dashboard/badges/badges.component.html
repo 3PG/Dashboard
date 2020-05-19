@@ -10,6 +10,7 @@
                 <div class="badge"
                     [ngClass]="{
                         'active': badge.active,
+                        'locked': !badge.active,
                         'tier-1': badge.tier === 1,
                         'tier-2': badge.tier === 2,
                         'tier-3': badge.tier === 3

@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GuildSidebarComponent } from './guild-sidebar.component';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from '../../app-routing.module';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('GuildSidebarComponent', () => {
   let component: GuildSidebarComponent;
@@ -11,7 +11,8 @@ describe('GuildSidebarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ GuildSidebarComponent ],
-      imports: [ HttpClientModule, AppRoutingModule ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

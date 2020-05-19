@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BadgesComponent } from './badges.component';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('BadgesComponent', () => {
   let component: BadgesComponent;
@@ -8,7 +10,9 @@ describe('BadgesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BadgesComponent ]
+      declarations: [ BadgesComponent ],
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

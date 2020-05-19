@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from '../../app-routing.module';
 import { environment } from 'src/environments/environment';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('GeneralModuleComponent', () => {
   let component: GeneralModuleComponent;
@@ -13,11 +15,8 @@ describe('GeneralModuleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ GeneralModuleComponent ],
-      imports: [
-        HttpClientModule,
-        AppRoutingModule,
-        MatSnackBarModule
-      ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -25,7 +24,6 @@ describe('GeneralModuleComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GeneralModuleComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

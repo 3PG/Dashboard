@@ -38,7 +38,6 @@ export abstract class ModuleConfig implements OnDestroy {
      */
     async init() {
         const data = this.route.snapshot.data;
-
         this.hasPremium = this.userService.savedUser.premium;
         
         this.guild = this.guildService.guilds.find(g => g.id === this.guildId);
@@ -68,7 +67,7 @@ export abstract class ModuleConfig implements OnDestroy {
      */
     abstract buildForm(savedGuild: any): FormGroup | Promise<FormGroup>;
     
-    private openSaveChanges() {
+    private openSaveChanges() {        
         const snackBarRef = this.saveChanges._openedSnackBarRef;
         if (!this.form.valid || snackBarRef) return;
 

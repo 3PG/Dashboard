@@ -4,6 +4,8 @@ import { XPCardComponent } from './xp-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
 import { CustomizeXPCardComponent } from '../customize-xp-card/customize-xp-card.component';
+import { AppModule } from '../app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('XPCardComponent', () => {
   let component: XPCardComponent;
@@ -12,7 +14,8 @@ describe('XPCardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ XPCardComponent ],
-      imports: [ HttpClientModule ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

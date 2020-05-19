@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MessagesWidgetComponent } from './messages-widget.component';
+import { AppModule } from '../app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('MessagesWidgetComponent', () => {
   let component: MessagesWidgetComponent;
@@ -8,7 +10,9 @@ describe('MessagesWidgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessagesWidgetComponent ]
+      declarations: [ MessagesWidgetComponent ],
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WarningsModuleComponent } from './warnings-module.component';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('WarningsModuleComponent', () => {
   let component: WarningsModuleComponent;
@@ -8,7 +10,9 @@ describe('WarningsModuleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WarningsModuleComponent ]
+      declarations: [ WarningsModuleComponent ],
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -16,7 +20,6 @@ describe('WarningsModuleComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(WarningsModuleComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

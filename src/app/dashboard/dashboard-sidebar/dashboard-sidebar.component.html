@@ -13,6 +13,16 @@
                     class="nav-item nav-link">
                     <i class="fa fa-star" aria-hidden="true"></i> XP Card
                 </a>
+                <form #f="ngForm" [formGroup]="form">
+                    <hr>
+                    <mat-form-field appearance="outline" class="m-2">
+                        <mat-label>Theme</mat-label>
+                        <mat-select formControlName="theme" #themeSelect>
+                            <mat-option value="CHOCOLATE" selected>3PG Chocolate (Default)</mat-option>
+                            <mat-option value="DISCORD">3PG Discord</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form>
             </div>
         </div>
     <div id="content">

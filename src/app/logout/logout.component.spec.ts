@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LogoutComponent } from './logout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../app-routing.module';
+import { AppModule } from '../app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -11,7 +13,8 @@ describe('LogoutComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LogoutComponent ],
-      imports: [ HttpClientModule, AppRoutingModule ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

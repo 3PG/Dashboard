@@ -4,6 +4,7 @@ import { DocsComponent } from './docs.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AppModule } from '../app.module';
 
 describe('DocsComponent', () => {
   let component: DocsComponent;
@@ -13,9 +14,7 @@ describe('DocsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DocsComponent ],
-      imports: [
-        AppRoutingModule
-      ],
+      imports: [ AppModule ],
       schemas: [ NO_ERRORS_SCHEMA ],
       providers: [
         { value: ActivatedRoute, useValue: activatedRouteStub }

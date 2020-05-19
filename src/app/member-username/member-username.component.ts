@@ -6,6 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./member-username.component.css']
 })
 export class MemberUsernameComponent {
-  @Input() member;
+  @Input() member = {
+    displayAvatarURL: 'TODO: add default avatar',
+    username: 'unknown',
+    tag: 'unknown#0000'
+  };
   @Input() withAvatar = true;
 }

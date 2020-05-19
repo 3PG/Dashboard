@@ -2,13 +2,16 @@ import { TestBed } from '@angular/core/testing';
 
 import { GuildAuthGuard } from './guild-auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { AppModule } from '../app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('GuildAuthGuard', () => {
   let guard: GuildAuthGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     });
     guard = TestBed.inject(GuildAuthGuard);
   });

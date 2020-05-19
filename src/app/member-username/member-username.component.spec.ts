@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MemberUsernameComponent } from './member-username.component';
+import { AppModule } from '../app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('MemberUsernameComponent', () => {
   let component: MemberUsernameComponent;
@@ -8,7 +10,9 @@ describe('MemberUsernameComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MemberUsernameComponent ]
+      declarations: [ MemberUsernameComponent ],
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -16,7 +20,6 @@ describe('MemberUsernameComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MemberUsernameComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

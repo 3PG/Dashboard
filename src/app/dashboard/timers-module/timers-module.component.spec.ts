@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TimersModuleComponent } from './timers-module.component';
 import { By } from '@angular/platform-browser';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('TimersModuleComponent', () => {
   let component: TimersModuleComponent;
@@ -9,7 +11,9 @@ describe('TimersModuleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimersModuleComponent ]
+      declarations: [ TimersModuleComponent ],
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AppRoutingModule } from '../../app-routing.module';
 import { ReactiveFormsModule, FormArray } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AnnounceModuleComponent', () => {
   let component: AnnounceModuleComponent;
@@ -16,12 +18,8 @@ describe('AnnounceModuleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AnnounceModuleComponent ],
-      imports: [ 
-        HttpClientModule,
-        MatSnackBarModule, 
-        AppRoutingModule,
-        ReactiveFormsModule
-      ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

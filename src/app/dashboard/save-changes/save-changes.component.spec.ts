@@ -4,6 +4,8 @@ import { SaveChangesComponent } from './save-changes.component';
 import { By } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('SaveChangesComponent', () => {
   let component: SaveChangesComponent;
@@ -12,7 +14,8 @@ describe('SaveChangesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SaveChangesComponent ],
-      providers: [ MatSnackBar, Overlay ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

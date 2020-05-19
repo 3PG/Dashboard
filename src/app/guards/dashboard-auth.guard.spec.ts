@@ -2,13 +2,16 @@ import { TestBed } from '@angular/core/testing';
 
 import { DashboardAuthGuard } from './dashboard-auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { AppModule } from '../app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('DashboardAuthGuard', () => {
   let guard: DashboardAuthGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientModule ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     });
   });
 

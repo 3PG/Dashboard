@@ -5,7 +5,7 @@
     width: 64px;
     height: 64px;
 
-    background-color: var(--background-primary);
+    background-color: var(--background-secondary);
     transition: all .35s;
 
     cursor: pointer;

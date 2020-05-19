@@ -1,12 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 import { SettingsModuleComponent } from './settings-module.component';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from '../../app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { By } from '@angular/platform-browser';
+import { AppModule } from 'src/app/app.module';
 
 describe('SettingsModuleComponent', () => {
   let component: SettingsModuleComponent;
@@ -15,14 +12,8 @@ describe('SettingsModuleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SettingsModuleComponent ],
-      imports: [ 
-        HttpClientModule, 
-        AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatSnackBarModule,
-        BrowserAnimationsModule
-      ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -37,12 +28,34 @@ describe('SettingsModuleComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('click restore defaults button, calls restore defaults', () => {
+  it('click restore defaults button, calls restoreDefaults()', () => {
     const spy = spyOn(component, 'restoreDefaults');
     const el = fixture.debugElement.query(By.css('#restoreDefaults'))?.nativeElement;
 
     el.click();
 
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('buildForm() value equals module value', () => {
+    const settings = {
+      privateLeaderboard: true
+    };
+
+    const result = component.buildForm({ settings });
+
+    expect(result).toBe(result);
+  });
+
+  it('reset() value equals module value', async() => {
+    const settings = {
+      privateLeaderboard: true
+    };
+    component.originalSavedGuild = { settings };
+    component.savedGuild = { settings };
+
+    const result = await component.reset();
+
+    expect(result).toBe(result);
   });
 });

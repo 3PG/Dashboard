@@ -44,7 +44,7 @@ export class DocsComponent implements OnInit {
       document.getElementById('doc').innerHTML = 
         this.replaceDocVariables(
           marked(this.customMD(md), { breaks: true }));
-      document.querySelector('h1').classList.add('display-3');
+      document.querySelector('h1').classList.add('display-4');
 
       if (window.location.hash)
         document.querySelector(window.location.hash)?.scrollIntoView();

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -57,10 +57,27 @@ import { SnakeToSentenceCasePipe } from './pipes/snake-to-sentence-case.pipe';
 import { EmojiDirective } from './emoji.directive';
 import { TruncatedPipe } from './truncated.pipe';
 import { DurationStringPipe } from './duration-string.pipe';
+import { environment } from 'src/environments/environment';
 
 export class AlertErrorHandler implements ErrorHandler {
-  handleError(error: any) {
-    alert(error);
+  
+  async handleError(error: Error | any) {
+    try {
+      const key = localStorage.getItem('key');
+      await fetch(`${environment.endpoint}/error?key=${key}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: error.message
+        })
+      });
+    } catch (e) {console.log(e)} finally {
+      const msg = error?.rejection?.message;
+      if (msg) alert(msg);
+      console.log(error);
+    }
   }
 }
 

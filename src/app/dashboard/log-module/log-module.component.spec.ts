@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogModuleComponent } from './log-module.component';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from '../../app-routing.module';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('LogModuleComponent', () => {
   let component: LogModuleComponent;
@@ -11,7 +11,8 @@ describe('LogModuleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LogModuleComponent ],
-      imports: [ HttpClientModule, AppRoutingModule ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -19,7 +20,6 @@ describe('LogModuleComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LogModuleComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

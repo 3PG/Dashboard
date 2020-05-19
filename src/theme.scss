@@ -6,6 +6,7 @@
 @include mat-core();
 
 :root {
+    --heading: #FFFFFF;
     --font: #FFFFFF;
     --pro: #482F5D;
 
@@ -23,6 +24,17 @@
     --gold: #D4AF37;
     --silver: silver;
     --bronze: #CD7F32;
+}
+
+:root[theme=DISCORD] {
+    --font: #99AAB5;
+
+    --danger: darkred;
+    --muted: grey;
+    
+    --background-primary: #36393F;
+    --background-secondary: rgb(37, 38, 42);
+    --background-tertiary: #202225;
 }
 
 $primary-palette: (
@@ -100,6 +112,14 @@ $theme: mat-dark-theme($primary, $secondary, $warn);
 @include angular-material-theme($theme);
 
 // css styles
+
+// global
+
+h1,h2,h3,h4,h5 {
+    color: var(--heading) !important;
+}
+
+// other
 
 .mat-success {
     background-color: green;

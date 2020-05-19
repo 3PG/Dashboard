@@ -1,8 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 import { SidebarComponent } from './sidebar.component';
-import { By } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { AppModule } from 'src/app/app.module';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -11,7 +12,8 @@ describe('SidebarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SidebarComponent ],
-      imports: [ HttpClientModule ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -19,7 +21,6 @@ describe('SidebarComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SidebarComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -28,7 +29,7 @@ describe('SidebarComponent', () => {
 
   it('toggle button click, should call toggle', () => {
     const spy = spyOn(component, 'toggle');
-    let de = fixture.debugElement.query(By.css('button'));
+    let de = fixture.debugElement.query(By.css('.toggle'));
     
     de.nativeElement.click();
     

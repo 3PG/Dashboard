@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { LeaderboardModuleComponent } from './leaderboard-module.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../../app-routing.module';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('LeaderboardModuleComponent', () => {
   let component: LeaderboardModuleComponent;
@@ -12,7 +14,8 @@ describe('LeaderboardModuleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LeaderboardModuleComponent ],
-      imports: [ HttpClientModule, AppRoutingModule ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

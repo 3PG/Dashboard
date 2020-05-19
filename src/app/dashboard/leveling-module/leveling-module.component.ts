@@ -26,17 +26,18 @@ export class LevelingModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async ngOnInit() {
-    await super.init();
+    await super.init();    
   }
   
   buildForm({ leveling }: any) {
     const formGroup = new FormGroup({
       ignoredRoles: new FormControl(leveling.ignoredRoles ?? []),
       levelRoles: new FormArray([]),
-      maxMessagesPerMinute: new FormControl(leveling.maxMessagesPerMinute ?? 50,
+      maxMessagesPerMinute: new FormControl(leveling.maxMessagesPerMinute ?? 3,
         [ Validators.min(1), Validators.max(30) ]),
-      xpPerMessage: new FormControl(leveling.xpPerMessage ?? 50)
-    }); 
+      xpPerMessage: new FormControl(leveling.xpPerMessage ?? 50,
+        [ Validators.min(0), Validators.max(10000) ])
+    });
     this.buildLevelRolesFormArray(formGroup, leveling);
     return formGroup;
   }
@@ -46,7 +47,7 @@ export class LevelingModuleComponent extends ModuleConfig implements OnInit {
       (formGroup.get('levelRoles') as FormArray)
         .setControl(i,
           (new FormGroup({
-          level: new FormControl(leveling.levelRoles[i]?.level ?? 0, Validators.min(1)),
+          level: new FormControl(leveling.levelRoles[i]?.level ?? 0, Validators.min(0)),
           role: new FormControl(leveling.levelRoles[i]?.role ?? '')
         })));
   }

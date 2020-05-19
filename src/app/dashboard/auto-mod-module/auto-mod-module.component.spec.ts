@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../../app-routing.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MaterialModule } from '../../material-module';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AutoModModuleComponent', () => {
   let component: AutoModModuleComponent;
@@ -13,11 +15,8 @@ describe('AutoModModuleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AutoModModuleComponent ],
-      imports: [
-        HttpClientModule,
-        AppRoutingModule,
-        MaterialModule
-      ]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

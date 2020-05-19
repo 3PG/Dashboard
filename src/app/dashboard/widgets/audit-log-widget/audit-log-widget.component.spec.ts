@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuditLogWidgetComponent } from './audit-log-widget.component';
+import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AuditLogWidgetComponent', () => {
   let component: AuditLogWidgetComponent;
@@ -8,7 +10,9 @@ describe('AuditLogWidgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuditLogWidgetComponent ]
+      declarations: [ AuditLogWidgetComponent ],
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -16,7 +20,6 @@ describe('AuditLogWidgetComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AuditLogWidgetComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

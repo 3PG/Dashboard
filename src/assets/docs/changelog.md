@@ -12,6 +12,20 @@
 
 ---
 
+## 2.0.2b `Upcoming`
+
+![v2.0.2b Dashboard](assets/docs/img/dashboard-v2.0.1a.png)
+
+**Add**
+- new theme -> 3PG Discord
+
+**Change/Fix**
+- adding guilds via dashboard did not update them
+- users were not updating properly on dashboard load
+- better home page scrolling
+
+---
+
 ## 2.0.1a `16/05/20`
 
 ![v2.0.1a Dashboard](assets/docs/img/dashboard-v2.0.1a.png)

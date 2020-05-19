@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommandsWidgetComponent } from './commands-widget.component';
 import { AppModule } from 'src/app/app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('CommandsWidgetComponent', () => {
   let component: CommandsWidgetComponent;
@@ -10,7 +11,8 @@ describe('CommandsWidgetComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CommandsWidgetComponent ],
-      imports: [AppModule]
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -26,9 +28,9 @@ describe('CommandsWidgetComponent', () => {
 
   it('build labels returns last 7 days as string date', () => {
     const result = component.buildLabels()[0];
-    const date = new Date();
+    const date = new Date(2000, 0, 0)
 
-    const expected = `${date.getDate()}/${(date.getMonth() + 1)}`;
+    const expected = `31/12`;
     expect(result).toBe(expected);
   });
 });

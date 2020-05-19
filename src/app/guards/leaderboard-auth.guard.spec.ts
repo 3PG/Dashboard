@@ -2,6 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { LeaderboardAuthGuard } from './leaderboard-auth.guard';
 import { ActivatedRouteSnapshot } from '@angular/router';
+import { AppModule } from '../app.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('LeaderboardAuthGuard', () => {
   let guard: LeaderboardAuthGuard;
@@ -10,7 +12,10 @@ describe('LeaderboardAuthGuard', () => {
   let members: any;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [ AppModule ],
+      schemas: [ NO_ERRORS_SCHEMA ]
+    });
 
     const fakeGuildService = new class {
       getSavedGuild() {
