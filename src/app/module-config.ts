@@ -51,7 +51,7 @@ export abstract class ModuleConfig implements OnDestroy {
         await this.resetForm();
 
         this.valueChanges$ = this.form.valueChanges
-            .subscribe(() => this.openSaveChanges()); 
+            .subscribe(() => this.openSaveChanges());         
     }
 
     private async resetForm() {     

@@ -22,7 +22,9 @@ export class GuildAuthGuard implements CanActivate {
         await this.guildService.updateGuilds();
 
       const guildId = next.paramMap.get('id');
-      next.data = (guildId == this.guildService.singleton?.guildId) 
+      console.log(this.guildService.singleton);
+      
+      this.guildService.singleton = next.data = (guildId === this.guildService.singleton?.guildId) 
         ? this.guildService.singleton : {
           guildId,
           channels: await this.guildService.getChannels(guildId),

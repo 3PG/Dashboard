@@ -28,11 +28,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatButtonToggleModule,
     MatChipsModule,
     MatCheckboxModule,
-    MatDatepickerModule,
     MatInputModule,
     MatIconModule,
     MatTableModule,
-    MatNativeDateModule,
     MatPaginatorModule,
     MatRippleModule,
     MatSortModule,
@@ -41,8 +39,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSlideToggleModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatTooltipModule,
-    ScrollingModule
+    MatTooltipModule
   ],
   providers: [
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
