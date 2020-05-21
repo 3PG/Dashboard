@@ -8,7 +8,7 @@ import { GuildService } from '../../services/guild.service';
   styleUrls: ['./guild.component.css']
 })
 export class GuildComponent implements OnInit {
-  commands: any[]
+  commands: any[];
   botNeedsPerms = false;
 
   get guild() {

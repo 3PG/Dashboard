@@ -24,6 +24,7 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     EventType.MemberJoin,
     EventType.MemberLeave,
     EventType.MessageDeleted,
+    EventType.Mute,
     EventType.Unban,
     EventType.Warn
   ];
@@ -50,7 +51,7 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     });
     for (let i = 0; i < this.events.length; i++) {
       const event = this.events[i];
-      const config = announce.events[i]; 
+      const config = announce.events.find(e => e.event === event); 
 
       (formGroup.get('events') as FormArray).push(new FormGroup({
         event: new FormControl(event),
@@ -84,14 +85,15 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
 }
 
 export enum EventType {
-  Ban = "BAN", 
-  ConfigUpdate = "CONFIG_UPDATE",
-  LevelUp = "LEVEL_UP",
-  MessageDeleted = "MESSAGE_DELETED",
-  MemberJoin = "MEMBER_JOIN",
-  MemberLeave = "MEMBER_LEAVE",
-  Unban = "UNBAN", 
-  Warn ="WARN"
+  Ban = 'BAN', 
+  ConfigUpdate = 'CONFIG_UPDATE',
+  LevelUp = 'LEVEL_UP',
+  MessageDeleted = 'MESSAGE_DELETED',
+  MemberJoin = 'MEMBER_JOIN',
+  MemberLeave = 'MEMBER_LEAVE',
+  Mute = 'MUTE',
+  Unban = 'UNBAN', 
+  Warn ='WARN'
 }
 
 export interface AnnounceEvent {

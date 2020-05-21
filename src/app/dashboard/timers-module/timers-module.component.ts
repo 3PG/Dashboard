@@ -70,6 +70,16 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
     await this.updateSchedule();
   }
 
+  filterFormValue() {
+    const { commandTimers, messageTimers } = this.form.value;
+    for (let i = 0; i < commandTimers.length; i++)
+      if (!commandTimers[i].enabled)
+        commandTimers.splice(i, 1);
+    for (let i = 0; i < messageTimers.length; i++)
+      if (!messageTimers[i].enabled)
+        messageTimers.splice(i, 1);
+  }
+
   async updateSchedule() {
     this.schedule = await this.guildService.getTimerSchedule(this.guildId);
   }
@@ -80,8 +90,5 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
 
   getChannel(id: string) {
     return this.textChannels.find(c => c.id === id) || { name: '[UNKNOWN_CHANNEL]' };
-  }
-
-  getTimerNumber(task: any) {
   }
 }

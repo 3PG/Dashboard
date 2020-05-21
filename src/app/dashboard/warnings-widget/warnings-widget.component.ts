@@ -33,17 +33,19 @@ export class WarningsWidgetComponent implements OnInit {
 
   constructor(
     private guildService: GuildService,
-    private activatedRoute: ActivatedRoute) {}
+    private route: ActivatedRoute) {}
 
   async ngOnInit() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.route.paramMap.subscribe(async(val) => {
+      const id = val.get('id');
 
-    this.warnings = await this.guildService.getWarnings(id);
-
-    this.barChartLabels = this.buildLabels();
-    this.barChartData = this.buildDataSets();
-    
-    this.chartReady = true;
+      this.warnings = await this.guildService.getWarnings(id);
+  
+      this.barChartLabels = this.buildLabels();
+      this.barChartData = this.buildDataSets();
+      
+      this.chartReady = true;
+    });
   }
 
   buildLabels() {

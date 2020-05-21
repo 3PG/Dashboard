@@ -13,14 +13,15 @@ These types combine both Discord events and 3PG events.
 
 Event               | Description
 :-------------------|:----------------------------
-BAN                 | User is banned on Discord
-CONFIG_UPDATE        | Bot config is changed
-LEVEL_UP             | User reaches a new XP level
-MEMBER_JOIN          | User joins the guild
-MEMBER_LEAVE         | User leaves the guild
-MESSAGE_DELETED      | User message is deleted
-UNBAN               | User is unbanned on Discord
-WARN                | User is warned with the warn command
+Ban                 | User is banned on Discord
+Config Update        | Bot config is changed
+Level Up             | User reaches a new XP level
+Member Join          | User joins the guild
+Member Leave         | User leaves the guild
+Message Deleted      | User message is deleted
+Unban               | User is unbanned on Discord
+Warn                | User is warned with the `warn` command
+Mute                | User is muted with the `mute` command
 
 ---
 

@@ -63,7 +63,7 @@ export class DocsComponent implements OnInit {
 
   customMD(content: string) {
     return content
-      .replace(/\[!\] (.*)/gm, '<div class="alert alert-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> $1</div>')
+      .replace(/\[!\] (.*)/gm, '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> $1</div>')
   }
 
   setAnchorReferences() {

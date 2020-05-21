@@ -117,7 +117,7 @@ h3 code {
 }
 
 .desc {
-    color: var(--secondary); 
+    color: var(--muted); 
 }
 
 .mat-snack-bar-container {
@@ -175,6 +175,10 @@ mat-paginator {
 
 #doc {
     margin-bottom: 50px;
+}
+
+#doc .alert-danger {
+    background-color: transparent !important;
 }
 
 /* sidebar */

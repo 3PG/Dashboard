@@ -10,4 +10,6 @@ a {
 img {
     padding: 0;
     background: var(--background-tertiary);
+    
+    width: 128px !important;
 }

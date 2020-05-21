@@ -58,6 +58,7 @@ import { EmojiDirective } from './emoji.directive';
 import { TruncatedPipe } from './truncated.pipe';
 import { DurationStringPipe } from './duration-string.pipe';
 import { environment } from 'src/environments/environment';
+import { CratesComponent } from './crates/crates.component';
 
 export class AlertErrorHandler implements ErrorHandler {
   
@@ -132,7 +133,8 @@ export class AlertErrorHandler implements ErrorHandler {
     SnakeToSentenceCasePipe,
     EmojiDirective,
     TruncatedPipe,
-    DurationStringPipe
+    DurationStringPipe,
+    CratesComponent
   ],
   imports: [
     AppRoutingModule,

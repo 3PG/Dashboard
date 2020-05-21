@@ -29,7 +29,7 @@ describe('SidebarComponent', () => {
 
   it('toggle button click, should call toggle', () => {
     const spy = spyOn(component, 'toggle');
-    let de = fixture.debugElement.query(By.css('.toggle'));
+    let de = fixture.debugElement.query(By.css('.open'));
     
     de.nativeElement.click();
     

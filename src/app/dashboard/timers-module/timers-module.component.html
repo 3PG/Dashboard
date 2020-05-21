@@ -1,7 +1,7 @@
 <guild-sidebar [waitFor]="savedGuild">
     <div *ngIf="form" class="container">
         <form #f="ngForm" [formGroup]="form">
-            <div class="jumbotron">
+            <div>
                 <div class="d-flex justify-content-between">
                     <h1 routerLink="/docs/timers"
                         class="display-3">Timers</h1>
@@ -15,7 +15,7 @@
             <div formArrayName="commandTimers" class="row">
                 <div class="col-lg-6 col-sm-12" *ngFor="let i of timerIndices">
                     <div class="rounded timer" [formGroupName]="i">
-                        <div class="header">
+                        <div class="header color-heading">
                             <strong>Command Timer #{{ i + 1 }}</strong>
                             <div class="float-right">
                                 <mat-slide-toggle formControlName="enabled"></mat-slide-toggle>
@@ -30,7 +30,8 @@
                         <mat-form-field appearance="outline" class="p-2">
                             <mat-label>Channel</mat-label>
                             <mat-select formControlName="channel">
-                                <mat-option *ngFor="let channel of textChannels" 
+                                <mat-option
+                                    *ngFor="let channel of textChannels"
                                     [value]="channel.id">#{{ channel.name }}</mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -54,7 +55,7 @@
             <div formArrayName="messageTimers" class="row">
                 <div class="col-lg-6 col-sm-12" *ngFor="let i of timerIndices">
                     <div class="rounded timer" [formGroupName]="i">
-                        <div class="header">
+                        <div class="header color-heading">
                             <strong>Message Timer #{{ i + 1 }}</strong>
                             <div class="float-right">
                                 <mat-slide-toggle formControlName="enabled"></mat-slide-toggle>

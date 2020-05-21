@@ -12,8 +12,7 @@ export class GuildAuthGuard implements CanActivate {
     private userService: UserService) {}
 
   async canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot) {
+    next: ActivatedRouteSnapshot) {
       if (!this.userService.user)
         await this.userService.updateUser();
       if (!this.userService.savedUser)
@@ -21,16 +20,15 @@ export class GuildAuthGuard implements CanActivate {
       if (this.guildService.guilds.length <= 0)
         await this.guildService.updateGuilds();
 
-      const guildId = next.paramMap.get('id');
-      console.log(this.guildService.singleton);
-      
-      this.guildService.singleton = next.data = (guildId === this.guildService.singleton?.guildId) 
-        ? this.guildService.singleton : {
-          guildId,
-          channels: await this.guildService.getChannels(guildId),
-          roles: await this.guildService.getRoles(guildId),
-          savedGuild: await this.guildService.getSavedGuild(guildId)
-        };
+      const guildId = next.paramMap.get('id');                
+      this.guildService.singleton = next.data =
+        (guildId === this.guildService.singleton?.guildId) 
+          ? this.guildService.singleton : {
+            guildId,
+            channels: await this.guildService.getChannels(guildId),
+            roles: await this.guildService.getRoles(guildId),
+            savedGuild: await this.guildService.getSavedGuild(guildId)
+          };
       return this.guildService.guilds?.some(g => g.id === guildId);
   }  
 }

@@ -38,4 +38,29 @@ describe('TimersModuleComponent', () => {
 
     expect(spy).toHaveBeenCalled();
   });
+
+  it('filterFormValue removes disabled events', () => {
+    component.form = component.buildForm({ timers: {
+      commandTimers: [{
+        enabled: false,
+        interval: '01:00',
+        from: new Date(),
+        command: '',
+        channel: ''
+      }],
+      messageTimers: [{
+        enabled: false,
+        interval: '01:00',
+        from: new Date(),
+        message: '',
+        channel: ''
+      }],
+    }});
+
+    component.filterFormValue();
+
+    const result = component.form.value.commandTimers.length + component.form.value.messageTimers.length;
+
+    expect(result).toBe(0);
+  })
 });

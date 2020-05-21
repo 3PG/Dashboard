@@ -33,18 +33,20 @@ export class MessagesWidgetComponent implements OnInit {
 
   constructor(
     private guildService: GuildService,
-    private activatedRoute: ActivatedRoute) {}
+    private route: ActivatedRoute) {}
 
   async ngOnInit() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-
-    const log = await this.guildService.getSavedLog(id);
-    this.messages = log.messages;
-
-    this.barChartLabels = this.buildLabels();
-    this.barChartData = this.buildDataSets();
-    
-    this.chartReady = true;
+    this.route.paramMap.subscribe(async(val) => {
+      const id = val.get('id');
+      
+      const log = await this.guildService.getSavedLog(id);
+      this.messages = log.messages;
+  
+      this.barChartLabels = this.buildLabels();
+      this.barChartData = this.buildDataSets();
+      
+      this.chartReady = true;
+    });
   }
 
   buildLabels() {

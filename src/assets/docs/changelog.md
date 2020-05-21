@@ -18,11 +18,17 @@
 
 **Add**
 - new theme -> 3PG Discord
+- announce -> user mute event
 
 **Change/Fix**
 - adding guilds via dashboard did not update them
 - users were not updating properly on dashboard load
 - better home page scrolling
+- timers -> disabled timers no longer being saved
+- xp card colours -> primary and tertiary colour typo
+- dashboard -> guild data caching: faster dashboard loading (especially on slow connections)
+- dashboard -> events -> fix ban/level-up confusion
+- dashboard -> fixed widget data not updating on guild navigation
 
 ---
 

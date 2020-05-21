@@ -64,7 +64,7 @@ export class GuildService {
     return this.http.get(`${this.endpoint}/${id}/config?key=${this.key}`).toPromise();
   }
 
-  getSavedLog(id: string): Promise<any> {
+  getSavedLog(id: string): Promise<any> {        
     return this.http.get(`${this.endpoint}/${id}/log?key=${this.key}`).toPromise();
   }
 

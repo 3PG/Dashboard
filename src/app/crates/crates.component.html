@@ -1,0 +1,25 @@
+<dashboard-sidebar>
+    <section class="container">
+        <h2 class="display-3">My Crates</h2>
+        <hr>
+        <div class="rounded preview row">
+            <div *ngFor="let item of preview; index as i"
+                class="col-lg-3 col-sm-4 d-flex justify-content-center">
+                <div class="reward d-flex justify-content-center"
+                    [ngClass]="{
+                        bronze: i > 1 && i <= 3,
+                        silver: i > 3 && i <= 5,
+                        gold: i > 5 && i <= 7
+                    }">
+                    <img [src]="item.url"
+                        [matTooltip]="item.name">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngFor="let crate of crates"
+                class="rounded crate col-lg-3 col-sm-4">
+            <span>wee</span></div>
+        </div>
+    </section>
+</dashboard-sidebar>

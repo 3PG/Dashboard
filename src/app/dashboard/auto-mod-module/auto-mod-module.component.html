@@ -1,7 +1,7 @@
 <guild-sidebar [waitFor]="savedGuild">
     <div *ngIf="form" class="container">
         <form #f="ngForm" [formGroup]="form">
-            <div class="jumbotron">
+            <div>
                 <div class="d-flex justify-content-between">
                     <h1 routerLink="/docs/auto-mod"
                         class="display-3">Auto-mod</h1>
@@ -20,7 +20,7 @@
                         <mat-select multiple
                             formControlName="filters">
                             <mat-option *ngFor="let filter of filters" 
-                                [value]="filter">{{ filter }}</mat-option>
+                                [value]="filter">{{ filter | snakeToSentenceCase }}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>

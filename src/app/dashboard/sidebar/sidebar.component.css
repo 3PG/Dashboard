@@ -28,7 +28,7 @@
 }
 
 .guild-icon img {
-    max-width: 64px;
+    width: 64px;
     border-radius: 50%;
 
     transition: all .35s;
@@ -73,7 +73,7 @@ mat-sidenav {
 }
 
 .invite:hover {
-    background-color: var(--tertiary);    
+    background-color: var(--secondary);    
 }
 
 /* Small devices (landscape phones, 576px and up) */

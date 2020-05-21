@@ -43,10 +43,10 @@ export class AutoModModuleComponent extends ModuleConfig implements OnInit {
 }
 
 export enum MessageFilter {
-  Emoji = "EMOJI", 
-  Links = "LINKS",
-  MassCaps = "MASS_CAPS",
-  MassMention = "MASS_MENTION",
-  Words = "WORDS",
-  Zalgo = "ZALGO"
+  Emoji = 'EMOJI', 
+  Links = 'LINKS',
+  MassCaps = 'MASS_CAPS',
+  MassMention = 'MASS_MENTION',
+  Words = 'WORDS',
+  Zalgo = 'ZALGO'
 }

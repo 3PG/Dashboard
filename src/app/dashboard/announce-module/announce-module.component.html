@@ -1,7 +1,7 @@
 <guild-sidebar [waitFor]="savedGuild && form">
     <div *ngIf="form" class="container">
         <form #f="ngForm" [formGroup]="form">
-            <div class="jumbotron">
+            <div>
                 <div class="d-flex justify-content-between">
                     <h1 routerLink="/docs/announce"
                         class="display-3">Announce</h1>
@@ -12,13 +12,12 @@
             </div>
             <h3>Events</h3>
             <p class="desc">Send messages to a channel when an event is triggered</p>
-            <hr>
-            <div formArrayName="events" class="row">
+            <div formArrayName="events" class="row d-flex justify-content-center">
                 <div *ngFor="let event of events; index as i" class="col-lg-6 col-sm-12">
                     <div [formGroupName]="i" class="rounded event large shadow">
                         <input type="hidden" formControlName="event">
                         <span class="d-flex justify-content-between">
-                            <strong>{{ events[i] | snakeToSentenceCase }}</strong>
+                            <strong class="color-heading">{{ events[i] | snakeToSentenceCase }}</strong>
                             <mat-slide-toggle formControlName="enabled"></mat-slide-toggle>
                         </span>
                         <hr>

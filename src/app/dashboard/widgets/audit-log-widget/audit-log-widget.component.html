@@ -14,10 +14,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let change of changes; index as i">
-                    <td scope="row">
-                        {{ changeCount - i }}
-                    </td>
+                <tr *ngFor="let change of changes.reverse(); index as i">
+                    <td scope="row">{{ changeCount - i }}</td>
                     <td class="user">
                         <member-username [member]="getMember(change.by)"
                             [withAvatar]="false"></member-username>

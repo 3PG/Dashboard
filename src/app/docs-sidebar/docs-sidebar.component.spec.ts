@@ -31,7 +31,7 @@ describe('DocsSidebarComponent', () => {
 
   it('on click, should open', () => {
     const spy = spyOn(component, 'toggle');
-    const de = fixture.debugElement.query(By.css('.toggle'));
+    const de = fixture.debugElement.query(By.css('.open'));
 
     de.nativeElement.click();
 

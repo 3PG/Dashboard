@@ -9,6 +9,8 @@ a {
 
 img {
     padding: 0;
+    
+    width: 128px !important;
 }
 
 i {

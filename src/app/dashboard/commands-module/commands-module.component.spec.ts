@@ -19,21 +19,22 @@ describe('CommandsModuleComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CommandsModuleComponent);
+    component = fixture.componentInstance;
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
   
-  it('reset should return object to initial state', async() => {
-    // await component.init();
-    
-    const previousValue = component.form.value;
+  it('reset should return object to initial state', async() => {  
+    component.originalSavedGuild = {
+      commands: {
+        configs: []
+      }
+    }; 
 
-    component.savedGuild = { commands: { configs: [] }};
-    component.form.setValue({ configs: [] });
     await component.reset();
 
-    expect(component.form.value).toEqual(previousValue);
+    expect(component.form.value).toEqual(component.originalSavedGuild.commands);
   });
 });

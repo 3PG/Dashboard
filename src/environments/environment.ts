@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   endpoint: 'http://localhost:3000/api',
   url: 'http://localhost:4200',
-  discordURL: 'https://discordapp.com/invite/xRT6Fz5',
+  discordURL: 'https://discord.com/invite/xRT6Fz5',
   stripePublicKey: 'pk_test_5D57doatt7FpFolXlTHy8DvZ00TgL3h1WJ',
   version: 'v2.0.1a',
   test: {

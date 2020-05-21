@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit {
     this.drawer.toggle();
   }
 
-  drop(event: CdkDragDrop<string[]>) { // does not rearrange guilds
-    moveItemInArray(this.guilds, event.previousIndex, event.currentIndex);
+  identify(index, guild){
+    return guild.id; 
   }
 }

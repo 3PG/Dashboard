@@ -25,7 +25,6 @@
     --silver: silver;
     --bronze: #CD7F32;
 }
-
 :root[theme=DISCORD] {
     --font: #99AAB5;
 
@@ -112,6 +111,12 @@ $theme: mat-dark-theme($primary, $secondary, $warn);
 @include angular-material-theme($theme);
 
 // css styles
+
+// utils
+
+.color-heading {
+    color: var(--heading);
+}
 
 // global
 

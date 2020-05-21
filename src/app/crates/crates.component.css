@@ -1,0 +1,41 @@
+.preview {
+    padding: 35px 15px 15px 15px;
+    min-height: 40vh;
+    
+    border: 1px solid var(--muted);
+    background-color: var(--background-secondary);
+}
+
+.crate {
+    width: 64px;
+    height: 64px;
+
+    border: 1px solid var(--muted);    
+}
+
+.reward {
+    border-radius: 40%;
+
+    margin: 5px;
+    padding: 16px;
+
+    width: 128px;
+    height: 128px;
+
+    background-color: var(--background-primary);
+}
+.bronze { background-color: var(--bronze); }
+.silver { background-color: var(--silver); }
+.gold { background-color: var(--gold); }
+
+img {
+    border-radius: 40%;
+
+    min-width: 96px;
+    max-width: 96px;
+    max-height: 96px;
+
+    object-fit: contain;
+
+    cursor: pointer;
+}

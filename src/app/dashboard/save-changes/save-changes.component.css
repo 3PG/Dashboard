@@ -2,8 +2,8 @@
     text-align: left;
     padding-bottom: 15px;
 }
-button, .text {
-    color: var(--font) !important;    
+button {
+    color: var(--heading) !important;    
 }
 #save {
     margin-left: 5px;
