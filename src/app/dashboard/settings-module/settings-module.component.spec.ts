@@ -30,7 +30,7 @@ describe('SettingsModuleComponent', () => {
 
   it('click restore defaults button, calls restoreDefaults()', () => {
     const spy = spyOn(component, 'restoreDefaults');
-    const el = fixture.debugElement.query(By.css('#restoreDefaults'))?.nativeElement;
+    const el = fixture.debugElement.query(By.css('button')).nativeElement;
 
     el.click();
 

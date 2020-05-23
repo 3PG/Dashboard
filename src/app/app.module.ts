@@ -60,23 +60,18 @@ import { DurationStringPipe } from './duration-string.pipe';
 import { environment } from 'src/environments/environment';
 import { CratesComponent } from './crates/crates.component';
 
-export class AlertErrorHandler implements ErrorHandler {
-  
+export class AlertErrorHandler implements ErrorHandler {  
   async handleError(error: Error | any) {
     try {
+      alert(error?.rejection?.error ?? error?.message ?? error);
+
       const key = localStorage.getItem('key');
       await fetch(`${environment.endpoint}/error?key=${key}`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: error.message
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: error.message })
       });
-    } catch (e) {console.log(e)} finally {
-      const msg = error?.rejection?.message;
-      if (msg) alert(msg);
+    } finally {
       console.log(error);
     }
   }

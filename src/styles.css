@@ -71,6 +71,9 @@ table.dataTable tbody tr {
 .text-center {
     text-align: center;
 }
+.uppercase {
+    text-transform: uppercase;
+}
 .large.shadow {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
@@ -179,6 +182,10 @@ mat-paginator {
 
 #doc .alert-danger {
     background-color: transparent !important;
+}
+
+#doc .pro-reference {
+    max-height: 12px;
 }
 
 /* sidebar */

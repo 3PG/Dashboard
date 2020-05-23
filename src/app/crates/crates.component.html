@@ -1,7 +1,8 @@
 <dashboard-sidebar>
     <section class="container">
-        <h2 class="display-3">My Crates</h2>
+        <h1 class="display-3">My Crates</h1>
         <hr>
+        <h2>Possible Rewards</h2>
         <div class="rounded preview row">
             <div *ngFor="let item of preview; index as i"
                 class="col-lg-3 col-sm-4 d-flex justify-content-center">
@@ -16,10 +17,22 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div *ngFor="let crate of crates"
-                class="rounded crate col-lg-3 col-sm-4">
-            <span>wee</span></div>
-        </div>
+
+        <span class="d-flex justify-content-center pt-2">
+            <strong class="uppercase">{{ reward | snakeToSentenceCase }}</strong><div class="text-danger pl-1">{{ error }}</div>
+        </span>
+        
+        <hr>
+        <span class="d-flex justify-content-between">
+            <h2>Inventory</h2>
+            <button mat-button color="success" id="open"
+                (click)="open()"
+                [disabled]="crates.length <= 0"
+                [innerText]="crates.length <= 0 ? 'Vote for More Crates' : 'Open'"></button>
+            <span class="p-2">
+                <img class="crate-icon pb-2 mr-1" src="assets/img/crates/vote-crate.webp">
+                <strong>{{ crates.length }}</strong> 
+            </span>
+        </span>
     </section>
 </dashboard-sidebar>

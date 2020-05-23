@@ -24,7 +24,7 @@ export class DocsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    router: Router) {
+    private router: Router) {
     route.paramMap.subscribe(paramMap => {
       this.page = paramMap.get('page')?.toLowerCase();
       if (!this.page)
@@ -37,19 +37,21 @@ export class DocsComponent implements OnInit {
   }
 
   convertToMarkdown() {
-    this.markdownPagePath$.subscribe(async(path) => { 
-      const file = await fetch(path);
-      const md = await file.text();
-      
-      document.getElementById('doc').innerHTML = 
-        this.replaceDocVariables(
-          marked(this.customMD(md), { breaks: true }));
-      document.querySelector('h1').classList.add('display-4');
-
-      if (window.location.hash)
-        document.querySelector(window.location.hash)?.scrollIntoView();
-
-      this.setAnchorReferences();
+    this.markdownPagePath$.subscribe(async(path) => {
+      try {
+        const file = await fetch(path);
+        const md = await file.text();
+        
+        document.getElementById('doc').innerHTML = 
+          this.replaceDocVariables(
+            marked(this.customMD(md), { breaks: true }));
+        document.querySelector('h1').classList.add('display-4');
+  
+        if (window.location.hash)
+          document.querySelector(window.location.hash)?.scrollIntoView();
+  
+        this.setAnchorReferences();
+      } catch { this.router.navigate(['/404']); }
     });
   }
 
@@ -58,7 +60,7 @@ export class DocsComponent implements OnInit {
     .replace(/<BotUser>/g, `<a class="mention">@3PG#8166</a>`)
     .replace(/<Discord>/g, `<a href="${environment.discordURL}">3PG Discord</a>`)
     .replace(/<User>/g, `<a class="mention">@${this.userService.user?.tag ?? 'User#1234'}</a>`)
-    .replace(/<PRO>/g, `<pro-reminder></pro-reminder>`);
+    .replace(/<PRO>/g, `<img class="pro-reference" src="assets/img/pro.png"></img>`);
   }
 
   customMD(content: string) {

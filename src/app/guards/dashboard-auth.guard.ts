@@ -13,7 +13,9 @@ export class DashboardAuthGuard implements CanActivate {
 
   async canActivate() {
     if (!this.userService.user)
-      await this.userService.updateUser();    
+      await this.userService.updateUser();
+    if (!this.userService.savedUser)
+      await this.userService.updateSavedUser();   
     return Boolean(this.userService.user);
   }  
 }

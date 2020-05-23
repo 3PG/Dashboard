@@ -90,4 +90,13 @@ export class MusicService {
     await this.http.get(`${this.endpoint}/${id}/music/seek/${position}?key=${this.key}`).toPromise() as Promise<any>;
     this._current = position;
   }
+
+  setVolume(id: string, value: number) {
+    return this.http.get(`${this.endpoint}/${id}/music/set-volume/${value}?key=${this.key}`).toPromise() as Promise<any>;
+  }
+
+  async shuffle(id: string) {
+    await this.http.get(`${this.endpoint}/${id}/music/shuffle?key=${this.key}`).toPromise() as Promise<any>;
+    await this.updateList(id);
+  }
 }

@@ -12,13 +12,15 @@
 
 ---
 
-## 2.0.2b `Upcoming`
+## 2.0.3a `Upcoming`
 
-![v2.0.2b Dashboard](assets/docs/img/dashboard-v2.0.1a.png)
+![v2.0.3a Dashboard](assets/docs/img/dashboard-v2.0.3a.png)
 
 **Add**
 - new theme -> 3PG Discord
 - announce -> user mute event
+- crates -> unlocked by voting
+- dashboard -> music player -> shuffle, and volume control
 
 **Change/Fix**
 - adding guilds via dashboard did not update them
@@ -29,6 +31,10 @@
 - dashboard -> guild data caching: faster dashboard loading (especially on slow connections)
 - dashboard -> events -> fix ban/level-up confusion
 - dashboard -> fixed widget data not updating on guild navigation
+- dashboard -> color pickers -> now adapt to theme
+
+**Remove**
+
 
 ---
 

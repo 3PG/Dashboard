@@ -46,6 +46,10 @@ export class UserService {
       `&tertiary=${tertiary}` +
       `&backgroundURL=${backgroundURL}`;
   }
+
+  openCrate() {
+    return this.http.get(`${this.endpoint}/open-crate?key=${this.key}`).toPromise() as Promise<any>;
+  }
 }
 
 export interface XPCard {

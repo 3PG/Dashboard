@@ -10,6 +10,7 @@ import { MatSelect } from '@angular/material/select';
 describe('DashboardSidebarComponent', () => {
   let component: DashboardSidebarComponent;
   let fixture: ComponentFixture<DashboardSidebarComponent>;
+  let service: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -21,8 +22,9 @@ describe('DashboardSidebarComponent', () => {
   }));
 
   beforeEach(() => {
+    service = { changeTheme: () => {}, updateTheme: () => {} } as any;
     fixture = TestBed.createComponent(DashboardSidebarComponent);
-    component = fixture.componentInstance;
+    component = new DashboardSidebarComponent(service, null);
     fixture.detectChanges();
   });
 
@@ -31,13 +33,10 @@ describe('DashboardSidebarComponent', () => {
   });
 
   it('change theme, calls changeTheme', () => {
-    const service = { changeTheme: () => {} } as any;
-    component = new DashboardSidebarComponent(service, null);
-    
     const spy = spyOn(service, 'changeTheme');
     const select = fixture.debugElement.query(By.directive(MatSelect)).componentInstance as MatSelect;
 
-    select.value = 'CHOCOLATE';
+    select.writeValue('CHOCOLATE');
 
     expect(spy).toHaveBeenCalled();
   });

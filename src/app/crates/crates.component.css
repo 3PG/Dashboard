@@ -39,3 +39,12 @@ img {
 
     cursor: pointer;
 }
+
+.crate-icon {
+    width: 24px !important;
+    min-width: 24px;
+}
+
+#open {
+    margin-right: 75px;
+}

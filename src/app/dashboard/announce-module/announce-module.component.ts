@@ -55,7 +55,7 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
 
       (formGroup.get('events') as FormArray).push(new FormGroup({
         event: new FormControl(event),
-        enabled: new FormControl(Boolean(config) ?? false),
+        enabled: new FormControl(Boolean(config?.channel && config?.message) ?? false),
         channel: new FormControl(config?.channel ?? ''),
         message: new FormControl(config?.message ?? `\`${event}\` was triggered in **[GUILD]**!`, Validators.maxLength(512))
       }));     

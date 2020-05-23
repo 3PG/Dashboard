@@ -134,5 +134,19 @@ h1,h2,h3,h4,h5 {
     background-color: var(--background-secondary);
 }
 
+// TODO: move to overrides.css, and import
+// overrides
+
+.color-picker {
+    background: var(--background-tertiary) !important;
+    border: none !important;
+}
+
+.color-picker input {
+    background: var(--background-secondary) !important;
+    color: var(--font) !important;
+    border: none !important;
+}
+
 // colours:
 // 4A3050 (bg-primary), 4D426C, 4C429C (primary), 493A77, 372224
