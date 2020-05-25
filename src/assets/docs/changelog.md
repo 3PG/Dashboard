@@ -8,13 +8,17 @@
 
 ---
 
+## Beta `Upcoming`
+
+---
+
 ## Alpha
 
 ---
 
-## 2.0.3a `Upcoming`
+## 2.0.2a `23/04/2020`
 
-![v2.0.3a Dashboard](assets/docs/img/dashboard-v2.0.3a.png)
+![v2.0.2a Dashboard](assets/docs/img/dashboard-v2.0.2sa.png)
 
 **Add**
 - new theme -> 3PG Discord

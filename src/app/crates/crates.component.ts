@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { toIterable } from '../utils';
 
 @Component({
   selector: 'app-crates',
@@ -38,19 +39,11 @@ export class CratesComponent implements OnInit {
   }
 
   private updateCrates() {
-    this.crates = this.toIterable(this.userService.savedUser.crates);
+    this.crates = toIterable(this.userService.savedUser.crates);
   }
 
   handleReward(given: boolean, type: string) {
     this.error = (given) ? '' : 'But you already have it, or something better.';
     this.reward = `You got: ${type}!`;
-  }
-
-  // TODO: make global function
-  toIterable(n: number) {
-    const array = [];
-    for (let i = 0; i < n; i++)
-      array.push(i);
-    return array;
   }
 }

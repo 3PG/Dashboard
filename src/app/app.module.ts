@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
@@ -55,12 +55,12 @@ import { ProReminderComponent } from './dashboard/pro-reminder/pro-reminder.comp
 import { BadgesComponent } from './dashboard/badges/badges.component';
 import { SnakeToSentenceCasePipe } from './pipes/snake-to-sentence-case.pipe';
 import { EmojiDirective } from './emoji.directive';
-import { TruncatedPipe } from './truncated.pipe';
-import { DurationStringPipe } from './duration-string.pipe';
+import { TruncatedPipe } from './pipes/truncated.pipe';
+import { DurationStringPipe } from './services/duration-string.pipe';
 import { environment } from 'src/environments/environment';
 import { CratesComponent } from './crates/crates.component';
 
-export class AlertErrorHandler implements ErrorHandler {  
+export class AlertErrorHandler implements ErrorHandler {
   async handleError(error: Error | any) {
     try {
       alert(error?.rejection?.error ?? error?.message ?? error);
@@ -150,7 +150,10 @@ export class AlertErrorHandler implements ErrorHandler {
     },
     { provide: ErrorHandler, useClass: AlertErrorHandler }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule {}
 

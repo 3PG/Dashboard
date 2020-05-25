@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { MatSelect } from '@angular/material/select';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ThemeService } from 'src/app/theme.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'dashboard-sidebar',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
 import { CommandsService } from './services/commands.service';
-import { ThemeService } from './theme.service';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',

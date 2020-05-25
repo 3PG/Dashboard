@@ -7,6 +7,7 @@ import { ModuleConfig } from '../../module-config';
 import { GuildService } from '../../services/guild.service';
 import { UserService } from 'src/app/services/user.service';
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
+import { toIterable } from 'src/app/utils';
 
 @Component({
   selector: 'app-general-module',
@@ -17,7 +18,7 @@ export class GeneralModuleComponent extends ModuleConfig implements OnInit {
   moduleName = 'general';
 
   reactionRoleMessages = [];
-  reactionRolesIndices = [0,1,2,3];
+  reactionRolesIndices = toIterable(4);
 
   get general() { return this.savedGuild.general; }
 

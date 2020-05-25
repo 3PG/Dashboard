@@ -38,6 +38,6 @@ export class MusicModuleComponent extends ModuleConfig implements OnInit {
     });
   }
 
-  min(a, b) { return Math.min(a, b); }
-  max(a, b) { return Math.max(a, b); }
+  min(a: number, b: number) { return Math.min(a, b); }
+  max(a: number, b: number) { return Math.max(a, b); }
 }
