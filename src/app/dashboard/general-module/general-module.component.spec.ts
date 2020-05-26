@@ -7,6 +7,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { environment } from 'src/environments/environment';
 import { AppModule } from 'src/app/app.module';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 describe('GeneralModuleComponent', () => {
   let component: GeneralModuleComponent;
@@ -28,5 +29,25 @@ describe('GeneralModuleComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('filterFormValue, all reactionRoles values are falsey, filtered', () => {
+    component.form = new FormGroup({
+      reactionRoles: new FormControl([{ a: '', b: '' }])
+    });
+
+    component.filterFormValue();
+
+    expect(component.form.value.reactionRoles.length).toBe(0);
+  });
+
+  it('filterFormValue, not all reactionRoles values are falsey, not filtered', () => {
+    component.form = new FormGroup({
+      reactionRoles: new FormControl([{ a: 'a', b: '' }])
+    });
+
+    component.filterFormValue();
+
+    expect(component.form.value.reactionRoles.length).toBe(1);
   });
 });

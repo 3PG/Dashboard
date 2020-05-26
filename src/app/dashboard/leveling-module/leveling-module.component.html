@@ -46,7 +46,7 @@
                         <div class="col-sm-6">
                             <mat-form-field appearance="outline">                                
                                 <mat-label>Level</mat-label>                            
-                                <input type="number" formControlName="level" matInput>
+                                <input type="number" formControlName="level" matInput #level>
                             </mat-form-field>
                         </div>
                         <div class="col-sm-6">
@@ -59,6 +59,11 @@
                                         [style.color]="role.hexColor || 'grey'">@{{ role.name }}</mat-option>
                                 </mat-select>
                             </mat-form-field>
+                        </div>
+                        <div *ngIf="level.value > 0"
+                            class="text-muted px-4 pb-3">
+                            A member would need a total of <strong>{{ getXPForLevel(level.value) | number }}XP</strong> to unlock this.
+                            It would take them a minimum of <strong>{{ getHoursForLevel(level.value) | number }} hours</strong> if they didn't stop typing.
                         </div>
                     </div>
                 </div>

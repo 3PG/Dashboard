@@ -8,7 +8,21 @@
 
 ---
 
-## Beta `Upcoming`
+## Beta
+
+---
+
+### 2.1.0b `30/05/2020`
+
+![v2.1.0b Dashboard](assets/docs/img/dashboard-v2.1.0b.png)
+
+**Add**
+
+
+**Change/Fix**
+- dashboard -> leveling -> default level role values now filter on submit
+
+**Remove**
 
 ---
 
@@ -16,9 +30,9 @@
 
 ---
 
-## 2.0.2a `23/04/2020`
+### 2.0.2a `23/04/2020`
 
-![v2.0.2a Dashboard](assets/docs/img/dashboard-v2.0.2sa.png)
+![v2.0.2a Dashboard](assets/docs/img/dashboard-v2.0.2a.png)
 
 **Add**
 - new theme -> 3PG Discord
@@ -37,12 +51,9 @@
 - dashboard -> fixed widget data not updating on guild navigation
 - dashboard -> color pickers -> now adapt to theme
 
-**Remove**
-
-
 ---
 
-## 2.0.1a `16/05/20`
+### 2.0.1a `16/05/20`
 
 ![v2.0.1a Dashboard](assets/docs/img/dashboard-v2.0.1a.png)
 
@@ -56,7 +67,7 @@
 
 ---
 
-## 2.0.0a `09/05/20`
+### 2.0.0a `09/05/20`
 
 ![v2.0.0a Dashboard](assets/docs/img/dashboard-v2.0.0a.png)
 

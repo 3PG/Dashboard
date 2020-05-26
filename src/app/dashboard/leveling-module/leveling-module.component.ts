@@ -41,7 +41,6 @@ export class LevelingModuleComponent extends ModuleConfig implements OnInit {
     this.buildLevelRolesFormArray(formGroup, leveling);
     return formGroup;
   }
-
   private buildLevelRolesFormArray(formGroup: FormGroup, leveling: any) {
     for (const i of this.levelRoleIndices)
       (formGroup.get('levelRoles') as FormArray)
@@ -50,6 +49,49 @@ export class LevelingModuleComponent extends ModuleConfig implements OnInit {
           level: new FormControl(leveling.levelRoles[i]?.level ?? 0, Validators.min(0)),
           role: new FormControl(leveling.levelRoles[i]?.role ?? '')
         })));
+  }
+
+  filterFormValue() {
+    this.form.value.levelRoles = this.form.value.levelRoles
+      .filter(c => c.level > 0);
+  }
+
+  getXPForLevel(level: any) {
+    level = Number(level);
+    return (75 * (level + 1)**2) + (75 * (level + 1)) - 150;
+  }
+
+  getHoursForLevel(level: number) {
+    const xpPerMinute = this.form.value.xpPerMessage * this.form.value.maxMessagesPerMinute;
+    const xpRequired = this.getXPForLevel(level);
+    return xpRequired / (xpPerMinute * 60);
+  }
+
+  // TODO: add to auto-mod commands
+  parseDuration(str: string) {
+    if (!str || str == '-1' || str.toLowerCase() == 'forever')
+      return 'Forever';
+
+    const letters = str.match(/[a-z]/g).join('');
+    const time = Number(str.match(/[0-9]/g).join(''));
+
+    switch (letters) {
+      case 'y':
+        return time * 1000 * 60 * 60 * 24 * 365;
+      case'mo':
+        return time * 1000 * 60 * 60 * 24 * 30;
+      case 'w':
+        return time * 1000 * 60 * 60 * 24 * 7;
+      case 'd':
+        return time * 1000 * 60 * 60 * 24;
+      case 'h':
+        return time * 1000 * 60 * 60;
+      case 'm':
+        return time * 1000 * 60;
+      case 's':
+        return time * 1000;
+    }
+    throw new TypeError('Could not parse duration. Make sure you typed the duration correctly.');
   }
 }
 

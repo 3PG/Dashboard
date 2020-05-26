@@ -77,6 +77,11 @@ export class GeneralModuleComponent extends ModuleConfig implements OnInit {
     return formGroup;
   }
 
+  filterFormValue() {
+    this.form.value.reactionRoles = this.form.value.reactionRoles
+      .filter(value => Object.keys(value).some(key => value[key]));
+  }
+
   getMessage(channelId: string, messageId: string) {
     return this.guildService.getMessage(this.guildId, channelId, messageId);
   }
