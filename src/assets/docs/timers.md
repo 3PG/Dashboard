@@ -7,7 +7,7 @@ Automatically perform tasks at specific intervals.
 Automatically execute commands at specific intervals.
 A command prefix is not required for the input as commands are internally executed; not executed in chat.
 
-**Pattern**: `A-Za-z0-9 `
+**Pattern**: `A-Za-z 0-9`
 
 ## Message Timers `[]`
 Automatically send messages at specific intervals.

@@ -3,6 +3,21 @@ Let 3PG filter explicit content, spam and more!
 
 ---
 
+## Duration
+
+Value | Duration
+:-----|:---------
+`3s`  | 3 seconds
+`3m`  | 3 months
+`3h`  | 3 hours
+`3d`  | 3 days
+`3w`  | 3 weeks
+`3mo` | 3 months (3 x 30 days)
+`3y`  | 3 years (3 x 365 days)
+`forever` `-1` | Forever
+
+---
+
 ### Auto Delete Messages `true`
 Whether to automatically delete messages that are filtered.
 

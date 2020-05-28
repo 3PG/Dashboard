@@ -21,6 +21,7 @@
 
 **Change/Fix**
 - dashboard -> leveling -> default level role values now filter on submit
+- commands -> clear -> fixed typo that made the command inaccessible
 
 **Remove**
 

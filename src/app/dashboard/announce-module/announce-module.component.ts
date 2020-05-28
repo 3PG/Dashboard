@@ -93,6 +93,7 @@ export enum EventType {
   MemberLeave = 'MEMBER_LEAVE',
   Mute = 'MUTE',
   Unban = 'UNBAN', 
+  Unmute = 'UNMUTE',
   Warn ='WARN'
 }
 

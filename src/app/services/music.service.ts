@@ -47,14 +47,14 @@ export class MusicService {
       this._current = 0;
 
       clearInterval(this.refreshList);
-      this.refreshList = window.setInterval(() => this.incrementPosition(id), 1 * 1000);
+      this.refreshList = window.setInterval(() => this.incrementPosition(id), 100);
     }
   }
 
   private async incrementPosition(id: string) {
     if (this.paused) return;
 
-    this._current++;
+    this._current += 0.1;
 
     this._max = this.list[0].duration / 1000;
     if (this._current >= this._max) {

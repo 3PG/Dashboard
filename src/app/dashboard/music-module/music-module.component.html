@@ -52,7 +52,7 @@
                         <mat-slider type="range"
                             [disabled]="service.list.length <= 0" #slider
                             min="0" [max]="service.list[0]?.duration / 1000" [value]="service.current" step="1"
-                            tickInterval="1" thumbLabel
+                            tickInterval="1"
                             (change)="service.seek(guildId, slider.value)"></mat-slider>
                             <p class="pl-5">{{ service.current | durationString }} <span class="text-muted">/ {{ service.list[0]?.duration / 1000 | durationString }}</span></p>
                     </div>

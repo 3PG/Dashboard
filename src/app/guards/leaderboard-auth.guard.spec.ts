@@ -33,7 +33,7 @@ describe('LeaderboardAuthGuard', () => {
       }
     } as any;
 
-    guard = new LeaderboardAuthGuard(fakeGuildService, fakeUserService);
+    guard = new LeaderboardAuthGuard(fakeGuildService, fakeUserService, {} as any);
     guildConfig = {};
     members = [];
   });

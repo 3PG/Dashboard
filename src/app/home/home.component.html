@@ -57,7 +57,6 @@
     <hr>    
 </section>
 
-
 <section id="botCards" class="d-flex justify-content-center py-5">
     <div class="row">
         <div class="col-lg-6">
@@ -66,7 +65,12 @@
     </div>
 </section>
 
+<section></section>
+
 <footer>
-    <p routerLink="/docs/changelog"
-        class="float-right">{{ version }}</p>
+    <span class="float-right">
+        <a [href]="statusURL">Status</a>
+        <span class="text-muted px-1">|</span>
+        <p class="d-inline" routerLink="/docs/changelog">{{ version }}</p>
+    </span>
 </footer>

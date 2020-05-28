@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  statusURL = 'https://3pg.statuspage.io';
   version = environment.version;
 
   ngOnInit(): void {

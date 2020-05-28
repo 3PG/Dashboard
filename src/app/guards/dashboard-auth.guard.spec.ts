@@ -6,6 +6,7 @@ import { AppModule } from '../app.module';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('DashboardAuthGuard', () => {
+  let fakeAuth: any;
   let guard: DashboardAuthGuard;
 
   beforeEach(() => {
@@ -13,24 +14,23 @@ describe('DashboardAuthGuard', () => {
       imports: [ AppModule ],
       schemas: [ NO_ERRORS_SCHEMA ]
     });
+    guard = new DashboardAuthGuard(fakeAuth, {} as any, {} as any);
   });
 
   it('should be created', () => {
-    const fakeAuth = {
+    fakeAuth = {
       updateUser: () => {},
       user: null
     } as any;
-    guard = new DashboardAuthGuard(fakeAuth, {} as any);
 
     expect(guard).toBeTruthy();
   });
 
   it('null user is denied', async () => {
-    const fakeAuth = {
+    fakeAuth = {
       updateUser: () => {},
       user: null
     } as any;
-    guard = new DashboardAuthGuard(fakeAuth, {} as any);
 
     const result = await guard.canActivate();
 
@@ -38,11 +38,10 @@ describe('DashboardAuthGuard', () => {
   });
 
   it('existing user is not denied', async () => {
-    const fakeAuth = {
+    fakeAuth = {
       updateUser: () => {},
       user: {}
     } as any;
-    guard = new DashboardAuthGuard(fakeAuth, {} as any);
 
     const result = await guard.canActivate();
 

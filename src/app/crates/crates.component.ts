@@ -34,8 +34,8 @@ export class CratesComponent implements OnInit {
     const { given, type } = await this.userService.openCrate();
     this.handleReward(given, type);
 
-    this.updateCrates();
     await this.userService.updateSavedUser();
+    this.updateCrates();
   }
 
   private updateCrates() {

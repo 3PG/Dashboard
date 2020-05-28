@@ -59,6 +59,7 @@ import { TruncatedPipe } from './pipes/truncated.pipe';
 import { DurationStringPipe } from './services/duration-string.pipe';
 import { environment } from 'src/environments/environment';
 import { CratesComponent } from './crates/crates.component';
+import { StatusComponent } from './status/status.component';
 
 export class AlertErrorHandler implements ErrorHandler {
   async handleError(error: Error | any) {
@@ -129,7 +130,8 @@ export class AlertErrorHandler implements ErrorHandler {
     EmojiDirective,
     TruncatedPipe,
     DurationStringPipe,
-    CratesComponent
+    CratesComponent,
+    StatusComponent
   ],
   imports: [
     AppRoutingModule,

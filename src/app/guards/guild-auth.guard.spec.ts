@@ -30,7 +30,7 @@ describe('GuildAuthGuard', () => {
       updateGuilds: async() => {}
     };
     
-    guard = new GuildAuthGuard(guildService, userService);
+    guard = new GuildAuthGuard(guildService, userService, {} as any);
   });
 
   it('should be created', () => {

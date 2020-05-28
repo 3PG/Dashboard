@@ -66,33 +66,6 @@ export class LevelingModuleComponent extends ModuleConfig implements OnInit {
     const xpRequired = this.getXPForLevel(level);
     return xpRequired / (xpPerMinute * 60);
   }
-
-  // TODO: add to auto-mod commands
-  parseDuration(str: string) {
-    if (!str || str == '-1' || str.toLowerCase() == 'forever')
-      return 'Forever';
-
-    const letters = str.match(/[a-z]/g).join('');
-    const time = Number(str.match(/[0-9]/g).join(''));
-
-    switch (letters) {
-      case 'y':
-        return time * 1000 * 60 * 60 * 24 * 365;
-      case'mo':
-        return time * 1000 * 60 * 60 * 24 * 30;
-      case 'w':
-        return time * 1000 * 60 * 60 * 24 * 7;
-      case 'd':
-        return time * 1000 * 60 * 60 * 24;
-      case 'h':
-        return time * 1000 * 60 * 60;
-      case 'm':
-        return time * 1000 * 60;
-      case 's':
-        return time * 1000;
-    }
-    throw new TypeError('Could not parse duration. Make sure you typed the duration correctly.');
-  }
 }
 
 export interface LevelRole {

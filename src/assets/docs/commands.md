@@ -28,4 +28,4 @@ Leave blank for the command to be executable in all channels.
 
 ### Enabled `true`
 Whether the command can be executed.
-When a command is disabled, 3PG will respond with an error message.
+When a command is disabled, 3PG will respond with an error message.`
