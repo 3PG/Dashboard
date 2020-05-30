@@ -9,13 +9,16 @@
 
         <hr>
 
-        <h2>Unlock Crates</h2>
-        <p>Crates can be unlocked daily, or for every vote.</p>
-        <button mat-button color="primary">
-            <a *ngFor="let url of voteURLs; index as i"
-                class="m-2 text-success p-5"
-                [href]="voteURLs[i]"
-                target="_blank" data-toggle="tooltip">Vote #{{ i + 1 }}</a>
+        <h2>Unlock Crates <div class="badge badge-success">3 CRATES FOR EVERY VOTE!</div></h2>
+        <p>
+            Crates can be for every vote.
+            <span class="text-info">Limited time bonus ends Monday 1st, June.</span>
+        </p>
+        <button *ngFor="let vote of voteURLs"
+            mat-button class="bg-success m-2">
+            <a class="m-2 p-5 text-light"
+                [href]="vote.url"
+                target="_blank" data-toggle="tooltip">{{ vote.name }}</a>
         </button>
     </div>
 </dashboard-sidebar>

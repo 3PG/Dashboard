@@ -13,7 +13,8 @@ export const environment = {
     guildId: '598565371162656788'
   },
   voteURLs: [
-    '//discordbotlist.com/bots/525935335918665760/upvote'
+    { name: '12 hours', url: '//top.gg/bot/525935335918665760/vote' },
+    { name: '24 hours', url: '//discordbotlist.com/bots/525935335918665760/upvote' }
   ]
 };
 

@@ -39,8 +39,8 @@ export class CommandsWidgetComponent implements OnInit {
     this.route.paramMap.subscribe(async(val) => {
       const id = val.get('id');
 
-      const log = await this.guildService.getSavedLog(id);
-      this.commands = log.commands;
+      const { commands } = this.route.snapshot.data.log;
+      this.commands = commands;
   
       this.barChartLabels = this.buildLabels();
       this.barChartData = this.buildDataSets();

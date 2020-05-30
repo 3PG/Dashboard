@@ -27,6 +27,7 @@ export class GuildAuthGuard implements CanActivate {
           ? this.guildService.singleton : {
             guildId,
             channels: await this.guildService.getChannels(guildId),
+            log: await this.guildService.getSavedLog(guildId),
             roles: await this.guildService.getRoles(guildId),
             savedGuild: await this.guildService.getSavedGuild(guildId)
           };

@@ -39,8 +39,8 @@ export class MessagesWidgetComponent implements OnInit {
     this.route.paramMap.subscribe(async(val) => {
       const id = val.get('id');
       
-      const log = await this.guildService.getSavedLog(id);
-      this.messages = log.messages;
+      const { messages } = this.route.snapshot.data.log;
+      this.messages = messages;
   
       this.barChartLabels = this.buildLabels();
       this.barChartData = this.buildDataSets();

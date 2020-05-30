@@ -23,8 +23,8 @@ export class AuditLogWidgetComponent implements OnInit {
       const id = val.get('id');
 
       this.members = await this.guildService.getMembers(id);
-  
-      const { changes } = await this.guildService.getSavedLog(id);
+      
+      const { changes } = this.route.snapshot.data.log;
       this.changeCount = changes.length;
       this.changes = changes.splice(changes.length - this.rows, changes.length);
     });
