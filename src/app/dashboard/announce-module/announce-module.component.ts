@@ -26,6 +26,7 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     EventType.MessageDeleted,
     EventType.Mute,
     EventType.Unban,
+    EventType.Unmute,
     EventType.Warn
   ];
 

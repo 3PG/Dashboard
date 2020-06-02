@@ -5,7 +5,6 @@
 @import '~@ctrl/ngx-emoji-mart/picker.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css';
 
-
 html {
   scroll-behavior: smooth;
 }
@@ -65,7 +64,7 @@ table.dataTable tbody tr {
 #features hr {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  }
+}
 
 /* util */
 .text-center {
@@ -293,5 +292,9 @@ a.mention {
     /* sidebar */
     mat-sidenav {
         width: 100vw !important;
+    }
+
+    h1 {
+        font-size: 16vw !important;
     }
 }

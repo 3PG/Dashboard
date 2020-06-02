@@ -21,5 +21,7 @@ Mostly limited time badges
 Name | Description
 :-----|:-----------
 Alpha | Tested 3PG alpha
-Early Supporter | Used 3PG before June 1st, 2020
-Pro | Had 3PG PRO
+Bug Destroyer | Destroyed a few bugs
+Early Supporter | Supported 3PG before June 2020
+Legend | Found in a voting crate
+Pro | Purchase 3PG PRO, at least once

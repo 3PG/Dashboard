@@ -21,6 +21,10 @@ For example, `/ping` -> prefix is `/` as it precedes the command name.
 ## Reaction Roles `[]`
 React to messages, to get roles.
 
+### How does it work?
+When a user reacts to a message they get a role.
+When they remove the reaction, they lose assigned role.
+
 ---
 
 ### Channel `''`

@@ -16,10 +16,10 @@ export class MessagePreviewComponent {
   @Input() content = 'Hello World';
   @Input() author = {
     username: '3PG',
-    avatarURL: 'https://cdn.discord.com/avatars/525935335918665760/6e0b19ae2cc25ef5da3d52b787525ed3.png?size=128'
+    avatarURL: 'https://cdn.discordapp.com/avatars/525935335918665760/6e0b19ae2cc25ef5da3d52b787525ed3.png?size=128'
   }
   @Input() member = {
-    displayName: 'a good bot i guess'
+    displayName: '3PG'
   }
   @Input() createdAt = new Date();
 

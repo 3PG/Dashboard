@@ -60,8 +60,8 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        <div *ngIf="level.value > 0"
-                            class="text-muted px-4 pb-3">
+                        <div [@expandCollapse]="(level.value > 0) ? 'down' : 'up'"
+                            class="px-4" [class]="(level.value > 0) ? 'pb-3' : ''">
                             A member would need a total of <strong>{{ getXPForLevel(level.value) | number }}XP</strong> to unlock this.
                             It would take them a minimum of <strong>{{ getHoursForLevel(level.value) | number }} hours</strong> if they didn't stop typing.
                         </div>

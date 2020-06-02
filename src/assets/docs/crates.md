@@ -5,6 +5,8 @@ You can unlock crates by voting for 3PG.
 ---
 
 ## Rewards
+As of 30/05/2020 the chances of getting a reward have increased.
+Therefore these chances are not completely accurate.
 
 Reward  | Chance | Stackable
 :-------|:------|:-----

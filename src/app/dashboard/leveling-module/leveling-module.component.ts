@@ -5,11 +5,13 @@ import { GuildService } from '../../services/guild.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModuleConfig } from '../../module-config';
 import { UserService } from 'src/app/services/user.service';
+import { slideUpDown } from './leveling-module.animations';
 
 @Component({
   selector: 'app-leveling-module',
   templateUrl: './leveling-module.component.html',
-  styleUrls: ['./leveling-module.component.css']
+  styleUrls: ['./leveling-module.component.css'],
+  animations: [ slideUpDown ]
 })
 export class LevelingModuleComponent extends ModuleConfig implements OnInit {
   levelRoleIndices = [0,1,2,3,4,5,6,7];

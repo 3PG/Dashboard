@@ -24,7 +24,7 @@ export class BadgesComponent implements OnInit {
       url: 'assets/img/badges/early-supporter.svg' 
     },
     {
-      description: 'Help keep 3PG alive, every month',
+      description: 'Purchase 3PG PRO, at least once',
       type: BadgeType.Pro,
       url: 'assets/img/pro.png'
     },
@@ -37,11 +37,11 @@ export class BadgesComponent implements OnInit {
 
   constructor(private userService: UserService) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     for (const style of this.badges) {
       const badge = this.userService.savedUser.badges
-        ?.some(b => b.type === style.type);
-      if (!badge) return;
+        ?.some(b => b.type === style.type.toString());      
+      if (!badge) continue;
 
       style.active = true;
       style.tier = badge.tier;

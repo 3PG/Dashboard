@@ -17,13 +17,14 @@
 ![v2.1.0b Dashboard](assets/docs/img/dashboard-v2.1.0b.png)
 
 **Add**
-
+- announce -> unmute event
+- general -> info command -> get bot info
+- general -> server command -> get server info
 
 **Change/Fix**
 - dashboard -> leveling -> default level role values now filter on submit
 - commands -> clear -> fixed typo that made the command inaccessible
-
-**Remove**
+- dashboard -> fixed cross server lag
 
 ---
 

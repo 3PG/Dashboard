@@ -13,3 +13,4 @@ A guide on how to maximize your experience, using the 3PG docs.
 
 **Alerts**:
 [!] This is a warning to warn <User> about possibly dangerous things.
+[!] This is information to inform <User> about things worth knowing.
