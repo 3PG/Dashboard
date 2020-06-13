@@ -12,6 +12,15 @@
 
 ---
 
+### 2.1.1b `13/06/2020`
+
+![v2.1.1b Dashboard](assets/docs/img/dashboard-v2.1.1b.png)
+
+**Change/Fix**
+- Bad request error when user login key expired
+
+---
+
 ### 2.1.0b `30/05/2020`
 
 ![v2.1.0b Dashboard](assets/docs/img/dashboard-v2.1.0b.png)

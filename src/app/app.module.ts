@@ -56,10 +56,11 @@ import { BadgesComponent } from './dashboard/badges/badges.component';
 import { SnakeToSentenceCasePipe } from './pipes/snake-to-sentence-case.pipe';
 import { EmojiDirective } from './emoji.directive';
 import { TruncatedPipe } from './pipes/truncated.pipe';
-import { DurationStringPipe } from './services/duration-string.pipe';
+import { DurationStringPipe } from './pipes/duration-string.pipe';
 import { environment } from 'src/environments/environment';
 import { CratesComponent } from './crates/crates.component';
 import { StatusComponent } from './status/status.component';
+import { SEOService } from './services/seo.service';
 
 export class AlertErrorHandler implements ErrorHandler {
   async handleError(error: Error | any) {
@@ -146,6 +147,7 @@ export class AlertErrorHandler implements ErrorHandler {
   ],
   exports: [PremiumDirective],
   providers: [
+    SEOService,
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: { languages: getHighlightLanguages() }

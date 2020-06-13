@@ -19,6 +19,7 @@ export abstract class ModuleConfig implements OnDestroy {
     savedGuild: any;
     originalSavedGuild: any;
 
+    channels: any = [];
     textChannels: any = [];
     roles: any = [];
 
@@ -43,6 +44,7 @@ export abstract class ModuleConfig implements OnDestroy {
         this.guild = this.guildService.guilds.find(g => g.id === this.guildId);
 
         this.roles = data.roles;
+        this.channels = data.channels;
         this.textChannels = data.channels.filter(c => c.type === 'text');
 
         this.savedGuild = data.savedGuild;
@@ -141,5 +143,9 @@ export abstract class ModuleConfig implements OnDestroy {
             array.splice(index, 1);
         
         this.openSaveChanges();
+    }
+
+    getChannel(id: string) {
+        return this.channels.find(c => c.id === id);
     }
 }

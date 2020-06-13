@@ -16,7 +16,8 @@ export class DocsComponent implements OnInit {
 
   get markdownPagePath$() {
     return this.route.paramMap.pipe(
-      map(paramMap => {   
+      map(paramMap => {
+        this.page = paramMap.get('page')?.toLowerCase();
         return `assets/docs/${this.page}.md`;
     }));
   }

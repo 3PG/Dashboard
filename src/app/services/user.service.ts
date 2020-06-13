@@ -25,13 +25,17 @@ export class UserService {
   }
 
   async updateUser() {
-    this._user = (this.key) ?
-      await this.http.get(`${this.endpoint}?key=${this.key}`).toPromise() : null
+    try {
+      this._user = (this.key) ?
+        await this.http.get(`${this.endpoint}?key=${this.key}`).toPromise() : null
+    } catch { localStorage.removeItem('key'); }
   }
 
   async updateSavedUser() {
-    this._savedUser = (this.key) ? 
-      await this.http.get(`${this.endpoint}/saved?key=${this.key}`).toPromise() : null;
+    try {
+      this._savedUser = (this.key) ? 
+        await this.http.get(`${this.endpoint}/saved?key=${this.key}`).toPromise() : null;
+    } catch { localStorage.removeItem('key'); }
   }
 
   updateXPCard(xpCard: XPCard) {
