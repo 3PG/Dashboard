@@ -39,6 +39,7 @@ Filter message content, based on specific conditions.
 | LINKS              | [saved bad link address]                         | Message contains custom bad link
 | WORDS              | [listed bad word]                                      | Any words equal custom bad word
 | EMOJI              | 🤔🤔🤔🤔🤔🤔🤔🤔🤔                   | `Threshold` emojis
+| EXPLICIT           | [any explicit word blocked by Google]       | `Threshold` emojis
 | MASS_MENTION       | <User> <User> <User> <User> <User>            | `Threshold` mentions
 | ZALGO              | Mͭͭͬu̔ͨ͊tͣ̃̚eͨͭ͐ ҉̴̴̢                                   | Any zalgo symbols
 

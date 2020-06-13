@@ -12,7 +12,15 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./auto-mod-module.component.css']
 })
 export class AutoModModuleComponent extends ModuleConfig implements OnInit {
-  filters = [ MessageFilter.Links, MessageFilter.Words, MessageFilter.Emoji, MessageFilter.MassMention, MessageFilter.MassCaps, MessageFilter.Zalgo ];
+  filters = [
+    MessageFilter.Emoji,
+    MessageFilter.ExplicitWords,
+    MessageFilter.Links,
+    MessageFilter.MassCaps,
+    MessageFilter.MassMention,
+    MessageFilter.Words,
+    MessageFilter.Zalgo
+  ];
   MessageFilter = MessageFilter;
   moduleName = 'autoMod';
 
@@ -44,6 +52,7 @@ export class AutoModModuleComponent extends ModuleConfig implements OnInit {
 
 export enum MessageFilter {
   Emoji = 'EMOJI', 
+  ExplicitWords = 'EXPLICIT_WORDS',
   Links = 'LINKS',
   MassCaps = 'MASS_CAPS',
   MassMention = 'MASS_MENTION',

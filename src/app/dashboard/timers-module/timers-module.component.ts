@@ -89,6 +89,6 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
   }
 
   getChannel(id: string) {
-    return this.textChannels.find(c => c.id === id) || { name: '[UNKNOWN_CHANNEL]' };
+    return this.textChannels.find(c => c.id === id) || { name: 'N/A' };
   }
 }

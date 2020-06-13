@@ -3,13 +3,15 @@
 <header class="container">
     <div class="jumbotron">
         <img src="assets/img/3PGAvatarTransparent.svg" alt="3PG Discord Bot" class="float robot">
-        <h1>3PG</h1>
+        <h3>3PG</h3>
         <h2 class="lead">The all-in-one, highly customizable Discord bot.</h2>
         <hr class="my-2">
         <p>Announce, Auto-mod, Leveling, Music, Timers, and more!</p>
         <p class="lead">
             <button color="success" routerLink="/invite" mat-button>Add</button>
-            <button color="primary" href="#features" mat-button>Features</button>
+            <button color="primary" mat-button>
+                <a class="text-light" href="#features">Features</a>
+            </button>
         </p>
     </div>
 </header>
@@ -21,12 +23,12 @@
                 <img id="musicPlayer" class="responsive py-5 my-5" src="assets/img/home/music-player.gif">
             </div>
             <div class="col-lg-6 col-md-12 order-2 feature">
-                <h1>Play Music via Dashboard <i class="fa fa-music" aria-hidden="true"></i> </h1>
+                <h3>Play Music via Dashboard <i class="fa fa-music" aria-hidden="true"></i> </h3>
                 <p class="lead">Listen to music on Discord and control playback directly from your Dashboard, or with commands.</p>
             </div>
             
             <div class="col-lg-6 col-md-12 order-lg-3 order-4 feature">
-                <h1>Earn Levels and Compete with Others <i class="fa fa-trophy" aria-hidden="true"></i></h1>
+                <h3>Earn Levels and Compete with Others <i class="fa fa-trophy" aria-hidden="true"></i></h3>
                 <p class="lead">Level up your Discord server, with 3PG's XP system! Compete with others; 3PG can make your server the best it can be!</p>
             </div>
             <div class="col-lg-6 col-md-12 order-lg-4 order-3">
@@ -37,12 +39,12 @@
                 <img id="leaderboard" class="responsive" src="assets/img/home/announce.png">
             </div>
             <div class="col-lg-6 col-md-12 order-6 feature">
-                <h1>Stay Notified of Important Events <i class="fa fa-bell" aria-hidden="true"></i></h1>
+                <h3>Stay Notified of Important Events <i class="fa fa-bell" aria-hidden="true"></i></h3>
                 <p class="lead">Never miss an important event! With 3PG's announcements, choose from a wide range of events to log.</p>
             </div>
 
             <div class="col-lg-6 col-md-12 order-lg-7 order-8 feature">
-                <h1>Automate Tasks, Messages, and More! <i class="fa fa-code" aria-hidden="true"></i></h1>
+                <h3>Automate Tasks, Messages, and More! <i class="fa fa-code" aria-hidden="true"></i></h3>
                 <p class="lead">Automate any command, in any channel, whenever. With timers, you can schedule commands and messages.</p>
             </div>
             <div class="col-lg-6 col-md-12 order-lg-8 order-7">
@@ -53,25 +55,10 @@
 </section>
 
 <section id="reminder" class="container text-center">
-    <h2>What are you waiting for? 🤔</h2>
-    <a class="my-2" routerLink="/invite" color="primary">Level Up Your Servers</a>
-    <hr>    
-</section>
-
-<section id="botCards" class="d-flex justify-content-center py-5">
-    <div class="row">
-        <div class="col-lg-6">
-            <dbl-widget bot-id="bot-3pg" centered></dbl-widget>
-        </div>
-    </div>
+    <h3>What are you waiting for? 🤔</h3>
+    <button class="my-2" routerLink="/invite" color="success" mat-button>Level Up Your Servers</button>
 </section>
 
 <section></section>
 
-<footer>
-    <span class="float-right">
-        <a [href]="statusURL">Status</a>
-        <span class="text-muted px-1">|</span>
-        <p class="d-inline" routerLink="/docs/changelog">{{ version }}</p>
-    </span>
-</footer>
+<home-footer></home-footer>

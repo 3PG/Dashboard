@@ -20,8 +20,8 @@ export interface TypingName {
 @Injectable()
 export class SEOService {
   base = {
-    title: 'Multipurpose Discord Bot',
-    titleSuffix: '3PG',
+    title: '3PG',
+    titleSuffix: 'Customizable Discord Bot',
     url: 'https://3pg.xyz'
   }
 

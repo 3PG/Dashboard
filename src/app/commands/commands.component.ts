@@ -3,6 +3,7 @@ import { CommandsService } from '../services/commands.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { SEOService } from '../services/seo.service';
 
 @Component({
   selector: 'app-commands',
@@ -17,7 +18,15 @@ export class CommandsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private service: CommandsService) {}
+  constructor(
+    seo: SEOService,
+    private service: CommandsService) {
+      seo.setTags({
+        titleSuffix: 'Commands',
+        description: `View a list of 3PG's Discord chat commands. This includes music commands and more!`,
+        url: 'commands'
+      })
+    }
 
   async ngOnInit() {
     await this.service.updateCommands();      
@@ -25,9 +34,7 @@ export class CommandsComponent implements OnInit {
     
     this.dataSource = new MatTableDataSource(this.commands);
     this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;    
-
-    document.title = '3PG - Commands';
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {

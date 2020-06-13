@@ -4,6 +4,7 @@
 @import '~chart.js/dist/Chart.min.css';
 @import '~@ctrl/ngx-emoji-mart/picker.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css';
+@import 'assets/css/utils.css';
 
 html {
   scroll-behavior: smooth;
@@ -21,7 +22,9 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    
     padding: 5px;
+    padding-bottom: 0px;
 }
 
 footer p {
@@ -111,7 +114,6 @@ a {
 
 h3 {
     color: var(--primary);
-    text-transform: uppercase;
 }
 
 h3 code {

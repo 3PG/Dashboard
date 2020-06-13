@@ -61,6 +61,8 @@ import { environment } from 'src/environments/environment';
 import { CratesComponent } from './crates/crates.component';
 import { StatusComponent } from './status/status.component';
 import { SEOService } from './services/seo.service';
+import { HomeFooterComponent } from './home-footer/home-footer.component';
+import { WavesComponent } from './waves/waves.component';
 
 export class AlertErrorHandler implements ErrorHandler {
   async handleError(error: Error | any) {
@@ -132,7 +134,9 @@ export class AlertErrorHandler implements ErrorHandler {
     TruncatedPipe,
     DurationStringPipe,
     CratesComponent,
-    StatusComponent
+    StatusComponent,
+    HomeFooterComponent,
+    WavesComponent
   ],
   imports: [
     AppRoutingModule,

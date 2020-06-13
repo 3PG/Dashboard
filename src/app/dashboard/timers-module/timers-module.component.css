@@ -10,6 +10,7 @@
 
 li {
     border-color: transparent !important;
+    color: var(--heading);
 }
 
 .pending {

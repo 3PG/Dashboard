@@ -8,7 +8,6 @@ import { SEOService } from '../services/seo.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  statusURL = 'https://3pg.statuspage.io';
   version = environment.version;
 
   constructor(seo: SEOService) {
@@ -17,7 +16,5 @@ export class HomeComponent {
       description: 'The all-in-one, highly customizable Discord bot. Announce, Auto-mod, Leveling, Music, Timers, and more! https://3pg.xyz',
       url: '/'
     });
-
-    document.title = '3PG - Multipurpose Discord Bot';
   }
 }

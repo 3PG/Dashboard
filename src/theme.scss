@@ -10,7 +10,7 @@
     --font: #FFFFFF;
     --pro: #482F5D;
 
-    --danger: darkred;
+    --danger: #B00000;
     --muted: grey;
 
     --primary: #482F5D;
@@ -28,7 +28,7 @@
 :root[theme=DISCORD] {
     --font: #99AAB5;
 
-    --danger: darkred;
+    --danger: #B00000;
     --muted: grey;
     
     --background-primary: #36393F;
@@ -115,7 +115,11 @@ $theme: mat-dark-theme($primary, $secondary, $warn);
 // utils
 
 .color-heading {
-    color: var(--heading);
+    color: var(--heading) !important;
+}
+
+.color-primary {
+    color: var(--primary) !important;
 }
 
 // global

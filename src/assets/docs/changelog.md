@@ -12,16 +12,30 @@
 
 ---
 
-### 2.1.1b `13/06/2020`
+### v2.1.1b
+`13/06/2020`
 
 ![v2.1.1b Dashboard](assets/docs/img/dashboard-v2.1.1b.png)
 
+**Add**
+- home -> cool waves footer
+- home -> server status notifications
+- auto mod -> explicit words filter
+
 **Change/Fix**
-- Bad request error when user login key expired
+- dashboard -> bad request error when user login key expired
+- crates -> made crate rewards harder to get (chance of getting the best reward was >5%)
+- auto mod ->copy and paste boo boo with explicit words
+- commands -> empty permissions displayed undefined
+- docs -> changelog -> navigating to docs anchor links was sending 404
+  
+**Removed**
+- logs -> cleared all existing logs as some were unnecessary
 
 ---
 
-### 2.1.0b `30/05/2020`
+### v2.1.0b
+`30/05/2020`
 
 ![v2.1.0b Dashboard](assets/docs/img/dashboard-v2.1.0b.png)
 
@@ -41,7 +55,8 @@
 
 ---
 
-### 2.0.2a `23/04/2020`
+### v2.0.2a
+`23/04/2020`
 
 ![v2.0.2a Dashboard](assets/docs/img/dashboard-v2.0.2a.png)
 
@@ -64,7 +79,8 @@
 
 ---
 
-### 2.0.1a `16/05/20`
+### v2.0.1a
+`16/05/20`
 
 ![v2.0.1a Dashboard](assets/docs/img/dashboard-v2.0.1a.png)
 
@@ -78,7 +94,8 @@
 
 ---
 
-### 2.0.0a `09/05/20`
+### v2.0.0a
+`09/05/20`
 
 ![v2.0.0a Dashboard](assets/docs/img/dashboard-v2.0.0a.png)
 
@@ -105,9 +122,10 @@
 
 ---
 
-# v1 `2018-2019`
+# v1
+`2018-2019`
 
-### 1.x
+### v1.x
 
 ![v1.x Dashboard](assets/docs/img/dashboard-v1.x.png)
 

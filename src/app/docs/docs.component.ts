@@ -17,7 +17,7 @@ export class DocsComponent implements OnInit {
   get markdownPagePath$() {
     return this.route.paramMap.pipe(
       map(paramMap => {
-        this.page = paramMap.get('page')?.toLowerCase();
+        this.page = paramMap.get('page')?.toLowerCase();        
         return `assets/docs/${this.page}.md`;
     }));
   }
@@ -52,7 +52,7 @@ export class DocsComponent implements OnInit {
           document.querySelector(window.location.hash)?.scrollIntoView();
   
         this.setAnchorReferences();
-      } catch { this.router.navigate(['/404']); }
+      } catch (e) { this.router.navigate(['/404']); }
     });
   }
 

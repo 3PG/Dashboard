@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,9 @@ import { environment } from 'src/environments/environment';
 export class DashboardComponent {
   readonly discordURL = environment.discordURL;
   readonly voteURLs = environment.voteURLs;
+
+  version = environment.version;
+  anchorVersion = environment.version.replace(/\./g, '');
   
   get user() { return this.userService.user; }
 
