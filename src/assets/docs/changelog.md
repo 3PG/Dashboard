@@ -12,6 +12,20 @@
 
 ---
 
+### v2.1.2b
+`Upcoming`
+
+<!-- ![v2.1.2b Dashboard](assets/docs/img/dashboard-v2.1.2b.png) -->
+
+**Add**
+- dashboard -> timers -> add better command timers interface
+- dashboard -> one-click sign in
+
+**Fix**
+- timers -> timer spam
+
+---
+
 ### v2.1.1b
 `13/06/2020`
 

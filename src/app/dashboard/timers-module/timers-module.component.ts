@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModuleConfig } from 'src/app/module-config';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { CommandsService } from 'src/app/services/commands.service';
 
 @Component({
   selector: 'app-timers-module',
@@ -21,7 +22,8 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
     guildService: GuildService,
     route: ActivatedRoute,
     userService: UserService,
-    saveChanges: MatSnackBar) {
+    saveChanges: MatSnackBar,
+    public commandService: CommandsService) {
     super(guildService, route, userService, saveChanges);
   }
 
@@ -90,5 +92,9 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
 
   getChannel(id: string) {
     return this.textChannels.find(c => c.id === id) || { name: 'N/A' };
+  }
+
+  getCommand(value: string) {
+    return this.commandService.getCommand(value.split(' ')[0]);
   }
 }

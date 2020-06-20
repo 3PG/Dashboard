@@ -24,7 +24,7 @@
                         <hr>
                         <mat-form-field appearance="outline" class="p-2">
                             <mat-label>Command</mat-label>
-                            <input matInput
+                            <input matInput #commandInput
                                 formControlName="command" type="text">
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="p-2">
@@ -45,6 +45,12 @@
                             <mat-label>From</mat-label>
                             <input matInput formControlName="from" type="datetime-local">
                         </mat-form-field>
+                        <div class="px-3 pb-3"
+                            [class]="getCommand(commandInput.value) ? 'text-success' : 'text-danger'">
+                            <div><strong>Command</strong>: {{ getCommand(commandInput.value)?.name || 'Not Found' }}</div>
+                            <div><strong>Usage</strong>: {{ getCommand(commandInput.value)?.usage || 'N/A' }}</div>
+                            <div><strong>Summary</strong>: {{ getCommand(commandInput.value)?.summary || 'N/A' }}</div>
+                        </div>
                     </div>
                 </div>
             </div>

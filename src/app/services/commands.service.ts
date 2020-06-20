@@ -16,4 +16,8 @@ export class CommandsService {
   async updateCommands() {
     this._commands = await this.http.get(this.endpoint).toPromise() as any;
   }
+
+  getCommand(name: string) {
+    return this.commands.find(c => c.name === name);
+  }
 }
