@@ -107,10 +107,14 @@
                 <li class="list-group-item" *ngFor="let task of schedule; index as i"
                     [class]="task.status.toLowerCase()">
                     <span *ngIf="isCommandTimer(task.timer)">
-                        <i class="fa fa-code" aria-hidden="true"></i> Execute <code>Command Timer</code> in <strong>#{{ getChannel(task.timer.channel)?.name }}</strong>, every <u>{{ task.timer.interval }}</u> from {{ task.timer.from | cleanDateTime }} 
+                        <i class="fa fa-code" aria-hidden="true"></i>
+                        Execute <code class="rounded p-1">Command Timer</code> in <code class="rounded p-1">#{{ getChannel(task.timer.channel)?.name }}</code>,
+                        every <code class="rounded p-1">{{ task.timer.interval }}</code> from <code class="rounded p-1">{{ task.timer.from | cleanDateTime }}</code>
                     </span>
                     <span *ngIf="!isCommandTimer(task.timer)">
-                        <i class="fa fa-comment" aria-hidden="true"></i> Send <code>Message Timer</code> to <strong>#{{ getChannel(task.timer.channel)?.name }}</strong>, every <u>{{ task.timer.interval }}</u> from {{ task.timer.from | cleanDateTime }}
+                        <i class="fa fa-comment" aria-hidden="true"></i>
+                        Send <code class="rounded p-1">Message Timer</code> to <code class="rounded p-1">#{{ getChannel(task.timer.channel)?.name }}</code>,
+                        every <code class="rounded p-1">{{ task.timer.interval }}</code> from <code class="rounded p-1">{{ task.timer.from | cleanDateTime }}</code>
                     </span>
                     <p class="float-right m-0">{{ task.status }}</p>
                 </li>

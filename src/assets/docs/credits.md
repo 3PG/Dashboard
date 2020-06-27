@@ -13,3 +13,5 @@
 
 **Command Timers** - Cwis.exe#6169
 **Reaction Roles** - Cwis.exe#6169
+
+**Skilled Bug Slayer** - Griffler#7298

@@ -30,7 +30,6 @@ import { WarningsModuleComponent } from './dashboard/warnings-module/warnings-mo
 import { TimersModuleComponent } from './dashboard/timers-module/timers-module.component';
 import { BadgesComponent } from './dashboard/badges/badges.component';
 import { CratesComponent } from './crates/crates.component';
-import { StatusComponent } from './status/status.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -64,7 +63,6 @@ const routes: Routes = [
   { path: 'pro', component: ProComponent },
   { path: 'payment-success', component: PaymentSuccessComponent },
 
-  { path: 'status', component: StatusComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

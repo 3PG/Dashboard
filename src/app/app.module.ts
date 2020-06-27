@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA, ViewContainerRef } from '@angular/core';
 import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
@@ -59,15 +59,14 @@ import { TruncatedPipe } from './pipes/truncated.pipe';
 import { DurationStringPipe } from './pipes/duration-string.pipe';
 import { environment } from 'src/environments/environment';
 import { CratesComponent } from './crates/crates.component';
-import { StatusComponent } from './status/status.component';
 import { SEOService } from './services/seo.service';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { WavesComponent } from './waves/waves.component';
 
-export class AlertErrorHandler implements ErrorHandler {
+export class AlertErrorHandler implements ErrorHandler {  
   async handleError(error: Error | any) {
     try {
-      alert(error?.rejection?.error ?? error?.message ?? error);
+      console.log(error);
 
       const key = localStorage.getItem('key');
       await fetch(`${environment.endpoint}/error?key=${key}`, {
@@ -75,9 +74,7 @@ export class AlertErrorHandler implements ErrorHandler {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: error.message })
       });
-    } finally {
-      console.log(error);
-    }
+    } catch {}
   }
 }
 
@@ -134,7 +131,6 @@ export class AlertErrorHandler implements ErrorHandler {
     TruncatedPipe,
     DurationStringPipe,
     CratesComponent,
-    StatusComponent,
     HomeFooterComponent,
     WavesComponent
   ],

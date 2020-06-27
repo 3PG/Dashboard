@@ -102,6 +102,7 @@ export abstract class ModuleConfig implements OnDestroy {
             this.filterFormValue();
             
             await this.guildService.saveGuild(this.guildId, this.moduleName, this.form.value);
+            this.originalSavedGuild[this.moduleName] = this.form.value;
         } catch {
             console.log(this.form.value);
         }

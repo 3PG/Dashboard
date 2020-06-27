@@ -52,7 +52,7 @@ export class DocsComponent implements OnInit {
           document.querySelector(window.location.hash)?.scrollIntoView();
   
         this.setAnchorReferences();
-      } catch (e) { this.router.navigate(['/404']); }
+      } catch (e) { this.router.navigate(['/docs']); }
     });
   }
 
