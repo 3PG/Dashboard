@@ -10,15 +10,12 @@ import { ThemeService } from './services/theme.service';
 })
 export class AppComponent implements OnInit {
   constructor(
-    private commandService: CommandsService,
     private themeService: ThemeService,
     private userService: UserService) {}
 
   async ngOnInit() {
     this.themeService.updateTheme();
 
-    await this.commandService.updateCommands();
-    await this.userService.updateUser();
-    await this.userService.updateSavedUser();
+    await this.userService.init();
   }
 }

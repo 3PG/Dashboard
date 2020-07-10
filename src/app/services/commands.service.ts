@@ -13,6 +13,11 @@ export class CommandsService {
 
   constructor(private http: HttpClient) {}
 
+  async init() {
+    if (this._commands.length <= 0)
+      await this.updateCommands();
+  }
+
   async updateCommands() {
     this._commands = await this.http.get(this.endpoint).toPromise() as any;
   }

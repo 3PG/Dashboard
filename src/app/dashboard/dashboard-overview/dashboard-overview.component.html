@@ -16,7 +16,7 @@
         <button *ngFor="let vote of voteURLs"
             mat-button class="bg-success m-2">
             <a class="m-2 p-5 text-light"
-                [href]="vote.url"
+                [href]="vote.url" rel="nofollow"
                 target="_blank" data-toggle="tooltip">{{ vote.name }}</a>
         </button>
     </div>

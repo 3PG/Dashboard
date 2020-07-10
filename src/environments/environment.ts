@@ -8,13 +8,14 @@ export const environment = {
   url: 'http://localhost:4200',
   discordURL: 'https://discord.com/invite/xRT6Fz5',
   stripePublicKey: 'pk_test_5D57doatt7FpFolXlTHy8DvZ00TgL3h1WJ',
-  version: 'v2.1.1b',
+  version: 'v2.1.2b',
   test: {
     guildId: '598565371162656788'
   },
   voteURLs: [
-    { name: '12 hours', url: '//top.gg/bot/525935335918665760/vote' },
-    { name: '24 hours', url: '//discordbotlist.com/bots/525935335918665760/upvote' }
+    // { name: '12 hours (1)', url: '//dbots.co/bots/525935335918665760/vote' },
+    { name: '12 hours (2)', url: '//top.gg/bot/525935335918665760/vote' },
+    { name: '24 hours (3)', url: '//discordbotlist.com/bots/525935335918665760/upvote' }
   ]
 };
 

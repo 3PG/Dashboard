@@ -12,8 +12,20 @@
 
 ---
 
-### v2.1.2b
+### v2.2.0
 `Upcoming`
+
+**Add**
+
+**Change/Fix**
+- optimized scripts for faster home page load
+
+**Remove**
+
+---
+
+### v2.1.2b
+`27/06/2020`
 
 ![v2.1.2b Dashboard](assets/docs/img/dashboard-v2.1.2b.png)
 

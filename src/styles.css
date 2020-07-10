@@ -197,9 +197,12 @@ pre {
     border-radius: 5px;
     background-color: var(--background-secondary);
 }
-
 pre code {
     color: var(--secondary);
+}
+
+.alert {
+    background-color: transparent !important;
 }
 
 /* sidebar */

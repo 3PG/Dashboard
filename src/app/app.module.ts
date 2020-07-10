@@ -1,17 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA, ViewContainerRef } from '@angular/core';
-import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
+import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CommandsComponent } from './commands/commands.component';
 import { AuthComponent } from './auth/auth.component';
-import { LoginComponent } from './login/login.component';
 import { InviteComponent } from './invite/invite.component';
 import { LogoutComponent } from './logout/logout.component';
 import { DashboardComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
@@ -85,7 +83,6 @@ export class AlertErrorHandler implements ErrorHandler {
     HomeComponent,
     CommandsComponent,
     AuthComponent,
-    LoginComponent,
     InviteComponent,
     LogoutComponent,
     DashboardComponent,
@@ -142,16 +139,11 @@ export class AlertErrorHandler implements ErrorHandler {
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    HighlightModule,
     ChartsModule
   ],
   exports: [PremiumDirective],
   providers: [
     SEOService,
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: { languages: getHighlightLanguages() }
-    },
     { provide: ErrorHandler, useClass: AlertErrorHandler }
   ],
   bootstrap: [AppComponent],
@@ -160,9 +152,3 @@ export class AlertErrorHandler implements ErrorHandler {
   ]
 })
 export class AppModule {}
-
-export function getHighlightLanguages() {
-  return {
-    json: () => import('highlight.js/lib/languages/json')
-  };
-}

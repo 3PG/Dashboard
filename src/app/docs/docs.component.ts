@@ -66,7 +66,7 @@ export class DocsComponent implements OnInit {
 
   customMD(content: string) {
     return content
-      .replace(/\[!\] (.*)/gm, '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> $1</div>')
+      .replace(/\[!\] (.*)/gm, '<div class="alert alert-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> $1</div>')
       .replace(/\[i\] (.*)/gm, '<div class="alert alert-info"><i class="fa fa fa-info-circle" aria-hidden="true"></i> $1</div>');
   }
 

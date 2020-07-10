@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { toHTML } from 'discord-markdown';
 import { textEmoji } from 'markdown-to-text-emoji';
-import { GuildService } from '../services/guild.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -30,14 +29,25 @@ export class MessagePreviewComponent {
       hour: 'numeric',
       hour12: true,
       minute: 'numeric'
-    }).replace(/-/g, '/');
+    });
 
     const wasToday = new Date().getDay() / this.createdAt.getDay() === 1;
-    const wasYesterday = new Date().getDay() % this.createdAt.getDay() === 1;
+    const wasYesterday = new Date().getDate() % this.createdAt.getDate() === 1;
+    const isTommorow = this.createdAt.getTime() % new Date().getDate() === 1;
+    
     if (wasToday || wasYesterday)
-      return (wasToday ? 'Today' : 'Yesterday') + ` at ${timestamp}`;
+    return `Today at ${timestamp}`;
+    if (wasYesterday)
+      return `Yesterday at ${timestamp}`;
+    else if (isTommorow)
+      return `Tommorow at ${timestamp}`;
 
-    return this.createdAt.toJSON().slice(0,10);
+    return this.createdAt
+      .toJSON()
+      .slice(0,10)
+      .split('-')
+      .reverse()
+      .join('/');
   }
 
   get processed() {

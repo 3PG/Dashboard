@@ -32,6 +32,7 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
       this.timerIndices.push(2,3);
 
     await super.init();
+    await this.commandService.init();
 
     await this.updateSchedule();
   }
@@ -96,5 +97,9 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
 
   getCommand(value: string) {
     return this.commandService.getCommand(value.split(' ')[0]);
+  }
+
+  getNextTimerDate(from: Date) {
+    return (from) ? new Date(from) : new Date();
   }
 }

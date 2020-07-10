@@ -24,6 +24,13 @@ export class UserService {
     return localStorage.getItem('key');
   }
 
+  async init() {
+    if (!this._user)
+      await this.updateUser();
+    if (!this._savedUser)
+      await this.updateSavedUser();
+  }
+
   async updateUser() {
     try {
       this._user = (this.key) ?

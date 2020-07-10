@@ -29,7 +29,8 @@ export class CommandsComponent implements OnInit {
     }
 
   async ngOnInit() {
-    await this.service.updateCommands();      
+    await this.service.init();
+    
     this.commands = this.service.commands;
     
     this.dataSource = new MatTableDataSource(this.commands);
