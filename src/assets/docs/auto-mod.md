@@ -4,6 +4,7 @@ Let 3PG filter explicit content, spam and more!
 ---
 
 ## Duration
+`Not implemented`
 
 Value | Duration
 :-----|:---------
