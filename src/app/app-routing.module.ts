@@ -29,6 +29,7 @@ import { WarningsModuleComponent } from './dashboard/warnings-module/warnings-mo
 import { TimersModuleComponent } from './dashboard/timers-module/timers-module.component';
 import { BadgesComponent } from './dashboard/badges/badges.component';
 import { CratesComponent } from './crates/crates.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'docs', component: DocsComponent },
   { path: 'docs/:page', component: DocsComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'invite', component: InviteComponent },
   { path: 'leaderboard/:id', component: LeaderboardModuleComponent, canActivate: [LeaderboardAuthGuard] },

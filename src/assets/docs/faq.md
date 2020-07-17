@@ -15,7 +15,7 @@ You must be in the guild and have the `MANAGE_GUILD` permission to edit a server
 ---
 
 ## How was 3PG made?
-3PG is an extension of [2PG](https://2pg.xyz).
+3PG is an extension of [2PG](https://2PG.xyz).
 
 ## What is 3PG's server host?
 [Digital Ocean](https://m.do.co/c/be464b522714).

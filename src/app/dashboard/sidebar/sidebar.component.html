@@ -1,33 +1,30 @@
 <mat-sidenav-container fullscreen>
     <mat-sidenav #drawer mode="side" opened>
-        <div class="guilds">
+        <div class="guilds px-2">
             <div class="user">
                 <div routerLink="/dashboard" class="guild-icon">
                     <img [src]="user.displayAvatarURL" alt="{{ user.username }}">
                 </div>
-                <hr>
+                <hr class="guild-seperator">
             </div>
-            <div *ngIf="guilds"
-                class="guild-list"
-                [@.disabled]="true">
-                <div *ngFor="let guild of guilds; trackBy: identify"
-                    [routerLink]="['/servers/' + guild.id]"
-                    class="guild-icon ng-animate-disabled">
-                    <img *ngIf="guild.iconURL"
-                        [src]="guild.iconURL" [alt]="guild.name">
-                    <span *ngIf="!guild.iconURL"
-                        class="d-flex justify-content-center">{{ guild.nameAcronym }}</span>
-                </div>
-                <div routerLink="/invite" 
-                    class="guild-icon invite">
-                    <span class="add-guild">+</span>
-                </div>
+            <div *ngFor="let guild of guilds" [routerLink]="['/servers/' + guild.id]"
+                class="guild-icon"
+                [matTooltip]="guild.name">
+                <img *ngIf="guild.iconURL"
+                    [src]="guild.iconURL" [alt]="guild.name">
+                <span *ngIf="!guild.iconURL"
+                    class="d-flex justify-content-center">{{ guild.nameAcronym }}</span>
+            </div>
+            <div routerLink="/invite" 
+                class="guild-icon invite"
+                matTooltip="Add a Server">
+                <span class="add-guild pt-0 d-flex justify-content-center flex-column">+</span>
             </div>
         </div>
         <div class="options">
+            <ng-content select=".side-nav"></ng-content>
             <span (click)="toggle()"
                 class="float-right d-sm-none d-block close">&times;</span>
-            <ng-content select=".side-nav"></ng-content>
         </div>
     </mat-sidenav>
     <mat-sidenav-content>

@@ -60,6 +60,7 @@ import { CratesComponent } from './crates/crates.component';
 import { SEOService } from './services/seo.service';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { WavesComponent } from './waves/waves.component';
+import { LoginComponent } from './login/login.component';
 
 export class AlertErrorHandler implements ErrorHandler {  
   async handleError(error: Error | any) {
@@ -129,7 +130,8 @@ export class AlertErrorHandler implements ErrorHandler {
     DurationStringPipe,
     CratesComponent,
     HomeFooterComponent,
-    WavesComponent
+    WavesComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,

@@ -1,6 +1,6 @@
 # Changelog
 
-*Built on [2PG](https://2pg.xyz)*
+*Built on [3PG](https://3PG.xyz)*
 
 ---
 
@@ -12,15 +12,18 @@
 
 ---
 
-### v2.2.0
+### v2.2.0b
 `Upcoming`
 
 **Add**
+- dashboard -> change theme
+- themes -> more themes
 
 **Change/Fix**
 - optimized scripts for faster home page load
 
 **Remove**
+- stupid lag
 
 ---
 

@@ -16,7 +16,7 @@
     </div>
     <div class="nav navbar-nav ml-auto">
         <div *ngIf="!user">
-            <a class="nav-item nav-link" href="/login"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+            <a class="nav-item nav-link" routerLink="/login"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
         </div>
         <div *ngIf="user">
             <div class="dropdown">

@@ -9,24 +9,27 @@ import { GuildService } from '../../services/guild.service';
 })
 export class GuildSidebarComponent implements OnInit {
   @Input('waitFor') loaded = true;
-
-  get guild() {
-    const id = this.route.snapshot.paramMap.get('id');    
-    return this.guildService.getGuild(id) || {};
-  }
+  
+  id: string;
+  guild: any;
+  savedGuild: any;
 
   constructor(
     private guildService: GuildService,
     private route: ActivatedRoute,
     private router: Router) {
-      const id = route.snapshot.paramMap.get('id');
-      const guild = this.guildService.guilds?.find(g => g.id === id);
-      document.title = `3PG - ${guild?.name ?? 'Dashboard'}`;
+      document.title = '3PG - Dashboard';
     }
 
   async ngOnInit() {
-    if (!this.guild) {
-      this.router.navigate(['/dashboard']);
-    }
+    this.route.paramMap.subscribe(async(paramMap) => {
+      this.id = paramMap.get('id');
+
+      this.savedGuild = await this.guildService.getSavedGuild(this.id);
+      this.guild = this.guildService.getGuild(this.id);
+      
+      if (!this.guild)
+        this.router.navigate(['/dashboard']);
+    });
   }
 }
