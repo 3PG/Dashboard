@@ -1,17 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnnounceModuleComponent, AnnounceEvent, EventType } from './logs-module.component';
+import { LogsModuleComponent, LogEvent, EventType } from './logs-module.component';
 import { FormArray } from '@angular/forms';
 import { AppModule } from 'src/app/app.module';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AnnounceModuleComponent', () => {
-  let component: AnnounceModuleComponent;
-  let fixture: ComponentFixture<AnnounceModuleComponent>;
+  let component: LogsModuleComponent;
+  let fixture: ComponentFixture<LogsModuleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AnnounceModuleComponent ],
+      declarations: [ LogsModuleComponent ],
       imports: [ AppModule ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
@@ -19,7 +19,7 @@ describe('AnnounceModuleComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AnnounceModuleComponent);
+    fixture = TestBed.createComponent(LogsModuleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
 
@@ -37,7 +37,7 @@ describe('AnnounceModuleComponent', () => {
       event: EventType.MemberJoin,
       channel: '123',
       message: 'a'
-    } as AnnounceEvent ];
+    } as LogEvent ];
     component.savedGuild = { announce: { events }};
 
     const result = (component.form.get('events') as FormArray).get('0').value;
@@ -46,14 +46,14 @@ describe('AnnounceModuleComponent', () => {
   });
 
   it('submitting removes enabled property', () => {
-    component = new AnnounceModuleComponent({} as any, {} as any, {} as any, {} as any);
+    component = new LogsModuleComponent({} as any, {} as any, {} as any, {} as any);
     const events = [
     {
       event: EventType.MemberJoin,
       channel: '123',
       enabled: false,
       message: 'a'
-    } as AnnounceEvent ];
+    } as LogEvent ];
 
     component.form.setValue({ events });
     component.submit();

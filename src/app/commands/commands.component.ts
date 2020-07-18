@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { SEOService } from '../services/seo.service';
+import { kebabToCamelCase } from '../utils';
 
 @Component({
   selector: 'app-commands',
@@ -11,13 +12,15 @@ import { SEOService } from '../services/seo.service';
   styleUrls: ['./commands.component.css']
 })
 export class CommandsComponent implements OnInit {
-  displayedColumns: string[] = ['usage', 'module', 'summary', 'permission'];
-  dataSource = new MatTableDataSource();
   commands = [];
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-
+  displayedCommands = [];
+  modules = [
+    { name: 'autoMod', icon: 'fa-gavel' },
+    { name: 'general', icon: 'fa-star' },
+    { name: 'leveling', icon: 'fa-trophy' },
+    { name: 'music', icon: 'fa-music' }
+  ];
+  selectedModule = '';
   constructor(
     seo: SEOService,
     private service: CommandsService) {
@@ -27,22 +30,27 @@ export class CommandsComponent implements OnInit {
         url: 'commands'
       })
     }
+  
+    async ngOnInit() {
+      await this.service.init();
+  
+      this.commands = this.displayedCommands = this.service.commands;
+  
+      this.setModule('autoMod');
+    }
 
-  async ngOnInit() {
-    await this.service.init();
-    
-    this.commands = this.service.commands;
-    
-    this.dataSource = new MatTableDataSource(this.commands);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  setModule(name: string) {
+    this.selectedModule = name;
+    this.displayedCommands = this.commands
+      .filter(c => kebabToCamelCase(c.module) === name);    
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  search(query: string) {
+    const empty = query.trim().length <= 0;
+    if (empty)
+      return this.setModule(this.modules[0].name);
 
-    if (this.dataSource.paginator)
-      this.dataSource.paginator.firstPage();
+    this.displayedCommands = this.service.search(query);
+    this.selectedModule = '';
   }
 }

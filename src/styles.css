@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~highlight.js/styles/vs2015.css';
+@import '~highlight.js/styles/arta.css';
 @import '~chart.js/dist/Chart.min.css';
 @import '~@ctrl/ngx-emoji-mart/picker.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css';
@@ -197,7 +197,7 @@ pre {
     border-radius: 5px;
     background-color: var(--background-secondary);
 }
-pre code {
+#doc pre code {
     color: var(--secondary);
 }
 
@@ -281,7 +281,7 @@ label {
 
 /* message preview */
 
-code {
+message-preview code {
     color: white;
     background-color: #2e3136 !important;
     font-family: Consolas, Liberation Mono, Menlo, Courier, monospace;

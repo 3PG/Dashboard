@@ -43,6 +43,7 @@
     "discord.js": "^12.0.2",
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
+    "fuse.js": "^6.4.0",
     "highlight.js": "^9.18.1",
     "jquery": "^3.5.0",
     "markdown-to-text-emoji": "^1.1.0",
@@ -57,7 +58,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.4",
+    "@angular-devkit/build-angular": "^0.1000.3",
     "@angular/cli": "^9.1.4",
     "@angular/compiler-cli": "~9.1.4",
     "@angular/language-service": "~9.1.4",

@@ -4,18 +4,17 @@ import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GuildService } from '../../services/guild.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-announce-module',
-  templateUrl: './announce-module.component.html',
-  styleUrls: ['./announce-module.component.css']
+  selector: 'app-logs-module',
+  templateUrl: './logs-module.component.html',
+  styleUrls: ['./logs-module.component.css']
 })
-export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
+export class LogsModuleComponent extends ModuleConfig implements OnInit {
   EventType = EventType;
 
-  moduleName = 'announce';
+  moduleName = 'logs';
 
   events = [
     EventType.Ban,
@@ -30,7 +29,7 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
     EventType.Warn
   ];
 
-  eventConfigs: AnnounceEvent[] = [];
+  eventConfigs: LogEvent[] = [];
 
   constructor(
     guildService: GuildService,
@@ -43,16 +42,16 @@ export class AnnounceModuleComponent extends ModuleConfig implements OnInit {
   async ngOnInit() {
     await super.init();
 
-    this.eventConfigs = this.savedGuild.announce.events;
+    this.eventConfigs = this.savedGuild.logs.events;
   }
 
-  buildForm({ announce }: any) {
+  buildForm({ logs }: any) {
     const formGroup = new FormGroup({
       events: new FormArray([])
     });
     for (let i = 0; i < this.events.length; i++) {
       const event = this.events[i];
-      const config = announce.events.find(e => e.event === event); 
+      const config = logs.events.find(e => e.event === event); 
 
       (formGroup.get('events') as FormArray).push(new FormGroup({
         event: new FormControl(event),
@@ -98,7 +97,7 @@ export enum EventType {
   Warn ='WARN'
 }
 
-export interface AnnounceEvent {
+export interface LogEvent {
   event: EventType;
   channel: string;
   message: string;

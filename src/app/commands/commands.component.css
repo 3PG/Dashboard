@@ -1,9 +1,18 @@
-table {
-    color: white;
-    max-width: 95vw !important;
+.categories li {
+    cursor: pointer;
+    background-color: var(--background-tertiary);
 }
 
-.jumbotron {
-    background: transparent;
-    text-align: center;
+li {
+    background-color: var(--background-secondary);    
+}
+
+li.active {
+    background-color: var(--primary) !important;
+    border: none;
+}
+
+#searchButton {
+    margin-left: 5px;
+    height: 64px;
 }

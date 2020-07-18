@@ -1,4 +1,4 @@
-# Announce
+# Logs
 Receive messages when something happens.
 
 [i] Ensure <BotUser> has access to the channel to be able to send messages.

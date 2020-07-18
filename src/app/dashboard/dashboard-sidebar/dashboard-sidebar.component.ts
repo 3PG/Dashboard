@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { MatSelect } from '@angular/material/select';
 import { FormGroup, FormControl } from '@angular/forms';

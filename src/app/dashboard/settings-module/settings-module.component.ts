@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ModuleConfig } from '../../module-config';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GuildService } from '../../services/guild.service';
-import { SaveChangesComponent } from '../save-changes/save-changes.component';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
