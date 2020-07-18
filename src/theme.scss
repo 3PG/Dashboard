@@ -170,7 +170,10 @@ h1,h2,h3,h4,h5 {
     background-color: var(--background-secondary);
 }
 
-// TODO: move to overrides.css, and import
+.interactive-muted {
+    color: var(--interactive-muted) !important;    
+}
+
 // overrides
 
 .color-picker {

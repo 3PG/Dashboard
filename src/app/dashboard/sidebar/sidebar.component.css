@@ -68,12 +68,18 @@ button {
     overflow-y: scroll;
 
     background-color: var(--background-secondary) !important;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 .toggle {
     visibility: visible;
 
     margin: 50px 0 0 15px;
+}
+
+/* < Small devices */
+@media (max-width: 576px) {
+    .options {
+        width: 225px;
+    }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
@@ -102,7 +108,7 @@ mat-sidenav {
     width: 32px;
     border-radius: 1px;
 
-    border-color: var(--background-secondary);
+    border-color: var(--background-primary);
 }
 
 .close {

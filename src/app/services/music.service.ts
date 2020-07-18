@@ -44,17 +44,16 @@ export class MusicService {
 
     if (this.list.length === 1) {
       this._paused = false;
-      this._current = 0;
 
       clearInterval(this.refreshList);
-      this.refreshList = window.setInterval(() => this.incrementPosition(id), 100);
+      this.refreshList = window.setInterval(() => this.incrementPosition(id), 1 * 1000);
     }
   }
 
   private async incrementPosition(id: string) {
-    if (this.paused) return;
+    if (this.paused || this.list.length <= 0) return;
 
-    this._current += 0.1;
+    this._current++;
 
     this._max = this.list[0].duration / 1000;
     if (this._current >= this._max) {

@@ -75,4 +75,8 @@ export class GuildService {
   restoreDefaults(id: string) {
     return this.http.delete(`${this.endpoint}/${id}/config?key=${this.key}`).toPromise();
   }
+
+  getBotStatus(id: string): Promise<any> {
+    return this.http.get(`${this.endpoint}/${id}/bot-status`).toPromise();
+  }
 }

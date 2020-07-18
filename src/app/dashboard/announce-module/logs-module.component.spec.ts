@@ -1,13 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnnounceModuleComponent, AnnounceEvent, EventType } from './announce-module.component';
-import { By } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
-import { AppRoutingModule } from '../../app-routing.module';
-import { ReactiveFormsModule, FormArray } from '@angular/forms';
-import { environment } from 'src/environments/environment';
+import { AnnounceModuleComponent, AnnounceEvent, EventType } from './logs-module.component';
+import { FormArray } from '@angular/forms';
 import { AppModule } from 'src/app/app.module';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 

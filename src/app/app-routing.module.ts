@@ -14,7 +14,7 @@ import { GeneralModuleComponent } from './dashboard/general-module/general-modul
 import { LevelingModuleComponent as LevelingModuleComponent } from './dashboard/leveling-module/leveling-module.component';
 import { MusicModuleComponent } from './dashboard/music-module/music-module.component';
 import { AutoModModuleComponent } from './dashboard/auto-mod-module/auto-mod-module.component';
-import { AnnounceModuleComponent } from './dashboard/announce-module/announce-module.component';
+import { AnnounceModuleComponent } from './dashboard/announce-module/logs-module.component';
 import { LogModuleComponent } from './dashboard/log-module/log-module.component';
 import { SettingsModuleComponent } from './dashboard/settings-module/settings-module.component';
 import { CommandsModuleComponent } from './dashboard/commands-module/commands-module.component';
@@ -49,11 +49,11 @@ const routes: Routes = [
   { path: 'dashboard/xp-card', component: XPCardComponent, canActivate: [DashboardAuthGuard] },
 
   { path: 'servers/:id', component: GuildComponent, canActivate: [GuildAuthGuard] },
-  { path: 'servers/:id/announce', component: AnnounceModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/auto-mod', component: AutoModModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/commands', component: CommandsModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/general', component: GeneralModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/leveling', component: LevelingModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
+  { path: 'servers/:id/logs', component: AnnounceModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/music', component: MusicModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/reaction-roles', component: ReactionRolesModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },
   { path: 'servers/:id/timers', component: TimersModuleComponent, canActivate: [GuildAuthGuard], canDeactivate: [CanDeactivateDashboard] },

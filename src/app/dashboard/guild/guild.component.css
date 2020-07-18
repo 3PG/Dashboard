@@ -7,15 +7,18 @@
 }
 
 .stats {
-    background-color: var(--secondary);
     border-radius: 3px;
     margin: 15px;
     padding: 25px;
-
+    
     text-transform: uppercase;
+
+    color: var(--heading);
+    background-color: var(--secondary);
 }
 
 .stats.large {
     margin: 15px;
+    
     background-color: var(--background-tertiary);
 }

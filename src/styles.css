@@ -207,8 +207,11 @@ pre code {
 
 /* sidebar */
 
+.mat-drawer-side {
+    background-color: var(--background-secondary) !important;
+}
+
 .mat-drawer-side, .mat-drawer-container {
-    background-color: transparent !important;
     border: none !important;
 }
 
@@ -267,6 +270,9 @@ emoji-mart {
 /* inputs */
 mat-icon {
     font-size: 15px !important;
+}
+.mat-option {
+    height: inherit !important;
 }
 
 label {
