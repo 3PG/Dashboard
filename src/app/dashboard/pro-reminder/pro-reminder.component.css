@@ -1,9 +1,61 @@
-img {
-    cursor: pointer;
-    max-height: 17px;
-    padding-bottom: 5px;
+div {
+  display: inline;
 }
 
-div {
-    display: inline;
+.btn-shine {
+  cursor: pointer;
+
+  transform: translate(-50%, -50%);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-shine:hover {
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+
+  background: linear-gradient(to right, var(--primary) 0, #fff 10%, var(--primary) 20%);
+  background-position: 0;
+
+  -webkit-text-size-adjust: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@-moz-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 64px;
+  }
+}
+
+@-webkit-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 64px;
+  }
+}
+
+@-o-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 64px;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 64px;
+  }
 }

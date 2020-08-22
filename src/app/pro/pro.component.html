@@ -2,74 +2,16 @@
 <div class="container">
     <div class="jumbotron">
         <div class="d-flex justify-content-between">
-            <h1 class="display-3">3PG <img class="pro large" src="assets/img/pro.png"></h1>
+            <h1 class="display-3">3PG <img class="pro large" src="assets/img/pro.svg"></h1>
             <img class="float robot d-lg-block d-none" src="assets/img/3PGProAvatarTransparent.webp">
         </div>
         <h2 class="lead">Support 3PG, help cover costs, and improve 3PG's experience.</h2>
     </div>
     <section id="benefits">
-        <h2 class="mt-5">Why <img class="pro medium" src="assets/img/pro.png">?</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card text-dark">
-                    <div class="card-body">
-                        <i class="fa fa-paint-brush" aria-hidden="true"></i> Customize XP Card Background
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card text-dark">
-                    <div class="card-body">
-                        <i class="fa fa-plus" aria-hidden="true"></i> More benefits in future updates
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card text-dark">
-                    <div class="card-body">
-                        <i class="fas fa-music"></i> Increased music queue size
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card text-dark">
-                    <div class="card-body">
-                        <i class="fa fa-id-badge" aria-hidden="true"></i> Exclusive PRO badge
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card text-dark">
-                    <div class="card-body">
-                        <i class="fa fa-hashtag" aria-hidden="true"></i> Exclusive 3PG Discord Access
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card text-dark">
-                    <div class="card-body">
-                        <i class="fa fa-star" aria-hidden="true"></i> No Ads
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card text-dark">
-                    <div class="card-body">
-                        <i class="fa fa-certificate" aria-hidden="true"></i> 7 Day Money Back Guarantee
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h2 class="mt-5">Why <img class="pro medium" src="assets/img/pro.svg">?</h2>
+        <pro-cards></pro-cards>
     </section>
-    
-    <form class="d-flex justify-content-center" [action]="checkoutEndpoint" method="GET">
-        <button *ngIf="userService.user && userService.savedUser.premium"
-            class="checkout my-3" color="info" mat-button disabled>You've Already Maxed Out!</button>
-        <button *ngIf="userService.user && !userService.savedUser.premium" (click)="checkout()"
-            class="checkout my-3" color="success" mat-button>Go <pro-reminder></pro-reminder></button>
-        <button *ngIf="!userService.user" routerLink="/login"
-            class="checkout my-3" color="success" mat-button>Login to Go <pro-reminder></pro-reminder></button>
-    </form>
+
     <hr>
     <section id="faq">
         <h2 class="py-2">Questions and Answers</h2>

@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  discordURL: 'https://discord.com/invite/xRT6Fz5',
+  discordURL: 'https://discord.gg/xRT6Fz5',
   endpoint: 'http://localhost:3000/api',
-  githubURL: 'https://github.com/theADAMJR/2PG',
+  githubURL: 'https://github.com/3PG',
   production: false,
   stripePublicKey: 'pk_test_5D57doatt7FpFolXlTHy8DvZ00TgL3h1WJ',
   url: 'http://localhost:4200',

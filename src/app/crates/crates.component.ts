@@ -18,9 +18,9 @@ export class CratesComponent implements OnInit {
     { name: 'Tier 3 Legend Badge', url: 'assets/img/badges/legend.svg' },
     { name: 'Tier 2 Legend Badge', url: 'assets/img/badges/legend.svg' },
     { name: 'Tier 1 Legend Badge', url: 'assets/img/badges/legend.svg' },
-    { name: '7 Days PRO', url: 'assets/img/pro.png' },
-    { name: '1 Month PRO', url: 'assets/img/pro.png' },
-    { name: '3 Months PRO', url: 'assets/img/pro.png' }
+    { name: '7 Days PRO', url: 'assets/img/pro.svg' },
+    { name: '1 Month PRO', url: 'assets/img/pro.svg' },
+    { name: '3 Months PRO', url: 'assets/img/pro.svg' }
   ];
 
   constructor(

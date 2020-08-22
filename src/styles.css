@@ -35,6 +35,10 @@ table {
     width: 100%;
 }
 
+#homeNavbar nav {
+    background-color: var(--background-secondary) !important;
+}
+
 .rounded {
     border-radius: 5px !important;
 }

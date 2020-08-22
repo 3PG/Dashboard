@@ -12,10 +12,8 @@ import { ThemeService } from 'src/app/services/theme.service';
 export class DashboardSidebarComponent implements OnInit {
   @ViewChild('themeSelect') themeSelect: MatSelect;
 
-  defaultTheme = 'CHOCOLATE';
-
   form = new FormGroup({
-    theme: new FormControl(localStorage.getItem('theme') ?? this.defaultTheme)
+    theme: new FormControl(localStorage.getItem('theme') ?? this.service.defaultTheme)
   });
 
   get user() { return this.userService.user ?? {}; }

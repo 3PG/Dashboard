@@ -61,7 +61,7 @@ export class DocsComponent implements OnInit {
     .replace(/<BotUser>/g, `<a class="mention">@3PG#8166</a>`)
     .replace(/<Discord>/g, `<a href="${environment.discordURL}">3PG Discord</a>`)
     .replace(/<User>/g, `<a class="mention">@${this.userService.user?.tag ?? 'User#1234'}</a>`)
-    .replace(/<PRO>/g, `<img class="pro-reference" src="assets/img/pro.png"></img>`);
+    .replace(/<PRO>/g, `<img class="pro-reference" src="assets/img/pro.svg"></img>`);
   }
 
   customMD(content: string) {

@@ -19,7 +19,8 @@ export class GuildAuthGuard implements CanActivate {
 
     this.guildService.singleton = next.data =
       (guildId === this.guildService.singleton?.guild.id)
-        ? this.guildService.singleton : apiGuild
+        ? this.guildService.singleton : apiGuild;
+
       const canActivate = this.guildService.guilds?.some(g => g.id === guildId);
       if (!canActivate)
         this.router.navigate(['/dashboard']);

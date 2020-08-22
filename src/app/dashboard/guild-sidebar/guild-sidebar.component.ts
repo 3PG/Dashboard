@@ -27,9 +27,6 @@ export class GuildSidebarComponent implements OnInit {
       const { saved, guild } = this.route.snapshot.data as APIGuild;
       this.savedGuild = saved;
       this.guild = guild;
-      
-      if (!guild)
-        this.router.navigate(['/dashboard']);
     });
   }
 }

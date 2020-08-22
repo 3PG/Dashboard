@@ -61,6 +61,7 @@ import { XPCardComponent } from './xp-card/xp-card.component';
 import { ZippyComponent } from './zippy/zippy.component';
 import { CamelToSentenceCasePipe } from './pipes/camel-to-sentence-case.pipe';
 import { LogModuleComponent } from './dashboard/log-module/log-module.component';
+import { ProCardsComponent } from './pro-cards/pro-cards.component';
 
 export class AlertErrorHandler implements ErrorHandler {  
   async handleError(error: Error | any) {
@@ -132,7 +133,8 @@ export class AlertErrorHandler implements ErrorHandler {
     WavesComponent,
     LoginComponent,
     ReactionRolesModuleComponent,
-    CamelToSentenceCasePipe
+    CamelToSentenceCasePipe,
+    ProCardsComponent
   ],
   imports: [
     AppRoutingModule,

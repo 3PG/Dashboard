@@ -5,7 +5,11 @@
 .jumbotron {
     background: none;
     text-align: center;
-    margin-top: 15vh;
+    padding-top: 20vh;
+    
+    background-color: var(--background-secondary);
+    margin: 0;
+    padding-bottom: 2rem;
 }
 
 p:not(.lead) {

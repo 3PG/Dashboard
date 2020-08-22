@@ -19,6 +19,10 @@ mat-sidenav ::-webkit-scrollbar {
     cursor: pointer;
 }
 
+.guild-icon.invite {
+    background-color: transparent !important;
+}
+
 .guild-icon img:hover, .guild-icon:hover, .guild-icon span:hover {
     border-radius: 25%;
 }
