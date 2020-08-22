@@ -3,19 +3,13 @@
         <h1 class="display-3 p-3">Hey, {{ user.username }}</h1>
         <hr>
 
-        <h1>Welcome to the Beta Dashboard!</h1>
-        <p class="text-muted">
-            <a href="/docs/badges">Badges</a> will be given to those who help report bugs.
-        </p>
+        <h1>Welcome to the Dashboard!</h1>
+        <p>Here you can manage your server configs, manage your profile and more.</p>
 
-        <strong>Current version</strong>: <a routerLink="/docs/changelog" [fragment]="anchorVersion">{{ version }}</a>.
-
-        <hr>
-
-        <h2>Unlock Crates</h2>
+        <h2>Vote for 3PG</h2>
         <button *ngFor="let vote of voteURLs"
-            mat-button class="bg-success m-2">
-            <a class="m-2 p-5 text-light"
+            mat-button class="bg-info m-2">
+            <a class="m-2 p-3 text-light"
                 [href]="vote.url" rel="nofollow"
                 target="_blank" data-toggle="tooltip">{{ vote.name }}</a>
         </button>

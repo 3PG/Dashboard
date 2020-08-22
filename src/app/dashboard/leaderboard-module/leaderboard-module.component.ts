@@ -19,6 +19,6 @@ export class LeaderboardModuleComponent implements OnInit {
     const guildId = this.route.snapshot.paramMap.get('id');
 
     this.members = await this.guildService.getMembers(guildId);
-    this.guild = await this.guildService.getPublicGuild(guildId);
+    this.guild = await this.guildService.getGuild(guildId);
   }
 }

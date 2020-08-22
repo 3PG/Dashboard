@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class GuildService {
   endpoint = environment.endpoint + '/guilds';
   
-  singleton = null;
+  singleton: APIGuild = null;
 
   private _guilds = [];
   get guilds() { return this._guilds; }
@@ -17,31 +17,28 @@ export class GuildService {
     return localStorage.getItem('key');
   }
 
-  constructor(private http: HttpClient) {}  
+  constructor(private http: HttpClient) {}
+
+  async init() {
+    if (this.guilds.length <= 0)
+      await this.updateGuilds();
+  }
 
   async updateGuilds() {
     this._guilds = (this.key) ? 
       await this.http.get(`${this.endpoint}?key=${this.key}`).toPromise() as any : [];
   }
 
+  getAPIGuild(id: string) {
+    return this.http.get(`${this.endpoint}/${id}?key=${this.key}`).toPromise() as Promise<APIGuild>;    
+  }
+
   getGuild(id: string) {
     return this.guilds?.find(g => g.id === id);
   }
 
-  getPublicGuild(id: string): Promise<any> {
-    return this.http.get(`${this.endpoint}/${id}/public`).toPromise();
-  }
-
   getMembers(id: string): Promise<any> {
     return this.http.get(`${this.endpoint}/${id}/members`).toPromise();
-  }
-
-  getChannels(id: string): Promise<any> {
-    return this.http.get(`${this.endpoint}/${id}/channels`).toPromise();
-  }
-
-  getRoles(id: string): Promise<any> {
-    return this.http.get(`${this.endpoint}/${id}/roles`).toPromise();
   }
 
   getWarnings(id: string): Promise<any> {
@@ -52,31 +49,29 @@ export class GuildService {
     return this.http.get(`${this.endpoint}/${id}/channels/${channelId}/messages/${messageId}`).toPromise();
   }
 
-  getTimerSchedule(id: string): Promise<any> {
-    return this.http.get(`${this.endpoint}/${id}/timers`).toPromise();
-  }
-
   cancelTimer(id: string, timerIndex: number): Promise<any> {
     return this.http.get(`${this.endpoint}/${id}/timers/${timerIndex}/cancel?key=${this.key}`).toPromise();
   }
 
-  getSavedGuild(id: string): Promise<any> {
-    return this.http.get(`${this.endpoint}/${id}/config?key=${this.key}`).toPromise();
-  }
-
-  getSavedLog(id: string): Promise<any> {        
-    return this.http.get(`${this.endpoint}/${id}/log?key=${this.key}`).toPromise();
-  }
-
-  saveGuild(id: string, module: string, value: any): Promise<any> {
+  updateGuild(id: string, module: string, value: any): Promise<any> {
     return this.http.put(`${this.endpoint}/${id}/${module}?key=${this.key}`, value).toPromise();
   }
   
   restoreDefaults(id: string) {
-    return this.http.delete(`${this.endpoint}/${id}/config?key=${this.key}`).toPromise();
+    return this.http.delete(`${this.endpoint}/${id}?key=${this.key}`).toPromise();
   }
+}
 
-  getBotStatus(id: string): Promise<any> {
-    return this.http.get(`${this.endpoint}/${id}/bot-status`).toPromise();
+export interface APIGuild {
+  channels: any[];
+  guild: any;
+  log: {
+    _id: string;
+    changes: any[];
+    commands: any[];
   }
+  saved: any;
+  status: { hasAdmin: boolean; }
+  roles: any[];
+  timers: any[];
 }

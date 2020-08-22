@@ -15,7 +15,7 @@ export class WarningsWidgetComponent implements OnInit {
   chartReady = false;
   
   barChartOptions: ChartOptions = {
-    responsive: false,
+    responsive: true,
     scales: {
       yAxes: [{ display: false }],
       xAxes: [{ display: false }]

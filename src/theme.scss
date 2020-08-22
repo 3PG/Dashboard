@@ -8,11 +8,6 @@
 :root {
     --heading: #FFFFFF;
     --font: #FFFFFF;
-    --pro: #482F5D;
-
-    --danger: #B00000;
-    --muted: grey;
-    --interactive-muted: #4f545c;
 
     --primary: #482F5D;
     --secondary: #45377C;
@@ -22,9 +17,27 @@
     --background-secondary: #2c1518;
     --background-tertiary: #251113;
 
+    --danger: #B00000;
+    --muted: grey;
+    --interactive-muted: #4f545c;
+
+    --pro: #482F5D;
+
     --gold: #D4AF37;
     --silver: silver;
     --bronze: #CD7F32;
+}
+:root[theme=COSMIC] {
+    --heading: #ffffff;
+    --font: #ACB9D5;
+
+    --primary: #6E80AD;
+    --secondary: #8199BB;
+    --tertiary: #465689;
+    
+    --background-primary: #0F1A31;
+    --background-secondary: #070d1a;
+    --background-tertiary: #060b18;
 }
 :root[theme=DISCORD] {
     --font: #99AAB5;

@@ -3,34 +3,23 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { GuildService } from '../services/guild.service';
 import { UserService } from '../services/user.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class GuildAuthGuard implements CanActivate {
   constructor(
     private guildService: GuildService,
     private userService: UserService,
     private router: Router) {}
 
-  async canActivate(
-    next: ActivatedRouteSnapshot) {
-      if (!this.userService.user)
-        await this.userService.updateUser();
-      if (!this.userService.savedUser)
-        await this.userService.updateSavedUser();
-      if (this.guildService.guilds.length <= 0)
-        await this.guildService.updateGuilds();
+  async canActivate(next: ActivatedRouteSnapshot) {
+    await this.userService.init();
+    await this.guildService.init();
 
-      const guildId = next.paramMap.get('id');                
-      this.guildService.singleton = next.data =
-        (guildId === this.guildService.singleton?.guildId) 
-          ? this.guildService.singleton : {
-            guildId,
-            channels: await this.guildService.getChannels(guildId),
-            log: await this.guildService.getSavedLog(guildId),
-            roles: await this.guildService.getRoles(guildId),
-            savedGuild: await this.guildService.getSavedGuild(guildId)
-          };
+    const guildId = next.paramMap.get('id');                
+    const apiGuild = await this.guildService.getAPIGuild(guildId);
+
+    this.guildService.singleton = next.data =
+      (guildId === this.guildService.singleton?.guild.id)
+        ? this.guildService.singleton : apiGuild
       const canActivate = this.guildService.guilds?.some(g => g.id === guildId);
       if (!canActivate)
         this.router.navigate(['/dashboard']);

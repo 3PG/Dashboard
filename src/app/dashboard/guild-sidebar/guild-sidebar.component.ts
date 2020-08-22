@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GuildService } from '../../services/guild.service';
+import { GuildService, APIGuild } from '../../services/guild.service';
 
 @Component({
   selector: 'guild-sidebar',
@@ -15,7 +15,6 @@ export class GuildSidebarComponent implements OnInit {
   savedGuild: any;
 
   constructor(
-    private guildService: GuildService,
     private route: ActivatedRoute,
     private router: Router) {
       document.title = '3PG - Dashboard';
@@ -25,10 +24,11 @@ export class GuildSidebarComponent implements OnInit {
     this.route.paramMap.subscribe(async(paramMap) => {
       this.id = paramMap.get('id');
 
-      this.savedGuild = await this.guildService.getSavedGuild(this.id);
-      this.guild = this.guildService.getGuild(this.id);
+      const { saved, guild } = this.route.snapshot.data as APIGuild;
+      this.savedGuild = saved;
+      this.guild = guild;
       
-      if (!this.guild)
+      if (!guild)
         this.router.navigate(['/dashboard']);
     });
   }

@@ -13,7 +13,6 @@ import { CratesComponent } from './crates/crates.component';
 import { CustomizeXPCardComponent } from './customize-xp-card/customize-xp-card.component';
 import { LogsModuleComponent } from './dashboard/announce-module/logs-module.component';
 import { AutoModModuleComponent } from './dashboard/auto-mod-module/auto-mod-module.component';
-import { BadgesComponent } from './dashboard/badges/badges.component';
 import { CommandsModuleComponent } from './dashboard/commands-module/commands-module.component';
 import { DashboardComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { DashboardSidebarComponent } from './dashboard/dashboard-sidebar/dashboard-sidebar.component';
@@ -124,7 +123,6 @@ export class AlertErrorHandler implements ErrorHandler {
     WarningsWidgetComponent,
     TimersModuleComponent,
     ProReminderComponent,
-    BadgesComponent,
     SnakeToSentenceCasePipe,
     EmojiDirective,
     TruncatedPipe,

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GuildService } from 'src/app/services/guild.service';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +14,7 @@ export class CommandsWidgetComponent implements OnInit {
   chartReady = false;
   
   barChartOptions: ChartOptions = {
-    responsive: false,
+    responsive: true,
     scales: {
       yAxes: [{ display: false }],
       xAxes: [{ display: false }]
@@ -31,16 +30,11 @@ export class CommandsWidgetComponent implements OnInit {
 
   barChartData: ChartDataSets[] = [];
 
-  constructor(
-    private guildService: GuildService,
-    private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   async ngOnInit() {
     this.route.paramMap.subscribe(async(val) => {
-      const id = val.get('id');
-
-      const { commands } = this.route.snapshot.data.log;
-      this.commands = commands;
+      this.commands = this.route.snapshot.data.log?.commands;
   
       this.barChartLabels = this.buildLabels();
       this.barChartData = this.buildDataSets();

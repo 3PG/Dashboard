@@ -21,10 +21,10 @@ export class GuildComponent implements OnInit {
       const id = paramMap.get('id');
       this.guild = this.guildService.getGuild(id);
 
-      const { commands } = await this.guildService.getSavedLog(this.guild.id);
+      const { commands } = this.guildService.singleton.log;
       this.commands = commands;
 
-      const { hasAdmin } = await this.guildService.getBotStatus(id);
+      const { hasAdmin } = this.guildService.singleton.status;
       this.botNeedsPerms = !hasAdmin;
     });
   }

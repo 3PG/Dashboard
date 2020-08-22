@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="/">3PG</a>
+    <a class="navbar-brand" routerLink="/">
+        <img src="/assets/img/logo.png" alt="3PG Logo">
+    </a>
     <div class="nav navbar-nav">
         <a class="nav-item nav-link" routerLink="/commands" routerLinkActive="active">
             <i class="fa fa-code" aria-hidden="true"></i>
@@ -12,6 +14,9 @@
         </a>
         <a class="nav-item nav-link" [href]="discordURL" routerLinkActive="active">
             <i class="fab fa-discord"></i>
+        </a>
+        <a class="nav-item nav-link" [href]="githubURL" routerLinkActive="active">
+            <i class="fab fa-github"></i>
         </a>
     </div>
     <div class="nav navbar-nav ml-auto">

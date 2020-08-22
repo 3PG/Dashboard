@@ -16,7 +16,7 @@
                     class="col-lg-6 col-md-12 my-3">
                     <div [formGroupName]="i"
                         class="rounded reaction-role">
-                        <mat-form-field appearance="outline" class="p-2">
+                        <mat-form-field appearance="outline" class="p-2 ml-3">
                             <mat-label>Channel</mat-label>
                             <mat-select formControlName="channel">
                                 <mat-option *ngFor="let channel of textChannels" 
@@ -31,7 +31,7 @@
                             <input matInput formControlName="messageId" type="text">
                         </mat-form-field>
                         <!-- emote -->
-                        <mat-form-field appearance="outline" class="p-2">
+                        <mat-form-field appearance="outline" class="p-2 ml-3">
                             <mat-label>Emote</mat-label>
                             <input matInput #emote
                                 formControlName="emote" type="text">

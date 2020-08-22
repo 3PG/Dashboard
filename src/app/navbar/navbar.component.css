@@ -1,5 +1,6 @@
 nav {
     background-color: transparent !important;
+    margin-top: -12px;
 }
 
 img {
@@ -21,4 +22,8 @@ img {
 
 a {
     cursor: pointer;
+}
+
+.navbar-brand img {
+    max-width: 56px;
 }

@@ -38,7 +38,7 @@ export abstract class ModuleConfig implements OnDestroy {
      * Load all required data for the form, and hook events.
      */
     async init() {
-        const data = this.route.snapshot.data;
+        const data = this.guildService.singleton;
         this.hasPremium = this.userService.savedUser.premium;
         
         this.guild = this.guildService.guilds.find(g => g.id === this.guildId);
@@ -47,7 +47,7 @@ export abstract class ModuleConfig implements OnDestroy {
         this.channels = data.channels;
         this.textChannels = data.channels.filter(c => c.type === 'text');
 
-        this.savedGuild = data.savedGuild;
+        this.savedGuild = data.saved;
         this.originalSavedGuild = JSON.parse(JSON.stringify(this.savedGuild));
         
         await this.resetForm();
@@ -101,7 +101,7 @@ export abstract class ModuleConfig implements OnDestroy {
 
             this.filterFormValue();
             
-            await this.guildService.saveGuild(this.guildId, this.moduleName, this.form.value);
+            await this.guildService.updateGuild(this.guildId, this.moduleName, this.form.value);
             this.originalSavedGuild[this.moduleName] = this.form.value;
         } catch {
             console.log(this.form.value);

@@ -11,9 +11,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class DashboardComponent {
   readonly discordURL = environment.discordURL;
   readonly voteURLs = environment.voteURLs;
-
-  version = environment.version;
-  anchorVersion = environment.version.replace(/\./g, '');
   
   get user() { return this.userService.user; }
 

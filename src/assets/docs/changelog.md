@@ -12,6 +12,19 @@
 
 ---
 
+### v2.2.1b
+
+**Add**
+
+**Change/Fix**
+- 
+
+**Remove**
+- dashboard -> badges
+- dashboard -> crates (may be temporary)
+
+---
+
 ### v2.2.0b
 `18/07/2020`
 
@@ -30,9 +43,6 @@
 - `/` -> optimized scripts for faster home page load
 - auth -> optimized login process and speed
 - reaction roles -> roles now are given to anyone who reacts
-
-**Remove**
-- stupid lag
 
 ---
 

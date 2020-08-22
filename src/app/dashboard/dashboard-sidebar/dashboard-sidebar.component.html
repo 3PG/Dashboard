@@ -5,14 +5,6 @@
             <h4 routerLink="/dashboard">{{ user.username }}</h4></div>
             <div class="navbar-nav">
                 <div class="category">User</div>
-                <a routerLink="/dashboard/badges"
-                    class="nav-item nav-link">
-                    <i class="fa fa-id-badge" aria-hidden="true"></i> Badges
-                </a>
-                <a routerLink="/dashboard/crates"
-                    class="nav-item nav-link">
-                    <i class="fas fa-box"></i> Crates
-                </a>
                 <a routerLink="/dashboard/xp-card"
                     class="nav-item nav-link">
                     <i class="fa fa-star" aria-hidden="true"></i> XP Card
@@ -21,10 +13,11 @@
                     <mat-form-field appearance="outline" class="ml-3 m-2">
                         <mat-label>Theme</mat-label>
                         <mat-select formControlName="theme" #themeSelect>
+                            <mat-option value="COSMIC" selected>Cosmic</mat-option>
                             <mat-option value="CHOCOLATE" selected>Chocolate (Default)</mat-option>
+                            <mat-option value="DISCORD">Discord</mat-option>
                             <mat-option value="IONIC" selected>Ionic</mat-option>
                             <mat-option value="TWILIGHT" selected>Twilight</mat-option>
-                            <mat-option value="DISCORD">Discord</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </form>

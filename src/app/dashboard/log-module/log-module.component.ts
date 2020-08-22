@@ -28,7 +28,7 @@ export class LogModuleComponent implements OnInit {
   async ngOnInit() { 
     const id = this.route.snapshot.paramMap.get('id');
 
-    const log = await this.service.getSavedLog(id);
+    const log = this.service.singleton.log;
     this.changes = log.changes.reverse();
 
     this.members = await this.guildService.getMembers(id);

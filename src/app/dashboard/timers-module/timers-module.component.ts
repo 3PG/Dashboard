@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GuildService } from 'src/app/services/guild.service';
+import { GuildService, APIGuild } from 'src/app/services/guild.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModuleConfig } from 'src/app/module-config';
@@ -84,7 +84,7 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async updateSchedule() {
-    this.schedule = await this.guildService.getTimerSchedule(this.guildId);
+    this.schedule = this.guildService.singleton.timers;
   }
 
   isCommandTimer(timer: any) {

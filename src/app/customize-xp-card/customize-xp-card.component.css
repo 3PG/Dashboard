@@ -3,6 +3,10 @@ img {
     padding-bottom: 15px;
 }
 
+div {
+    border-color: transparent;
+}
+
 .modal-content {
     background-color: var(--background-secondary);
 }
