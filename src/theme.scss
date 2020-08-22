@@ -7,19 +7,19 @@
 
 :root {
     --heading: #FFFFFF;
-    --font: #FFFFFF;
+    --font: #99AAB5;
 
     --primary: #482F5D;
     --secondary: #45377C;
     --tertiary: #351F20;
 
-    --background-primary: #372224;
-    --background-secondary: #2c1518;
-    --background-tertiary: #251113;
-
+    --background-primary: #36393F;
+    --background-secondary: rgb(37, 38, 42);
+    --background-tertiary: #202225;
+    
+    --interactive-muted: #4f545c;
     --danger: #B00000;
     --muted: grey;
-    --interactive-muted: #4f545c;
 
     --pro: #482F5D;
 
@@ -38,6 +38,18 @@
     --background-primary: #0F1A31;
     --background-secondary: #070d1a;
     --background-tertiary: #060b18;
+}
+:root[theme=CHOCOLATE] {
+    --heading: #FFFFFF;
+    --font: #FFFFFF;
+
+    --primary: #482F5D;
+    --secondary: #45377C;
+    --tertiary: #351F20;
+
+    --background-primary: #372224;
+    --background-secondary: #2c1518;
+    --background-tertiary: #251113;    
 }
 :root[theme=DISCORD] {
     --font: #99AAB5;

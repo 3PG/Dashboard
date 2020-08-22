@@ -2,7 +2,6 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~highlight.js/styles/arta.css';
 @import '~chart.js/dist/Chart.min.css';
-@import '~@ctrl/ngx-emoji-mart/picker.css';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css';
 @import 'assets/css/utils.css';
 
