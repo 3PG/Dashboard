@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DocsComponent implements OnInit {
   page: string;
-  defaultPage = 'getting-started';
+  defaultPage = 'get-started';
 
   get markdownPagePath$() {
     return this.route.paramMap.pipe(
