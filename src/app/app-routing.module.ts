@@ -6,7 +6,7 @@ import { CommandsComponent } from './commands/commands.component';
 import { AuthComponent } from './auth/auth.component';
 import { InviteComponent } from './invite/invite.component';
 import { LogoutComponent } from './logout/logout.component';
-import { DashboardComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
+import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { GuildComponent } from './dashboard/guild/guild.component';
 import { DashboardAuthGuard } from './guards/dashboard-auth.guard';
 import { GuildAuthGuard } from './guards/guild-auth.guard';
@@ -42,8 +42,7 @@ const routes: Routes = [
   { path: 'invite', component: InviteComponent },
   { path: 'leaderboard/:id', component: LeaderboardModuleComponent, canActivate: [LeaderboardAuthGuard] },
 
-  { path: 'dashboard', component: DashboardComponent, canActivate: [DashboardAuthGuard] },
-  { path: 'dashboard/crates', component: CratesComponent, canActivate: [DashboardAuthGuard] },
+  { path: 'dashboard', component: DashboardOverviewComponent, canActivate: [DashboardAuthGuard] },
   { path: 'dashboard/xp-card', component: XPCardComponent, canActivate: [DashboardAuthGuard] },
 
   { path: 'servers/:id', component: GuildComponent, canActivate: [GuildAuthGuard] },
@@ -69,7 +68,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabled'
-  })],
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

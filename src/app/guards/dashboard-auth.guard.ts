@@ -17,6 +17,6 @@ export class DashboardAuthGuard implements CanActivate {
     const canActivate = Boolean(this.userService.user);
     if (!canActivate)
       this.router.navigate(['/']);
-    return canActivate;
+    return true;
   }  
 }

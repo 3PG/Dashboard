@@ -14,7 +14,7 @@ import { CustomizeXPCardComponent } from './customize-xp-card/customize-xp-card.
 import { LogsModuleComponent } from './dashboard/announce-module/logs-module.component';
 import { AutoModModuleComponent } from './dashboard/auto-mod-module/auto-mod-module.component';
 import { CommandsModuleComponent } from './dashboard/commands-module/commands-module.component';
-import { DashboardComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
+import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { DashboardSidebarComponent } from './dashboard/dashboard-sidebar/dashboard-sidebar.component';
 import { PremiumDirective } from './dashboard/directives/premium.directive';
 import { GeneralModuleComponent } from './dashboard/general-module/general-module.component';
@@ -62,6 +62,7 @@ import { ZippyComponent } from './zippy/zippy.component';
 import { CamelToSentenceCasePipe } from './pipes/camel-to-sentence-case.pipe';
 import { LogModuleComponent } from './dashboard/log-module/log-module.component';
 import { ProCardsComponent } from './pro-cards/pro-cards.component';
+import { ProPaywallComponent } from './dashboard/pro-paywall/pro-paywall.component';
 
 export class AlertErrorHandler implements ErrorHandler {  
   async handleError(error: Error | any) {
@@ -87,7 +88,7 @@ export class AlertErrorHandler implements ErrorHandler {
     AuthComponent,
     InviteComponent,
     LogoutComponent,
-    DashboardComponent,
+    DashboardOverviewComponent,
     SidebarComponent,
     GuildComponent,
     SpinnerComponent,
@@ -134,7 +135,8 @@ export class AlertErrorHandler implements ErrorHandler {
     LoginComponent,
     ReactionRolesModuleComponent,
     CamelToSentenceCasePipe,
-    ProCardsComponent
+    ProCardsComponent,
+    ProPaywallComponent
   ],
   imports: [
     AppRoutingModule,

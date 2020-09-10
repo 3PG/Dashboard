@@ -61,6 +61,14 @@ export class UserService {
   openCrate() {
     return this.http.get(`${this.endpoint}/open-crate?key=${this.key}`).toPromise() as Promise<any>;
   }
+
+  referUser(tag: string) {
+    return this.http.put(`${this.endpoint}/refer?key=${this.key}`, { tag }).toPromise() as Promise<any>;
+  }
+
+  getUser(id: string) {
+    return this.http.get(`${this.endpoint}/${id}`).toPromise() as Promise<any>;
+  }
 }
 
 export interface XPCard {

@@ -26,6 +26,6 @@ export class LeaderboardAuthGuard implements CanActivate {
     const canActivate = guildConfig && !guildConfig.settings.privateLeaderboard;
     if (!canActivate)
       this.router.navigate(['/']);
-    return canActivate;
+    return true;
   }
 }

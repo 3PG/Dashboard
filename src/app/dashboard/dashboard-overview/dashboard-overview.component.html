@@ -3,8 +3,37 @@
         <h1 class="display-3 p-3">Hey, {{ user.username }}</h1>
         <hr>
 
-        <h1>Welcome to the Dashboard!</h1>
-        <p>Here you can manage your server configs, manage your profile and more.</p>
+        <div class="mb-3">
+            <h1>Welcome to the Dashboard!</h1>
+            <p>Here you can manage your server configs, manage your profile and more.</p>
+        </div>
+
+        <div class="mb-3">
+            <h2>Refer Users</h2><div class="badge badge-info float-right">NEW</div>
+            <p>Type a friend someone who uses 3PG in their server. Refer <strong>3 users</strong> for <strong>1 FREE month</strong> of PRO.</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <form (submit)="submit()"
+                    #f="ngForm" [formGroup]="form" class="mb-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>User</mat-label>
+                        <input formControlName="tag" type="text"
+                            placeholder="User#0001" matInput>
+                        <mat-error *ngIf="form.get('tag').invalid">Should be a valid Discord tag (e.g. User#0001)</mat-error>
+                    </mat-form-field>
+                    <button class="ml-2" color="success" mat-button>+</button>
+                </form>                
+            </div>
+            <div class="col">
+                <member-username *ngFor="let userId of userService.savedUser.referralIds"
+                    [member]="userService.getUser(userId) | async"></member-username>
+                <div *ngIf="userService.savedUser.referralIds.length <= 0">
+                    <p>No-one has been referred yet.</p>
+                </div>
+            </div>
+        </div>
 
         <h2>Vote for 3PG</h2>
         <button *ngFor="let vote of voteURLs"

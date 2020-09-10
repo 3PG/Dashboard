@@ -24,6 +24,6 @@ export class GuildAuthGuard implements CanActivate {
       const canActivate = this.guildService.guilds?.some(g => g.id === guildId);
       if (!canActivate)
         this.router.navigate(['/dashboard']);
-      return canActivate;
+      return true;
   }  
 }

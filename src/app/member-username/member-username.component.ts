@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class MemberUsernameComponent {
   @Input() member = {
-    displayAvatarURL: 'TODO: add default avatar',
+    displayAvatarURL: 'https://cdn.discordapp.com/embed/avatars/0.png',
     username: 'unknown',
     tag: 'unknown#0000'
   };

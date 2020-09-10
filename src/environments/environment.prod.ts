@@ -5,7 +5,7 @@ export const environment = {
   production: true,
   stripePublicKey: 'pk_live_kyJ00K40kgFhHMYzO7Bc9YjV00sVDW6IlV',
   url: 'https://3pg.xyz',
-  version: 'v2.2.0b',
+  version: 'v2.3.0b',
   voteURLs: [
     { name: '12 hours (1)', url: '//dbots.co/bots/525935335918665760/vote' },
     { name: '12 hours (2)', url: '//top.gg/bot/525935335918665760/vote' },

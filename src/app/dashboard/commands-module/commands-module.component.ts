@@ -6,6 +6,7 @@ import { ModuleConfig } from '../../module-config';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GuildService } from '../../services/guild.service';
 import { UserService } from 'src/app/services/user.service';
+import { toIterable } from 'src/app/utils';
 
 @Component({
   selector: 'app-commands-module',
@@ -14,9 +15,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CommandsModuleComponent extends ModuleConfig implements OnInit {
   moduleName = 'commands';
-
+  
   commands = [];
-  commandConfigs: CommandConfig[] = [];
+  customCommandIndices = toIterable(10);
 
   get commandsFormArray() { return this.form.get('configs') as FormArray; }
 
@@ -39,7 +40,8 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
 
   async buildForm({ commands }: any) { 
     const formGroup = new FormGroup({
-      configs: new FormArray([])
+      configs: new FormArray([]),
+      custom: new FormArray([])
     });
 
     for (let i = 0; i < this.commands.length; i++) {
@@ -50,6 +52,15 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
           roles: new FormControl(command?.roles ?? []),
           channels: new FormControl(command?.channels ?? []),
           enabled: new FormControl(command?.enabled ?? true)
+        }));
+    }
+    for (let i = 0; i < this.customCommandIndices.length; i++) {
+      const config = commands.custom[i];
+      (formGroup.get('custom') as FormArray)
+        .setControl(i, new FormGroup({
+          alias: new FormControl(config?.alias),
+          anywhere: new FormControl(config?.anywhere),
+          command: new FormControl(config?.command)
         }));
     }
     return formGroup;
@@ -68,9 +79,4 @@ export class CommandsModuleComponent extends ModuleConfig implements OnInit {
         value.configs.push(control.value);
     }
   }
-}
-
-export interface CommandConfig {
-  name: string;
-  enabled: boolean;
 }

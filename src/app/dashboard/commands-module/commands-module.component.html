@@ -47,9 +47,44 @@
                                 </mat-form-field>
                             </div>
                         </div>
-                    </div>                  
+                    </div>
                 </div>
             </div>
+            <pro-paywall>
+                <h3>Custom Commands</h3>
+                <plus-badge></plus-badge>
+                <p class="desc">Filter message content, based on specific conditions</p>
+
+                <div class="row">
+                    <div *ngFor="let i of customCommandIndices"
+                        formArrayName="custom"
+                        class="col-lg-6 col-sm-12">
+                        <div [formGroupName]="i" class="rounded custom-command d-flex justify-content-around row">
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Alias</mat-label>                            
+                                    <input type="text" formControlName="alias" matInput #alias>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-6">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Command</mat-label>                            
+                                    <input type="text" formControlName="command" matInput #command>
+                                </mat-form-field>
+                            </div>
+                            <div class="px-5 mx-5">
+                                <label class="mr-2">Executable Anywhere</label>
+                                <mat-checkbox formControlName="anywhere"></mat-checkbox>                          
+                            </div>
+                            <div [@expandCollapse]="alias.value && command.value ? 'down' : 'up'"
+                                [hidden]="!alias.value || !command.value"
+                                [class]="alias.value && command.value ? 'pb-3 px-2' : ''">
+                                <code>{{ command.value }}</code> can also be executed with <code>{{ alias.value }}</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </pro-paywall>
         </form>
     </div>
 </guild-sidebar>
