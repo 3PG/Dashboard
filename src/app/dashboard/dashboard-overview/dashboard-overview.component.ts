@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment';
 })
 export class DashboardOverviewComponent {
   voteURLs = environment.voteURLs;
+  users = [];
+  errorMessage: string;
 
   form = new FormGroup({
     tag: new FormControl('', [ Validators.required, Validators.pattern(/^.+#\d{4}/) ])
@@ -23,12 +25,26 @@ export class DashboardOverviewComponent {
 
   async submit() {
     try {
-      await this.userService.referUser(this.form.value.tag);
+      if (this.form.invalid) return;
 
+      await this.userService.referUser(this.form.value.tag);
       await this.userService.updateSavedUser();
+
+      this.errorMessage = null;
     } catch (error) {
-      console.log(error);      
-      alert(error?.error?.message ?? 'An unknown error occurred.')
+      console.log(error);
+      this.errorMessage = error?.error?.message ?? 'An unknown error occurred.';
     }
+  }
+
+  async ngOnInit() {
+    for (const id of this.userService.savedUser.referralIds) {
+      const user = await this.userService.getUser(id);
+      this.users.push(user);
+    }
+  }
+
+  getUser(id: string) {
+    return this.users.find(u => u.id === id);
   }
 }

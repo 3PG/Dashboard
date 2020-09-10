@@ -6,7 +6,8 @@
             <hr>
         </div>
         <form #f="ngForm" [formGroup]="form">
-            <div formArrayName="configs" class="row d-flex justify-content-center">
+            <div formArrayName="configs"
+                class="row d-flex justify-content-center mb-3">
                 <div [formGroupName]="i" *ngFor="let command of commands; index as i"
                     class="col-lg-6 col-md-12">
                     <div class="card">
@@ -50,16 +51,18 @@
                     </div>
                 </div>
             </div>
+
             <pro-paywall>
                 <h3>Custom Commands</h3>
                 <plus-badge></plus-badge>
-                <p class="desc">Filter message content, based on specific conditions</p>
+                <p class="desc">Create short versions of commands from existing 3PG commands.</p>
 
                 <div class="row">
                     <div *ngFor="let i of customCommandIndices"
                         formArrayName="custom"
                         class="col-lg-6 col-sm-12">
-                        <div [formGroupName]="i" class="rounded custom-command d-flex justify-content-around row">
+                        <div [formGroupName]="i"
+                            class="rounded custom-command d-flex justify-content-around row">
                             <div class="col-sm-6">
                                 <mat-form-field appearance="outline">
                                     <mat-label>Alias</mat-label>                            
@@ -72,8 +75,8 @@
                                     <input type="text" formControlName="command" matInput #command>
                                 </mat-form-field>
                             </div>
-                            <div class="px-5 mx-5">
-                                <label class="mr-2">Executable Anywhere</label>
+                            <div class="mx-5 px-5">
+                                <label class="ml-2 float-right">Executable Anywhere</label>
                                 <mat-checkbox formControlName="anywhere"></mat-checkbox>                          
                             </div>
                             <div [@expandCollapse]="alias.value && command.value ? 'down' : 'up'"

@@ -1,7 +1,7 @@
 <div *ngIf="member">
   <img *ngIf="withAvatar" [src]="member.displayAvatarURL" alt="">
   <span class="username">{{ member.username }}</span>
-  <span class="tag">{{ member.tag }}</span>
+  <span class="tag">{{ tag }}</span>
 </div>
 <div *ngIf="!member">
   <p class="text-muted">User not found.</p>

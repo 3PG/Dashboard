@@ -6,3 +6,10 @@
 .card-body {
     padding-bottom: 0;
 }
+
+.custom-command {
+    background-color: var(--background-tertiary);
+    margin: 5px;
+    padding-top: 25px;
+    padding-left: 15px;
+}

@@ -10,7 +10,8 @@
 
         <div class="mb-3">
             <h2>Refer Users</h2><div class="badge badge-info float-right">NEW</div>
-            <p>Type a friend someone who uses 3PG in their server. Refer <strong>3 users</strong> for <strong>1 FREE month</strong> of PRO.</p>
+            <p>Type a friend someone who has 3PG in their server. Refer <strong>3 users</strong> for <strong>1 FREE month</strong> of <strong>PRO</strong>.
+            </p>
         </div>
 
         <div class="row">
@@ -23,14 +24,22 @@
                             placeholder="User#0001" matInput>
                         <mat-error *ngIf="form.get('tag').invalid">Should be a valid Discord tag (e.g. User#0001)</mat-error>
                     </mat-form-field>
-                    <button class="ml-2" color="success" mat-button>+</button>
-                </form>                
+                    <button class="ml-2" color="success" mat-button><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </form>
+                <div *ngIf="errorMessage"
+                    class="alert alert-warning">{{ errorMessage }}</div>
             </div>
             <div class="col">
-                <member-username *ngFor="let userId of userService.savedUser.referralIds"
-                    [member]="userService.getUser(userId) | async"></member-username>
-                <div *ngIf="userService.savedUser.referralIds.length <= 0">
-                    <p>No-one has been referred yet.</p>
+                <h3 class="text-center">Users</h3>
+                <div class="users">
+                    <member-username *ngFor="let userId of userService.savedUser.referralIds.slice(0, 3)"
+                        [member]="getUser(userId)"
+                        class="user"></member-username>
+                    <p *ngIf="userService.savedUser.referralIds.length > 3"
+                            class="text-muted">and {{ userService.savedUser.referralIds.length - 3 }} more...</p>
+                    <div *ngIf="userService.savedUser.referralIds.length <= 0">
+                        <p>No-one has been referred yet.</p>
+                    </div>
                 </div>
             </div>
         </div>

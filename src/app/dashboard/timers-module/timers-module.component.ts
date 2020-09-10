@@ -84,7 +84,8 @@ export class TimersModuleComponent extends ModuleConfig implements OnInit {
   }
 
   async updateSchedule() {
-    this.schedule = this.guildService.singleton.timers;
+    const { timers } = await this.guildService.getAPIGuild(this.guildId);
+    this.schedule = timers;
   }
 
   isCommandTimer(timer: any) {

@@ -20,7 +20,6 @@
                 </div>
             </div>
         </form>
-        <hr>
         <h3>Music Manager</h3>
         <p class="desc">Manage music without commands. You must be in a voice channel first.</p>        
         <div class="rounded manager row p-3">
@@ -35,7 +34,7 @@
                         <mat-form-field appearance="outline">
                             <mat-label>Search</mat-label>
                             <input id="search" type="search"
-                                matInput #search required
+                                matInput #search
                                 [disabled]="hasPremium ? service.list.length >= 10 : service.list.length >= 5">
                         </mat-form-field>
                         <button mat-button color="success"

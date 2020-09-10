@@ -12,4 +12,8 @@ export class MemberUsernameComponent {
     tag: 'unknown#0000'
   };
   @Input() withAvatar = true;
+
+  get tag() {
+    return this.member.tag.replace(/^.+(#\d{4})/, '$1');
+  }
 }

@@ -140,6 +140,7 @@ export class AlertErrorHandler implements ErrorHandler {
   ],
   imports: [
     AppRoutingModule,
+    BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     ReactiveFormsModule,

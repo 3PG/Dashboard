@@ -17,9 +17,11 @@
 
 **Add**
 - `/servers/:id/commands` -> custom commands
+- `/dashboard` -> experimental referral system
 
 **Change/Fix**
-- 
+- `/` -> update images
+- `/servers/:id/timers` -> timers now send from the 'from' date
 
 **Remove**
 - `/dashboard` -> badges

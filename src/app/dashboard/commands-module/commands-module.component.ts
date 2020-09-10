@@ -7,11 +7,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { GuildService } from '../../services/guild.service';
 import { UserService } from 'src/app/services/user.service';
 import { toIterable } from 'src/app/utils';
+import { slideUpDown } from '../leveling-module/leveling-module.animations';
 
 @Component({
   selector: 'app-commands-module',
   templateUrl: './commands-module.component.html',
-  styleUrls: ['./commands-module.component.css']
+  styleUrls: ['./commands-module.component.css'],
+  animations: [ slideUpDown ]
 })
 export class CommandsModuleComponent extends ModuleConfig implements OnInit {
   moduleName = 'commands';
