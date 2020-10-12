@@ -17,11 +17,13 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   exports: [
     ColorPickerModule,
     CdkTableModule,
+    DragDropModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatChipsModule,

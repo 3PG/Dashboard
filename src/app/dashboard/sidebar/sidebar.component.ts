@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { UserService } from '../../services/user.service';
 import { GuildService } from '../../services/guild.service';
 import { MatDrawer } from '@angular/material/sidenav';
+import { WSService } from 'src/app/services/ws-service';
 
 @Component({
   selector: 'sidebar',
@@ -12,16 +13,24 @@ import { MatDrawer } from '@angular/material/sidenav';
 export class SidebarComponent implements OnInit {
   @ViewChild('drawer') drawer: MatDrawer;
 
-  get guilds() { return this.guildService.guilds || []; }
-  get user() { return this.userService.user || {}; }
+  guilds = [];
+  user: any; 
 
   constructor(
     private guildService: GuildService,
-    private userService: UserService) {}
+    private userService: UserService,
+    private ws: WSService) {}
 
   async ngOnInit() {
-    if (this.guildService.guilds.length <= 0)
-      await this.guildService.updateGuilds();
+    await this.guildService.init();
+    await this.userService.init();
+    
+    this.user = this.userService.user;
+    
+    const savedUser = this.userService.savedUser;
+    this.guilds = (savedUser.guildPositions)
+      ? savedUser.guildPositions?.map(id => this.guildService.getGuild(id))
+      : this.guildService.guilds;
   }
 
   toggle() {
@@ -30,7 +39,17 @@ export class SidebarComponent implements OnInit {
     this.drawer.toggle();
   }
 
-  identify(index, guild){
-    return guild.id; 
+  // guild icons
+  identifyGuild(index, guild) {
+    return guild.id;
+  }
+
+  drop({ previousIndex, currentIndex }) {
+    moveItemInArray(this.guilds, previousIndex, currentIndex);
+
+    this.ws.socket.emit('GUILD_DRAG', {
+      userId: this.user.id,
+      guildPositions: this.guilds.map(g => g.id)
+    });
   }
 }

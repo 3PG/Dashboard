@@ -1,19 +1,29 @@
 <mat-sidenav-container fullscreen>
     <mat-sidenav #drawer mode="side" opened>
         <div class="guilds px-2">
-            <div class="user">
+            <div *ngIf="user" class="user">
                 <div routerLink="/dashboard" class="guild-icon">
                     <img [src]="user.displayAvatarURL" alt="{{ user.username }}">
                 </div>
                 <hr class="guild-seperator">
             </div>
-            <div *ngFor="let guild of guilds" [routerLink]="['/servers/' + guild.id]"
-                class="guild-icon"
-                [matTooltip]="guild.name">
-                <img *ngIf="guild.iconURL"
-                    [src]="guild.iconURL" [alt]="guild.name">
-                <span *ngIf="!guild.iconURL"
-                    class="d-flex justify-content-center">{{ guild.nameAcronym }}</span>
+            <div *ngIf="guilds"
+                class="guilds-container"
+                cdkDropList
+                [cdkDropListData]="guilds"
+                (cdkDropListDropped)="drop($event)">
+                <div *ngFor="let guild of guilds; trackBy: identifyGuild"
+                    [routerLink]="['/servers/' + guild.id]"
+                    [matTooltip]="guild.name"
+                    class="guild-icon"
+                    cdkDragLockAxis="y"
+                    cdkDragBoundary=".guilds-container"
+                    cdkDrag>
+                    <img *ngIf="guild.iconURL"
+                        [src]="guild.iconURL" [alt]="guild.name">
+                    <span *ngIf="!guild.iconURL"
+                        class="d-flex justify-content-center">{{ guild.nameAcronym }}</span>
+                </div>
             </div>
             <div href="/api/invite" 
                 class="guild-icon invite"

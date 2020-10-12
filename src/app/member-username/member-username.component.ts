@@ -14,6 +14,6 @@ export class MemberUsernameComponent {
   @Input() withAvatar = true;
 
   get tag() {
-    return this.member.tag.replace(/^.+(#\d{4})/, '$1');
+    return this.member.tag?.replace(/^.+(#\d{4})/, '$1');
   }
 }

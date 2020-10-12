@@ -2,6 +2,7 @@ export const environment = {
   discordURL: 'https://discord.com/invite/xRT6Fz5',
   githubURL: 'https://github.com/theADAMJR/2PG',
   endpoint: '/api',
+  rootEndpoint: '/',
   production: true,
   stripePublicKey: 'pk_live_kyJ00K40kgFhHMYzO7Bc9YjV00sVDW6IlV',
   url: 'https://3pg.xyz',

@@ -9,6 +9,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.cdk-drag-dragging {
+    display: none !important;
+}
+
 body, mat-sidenav-content {
     color: var(--font);
     background: black;
@@ -350,4 +354,9 @@ a.mention {
     h1 {
         font-size: 16vw !important;
     }
+}
+
+/* sidebar */
+.cdk-drag-placeholder {
+    opacity: 0;
 }
