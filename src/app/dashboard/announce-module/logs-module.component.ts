@@ -55,7 +55,7 @@ export class LogsModuleComponent extends ModuleConfig implements OnInit {
 
       (formGroup.get('events') as FormArray).push(new FormGroup({
         event: new FormControl(event),
-        enabled: new FormControl(config?.enabled),
+        enabled: new FormControl(config?.enabled ?? Boolean(event)),
         channel: new FormControl(config?.channel ?? ''),
         message: new FormControl(config?.message ?? `\`${event}\` was triggered in **[GUILD]**!`, Validators.maxLength(512))
       }));     
