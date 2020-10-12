@@ -55,7 +55,7 @@ export class LogsModuleComponent extends ModuleConfig implements OnInit {
 
       (formGroup.get('events') as FormArray).push(new FormGroup({
         event: new FormControl(event),
-        enabled: new FormControl(Boolean(config?.channel && config?.message) ?? false),
+        enabled: new FormControl(config?.enabled),
         channel: new FormControl(config?.channel ?? ''),
         message: new FormControl(config?.message ?? `\`${event}\` was triggered in **[GUILD]**!`, Validators.maxLength(512))
       }));     
@@ -71,16 +71,8 @@ export class LogsModuleComponent extends ModuleConfig implements OnInit {
     await super.submit();
   }
 
-  filterFormEvents(value: any) {
-    const filteredEvents = [];
-    for (const event of value.events) {
-      const filtered = { ...event };
-      if (filtered.enabled) {        
-        delete filtered.enabled;
-        filteredEvents.push(filtered);
-      }
-    }
-    value.events = filteredEvents;
+  filterFormValue() {
+    this.form.value.events = this.form.value.events.filter(e => e.enabled);
   }
 }
 

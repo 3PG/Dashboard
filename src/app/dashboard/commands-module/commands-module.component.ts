@@ -13,7 +13,7 @@ import { slideUpDown } from '../leveling-module/leveling-module.animations';
   selector: 'app-commands-module',
   templateUrl: './commands-module.component.html',
   styleUrls: ['./commands-module.component.css'],
-  animations: [ slideUpDown ]
+  animations: [slideUpDown]
 })
 export class CommandsModuleComponent extends ModuleConfig implements OnInit {
   moduleName = 'commands';

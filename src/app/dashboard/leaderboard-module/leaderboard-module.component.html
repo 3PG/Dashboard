@@ -1,7 +1,9 @@
 <navbar></navbar>
-<div class="container">
+<div *ngIf="guild"
+    class="container">
     <div class="jumbotron">
-        <img [src]="guild.iconURL" alt="{{ guild.name }} Leaderboard"
+        <img [src]="guild.iconURL"
+            alt="{{ guild.name }} Leaderboard"
             class="guild-icon">
         <h1 class="display-3">{{ guild.name }}</h1>
         <hr>
@@ -11,7 +13,9 @@
             class="member">
             <span [class]="'rank-' + (members.indexOf(member) + 1)" 
                 class="rank">{{ members.indexOf(member) + 1 }}</span>
-            <member-username [member]="member"></member-username>
+            <member-username
+                [member]="member"
+                class="d-inline-block"></member-username>
             <div class="float-right pt-2 d-md-block d-none">
                 <span class="info">
                     <strong>{{ member.xp | number }}</strong>

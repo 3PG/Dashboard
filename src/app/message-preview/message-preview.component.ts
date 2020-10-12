@@ -35,7 +35,7 @@ export class MessagePreviewComponent {
     const wasYesterday = new Date().getDate() % this.createdAt.getDate() === 1;
     const isTommorow = this.createdAt.getTime() % new Date().getDate() === 1;
     
-    if (wasToday || wasYesterday)
+    if (wasToday)
     return `Today at ${timestamp}`;
     if (wasYesterday)
       return `Yesterday at ${timestamp}`;

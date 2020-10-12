@@ -12,6 +12,20 @@
 
 ---
 
+### v2.3.1b
+`12/10/2020`
+
+**Add**
+- `/dashboard` -> guild icon drag sorting (like Discord)
+
+**Change/Fix**
+- `/leaderboard/:guildId` -> leaderboard now loads via direct connection
+
+**Remove**
+- disable message and command logging due to an exploit
+
+---
+
 ### v2.3.0b
 `10/09/2020`
 

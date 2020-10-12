@@ -1,10 +1,11 @@
 .categories li {
     cursor: pointer;
     background-color: var(--background-tertiary);
+    border: none;   
 }
 
 li {
-    background-color: var(--background-secondary);    
+    background-color: var(--background-secondary);
 }
 
 li.active {

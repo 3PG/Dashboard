@@ -5,7 +5,7 @@
 
 @include mat-core();
 
-:root {
+:root, :root[theme=DISCORD] {
     --heading: #FFFFFF;
     --font: #99AAB5;
 
@@ -51,21 +51,20 @@
     --background-secondary: #2c1518;
     --background-tertiary: #251113;    
 }
-:root[theme=DISCORD] {
-    --font: #99AAB5;
+:root[theme=CLONE] {
+    --primary: #6E8481;
+    --secondary: #A2B6AD;
+    --tertiary: #576067;
 
-    --danger: #B00000;
-    --muted: grey;
+    --heading: white;
+    --font: #CACBCD;
     
-    --background-primary: #36393F;
-    --background-secondary: rgb(37, 38, 42);
-    --background-tertiary: #202225;
+    --background-primary: #414244;
+    --background-secondary: #37373a;
+    --background-tertiary: #323335;
 }
 :root[theme=TWILIGHT] {
     --font: #E3E7EA;
-
-    --danger: darkred;
-    --muted: grey;
 
     --primary: #757A89;
     --secondary: #78839B;
@@ -78,11 +77,6 @@
 :root[theme=IONIC] {
     --heading: #FFFFFF;
     --font: #F4F2F3;
-    --plus: green;
-
-    --danger: darkred;
-    --muted: grey;
-    --interactive-muted: #4f545c;
 
     --primary: #46828D;
     --secondary: #276C8A;
@@ -168,6 +162,20 @@ $theme: mat-dark-theme($primary, $secondary, $warn);
 @include angular-material-theme($theme);
 
 // css styles
+
+// buttons
+button[color="success"] {
+    background: rgb(72,47,93);
+    background: linear-gradient(135deg, rgba(72,47,93,1) 0%, rgba(69,55,124,1) 46%, rgba(53,31,32,1) 100%);
+}
+button[color="primary"] {
+    background: #7289DA;
+    background: linear-gradient(135deg, #7289DA 0%, #99AAB5 100%);
+}
+button[color="secondary"] {
+    background: rgb(110,128,173);
+    background: linear-gradient(135deg, rgba(110,128,173,1) 0%, rgba(129,153,187,1) 46%, rgba(70,86,137,1) 100%);
+}
 
 // utils
 

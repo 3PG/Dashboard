@@ -13,6 +13,9 @@ export class LeaderboardAuthGuard implements CanActivate {
     private router: Router) {}
 
   async canActivate(next: ActivatedRouteSnapshot) {
+    await this.guildService.init();
+    await this.userService.init();
+    
     const id = next.paramMap.get('id');
 
     const apiGuild = await this.guildService.getAPIGuild(id);
