@@ -1,9 +1,9 @@
 # 3PG Dashboard
 The all-in-one, highly customizable Discord bot.
 
-![Discord](https://img.shields.io/discord/236608364333891585?color=6ca294&amp;label=Support&amp;style=for-the-badge)
-![Lines of Code](https://img.shields.io/tokei/lines/github/DBots-co/API?color=6ca294&style=for-the-badge)
-![Repo Stars](https://img.shields.io/github/stars/DBots-co/API?color=6ca294&style=for-the-badge)
+![Discord](https://img.shields.io/discord/685862664223850497?color=482f5d&amp;label=Support&amp;style=for-the-badge)
+![Lines of Code](https://img.shields.io/tokei/lines/github/3PG/Dashboard?color=482f5d&style=for-the-badge)
+![Repo Stars](https://img.shields.io/github/stars/3PG/Dashboard?color=482f5d&style=for-the-badge)
 
 Bot Series - https://www.youtube.com/watch?v=rYpR0CiEGgk&list=PLGfT2ttRbfixMStpAhPD4pKBQN9wjJmbP&index=1
 
