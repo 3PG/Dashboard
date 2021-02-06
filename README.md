@@ -1,3 +1,6 @@
+## Deprecated
+> :warning: 3PG is deprecated. Please use [2PG](https://github.com/twopg) instead. More Info - https://github.com/3PG/Bot/issues/10
+
 # 3PG Dashboard
 The all-in-one, highly customizable Discord bot.
 
